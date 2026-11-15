@@ -1,0 +1,344 @@
+{
+  "raw_norobots_train_rows": 9500,
+  "dropped_category_summarize": 395,
+  "dropped_keyword_outside_summarize": 135,
+  "union_category_and_keyword_dropped": 530,
+  "overlap_category_and_keyword": 302,
+  "dropped_empty_assistant": 0,
+  "dropped_exceeded_2048_tokens": 19,
+  "dropped_cross_set_decontamination": 0,
+  "dropped_internal_exact": 0,
+  "dropped_internal_minhash_0.8": 2,
+  "clean_pool_available": 8949,
+  "sampled_warmup_n": 5000,
+  "category_counts_in_clean_pool": {
+    "Generation": 4256,
+    "Coding": 324,
+    "Closed QA": 240,
+    "Open QA": 1177,
+    "Chat": 791,
+    "Brainstorm": 1051,
+    "Rewrite": 596,
+    "Extract": 181,
+    "Classify": 333
+  },
+  "category_counts_in_warmup_5k": {
+    "Generation": 2378,
+    "Open QA": 658,
+    "Brainstorm": 587,
+    "Chat": 442,
+    "Rewrite": 333,
+    "Classify": 186,
+    "Coding": 181,
+    "Closed QA": 134,
+    "Extract": 101
+  },
+  "token_stats": {
+    "mean": 286.93,
+    "median": 235.0,
+    "p90": 522.0,
+    "max": 2045
+  },
+  "keyword_dropped_50_audit_samples": [
+    {
+      "prompt_id": "24ccca76d41af92d506bf892d1e469975b36cbf86200331b81623c42beee15dc",
+      "category": "Generation",
+      "match": "prompt:summary",
+      "prompt_snippet": "Write me a summary of Buddhist philosophy. I want it in a bulleted list with no more than 10 bullet points."
+    },
+    {
+      "prompt_id": "08f1638aac5121f045bc59685a1e4f365af06b11166a2163b0b393ac17b122f9",
+      "category": "Generation",
+      "match": "prompt:brief overview",
+      "prompt_snippet": "What can you tell me about the DASH diet? I've heard it's good for heart health. Can you give me a very brief overview of the diet in two to three sentences?"
+    },
+    {
+      "prompt_id": "9d7e42a07f9db80b778785fc6bbd4ec4a465ed5f02b683edc1ef48228fcb5202",
+      "category": "Generation",
+      "match": "prompt:summary",
+      "prompt_snippet": "In five sentences or less, can you give me a summary of what a walrus is? After, give me a limerick involving a walrus"
+    },
+    {
+      "prompt_id": "d1a5b4d5e86d0e8a4331bf320f1b0e27361db5c110238fb043a8b2cb9120447f",
+      "category": "Generation",
+      "match": "assistant:tl;dr",
+      "prompt_snippet": "Create a dramatic Reddit post in the style of a reddit.com/r/relationships thread about a couple arguing over a ham sandwich. I'm giving you total creative freedom!"
+    },
+    {
+      "prompt_id": "37e11ee7f8adbf68770cf57cc0996df141ddc4b0a55286ab10ad00ce8e3a7ee0",
+      "category": "Generation",
+      "match": "prompt:summarize",
+      "prompt_snippet": "Can you please summarize three popular novels by Nicholas Sparks? Order the novels by release date and make each summary 2-3 sentences and don't give too many major plot details aw"
+    },
+    {
+      "prompt_id": "fdcb6903e82c3200c63a98a0c1b90f633d2a4f2d0f74907f12c1f80d70e250f1",
+      "category": "Generation",
+      "match": "prompt:summaries",
+      "prompt_snippet": "Please write three short paragraphs as writing prompts. They all need to be around the theme of father-daughter relationships. Use popular Chinese first names for the daughter. The"
+    },
+    {
+      "prompt_id": "3ab61df5b7c8caaf6d24c7fe3f87445eb367f196fe36df0fb86eeb4ac668a322",
+      "category": "Coding",
+      "match": "prompt:shorten",
+      "prompt_snippet": "The Python code below is giving me a long decimal number for the 2 variables. Can you show me how to shorten the decimal length? \n--------------------------------------\nnumber1 = 0"
+    },
+    {
+      "prompt_id": "c103286e89139faebd524a13bb2f71e226e48b4ec14c011f44431a7e396916e0",
+      "category": "Generation",
+      "match": "prompt:summary",
+      "prompt_snippet": "Pretend you are a cat and you are trying to argue that cats are better than dogs. List at least 5 reasons with a short one-sentence summary for each point. The cat you are portrayi"
+    },
+    {
+      "prompt_id": "062ca37fa42ed08e68743096c7cabdc937773d61296e95430d9410bfdbc50961",
+      "category": "Generation",
+      "match": "prompt:synopsis",
+      "prompt_snippet": "Write a synopsis of a true crime podcast that focuses on the tragic murder of Molly McLaren in the style of a true crime podcast. Make it 150 words."
+    },
+    {
+      "prompt_id": "f9d47d054ccf760a8f0bf0e4a9c2970e0e570d43c04829de374864082ed980b0",
+      "category": "Generation",
+      "match": "prompt:summarize",
+      "prompt_snippet": "So…I’m trying to summarize for my students the different designs between a powder bed fusion 3D printer and the directed energy deposition printers that use powdered build material"
+    },
+    {
+      "prompt_id": "c128a7eb2c0167842dbf9fbff1605c5bfc3bfa3862adf631cdadccdc475bc2b7",
+      "category": "Closed QA",
+      "match": "prompt:Summarize",
+      "prompt_snippet": "Summarize what the text says about the relationship between Mayans and turkeys.\n\nWhile the turkey is currently America's favorite part of the Thanksgiving meal, in 300 B.C., these "
+    },
+    {
+      "prompt_id": "50409e0a7e235d0f5f374d80789ae3a410de9486c644763a9ba3ba67fef57e4c",
+      "category": "Generation",
+      "match": "prompt:summary",
+      "prompt_snippet": "Come up with a summary of the art of Jeet Kune Do, created by legendary martial artist Bruce Lee, if it were written by Bruce Lee himself."
+    },
+    {
+      "prompt_id": "63550fbd69c1c0bf4004979bd9c9de7cbda673758b8aa205523a8d0e040103bd",
+      "category": "Generation",
+      "match": "prompt:summary",
+      "prompt_snippet": "Help me write the cover summary for my new book. It’s about an old woman named Samantha who has made it to 60 years old and realizes she has lived her life completely in fear and w"
+    },
+    {
+      "prompt_id": "07ae6ba786fa3f7a766b2ed64719e6d612bddb0f5d3c73ecc3e8838a36360c8c",
+      "category": "Open QA",
+      "match": "prompt:main points",
+      "prompt_snippet": "What is the measurement of computer mouse speed called? Please answer in a single paragraph form and then follow with a bulleted list of the main points."
+    },
+    {
+      "prompt_id": "ce7831756f6a031ec5300490ae4b9621e9a60ea131c4effece13a34d70fa94df",
+      "category": "Generation",
+      "match": "prompt:synopsis",
+      "prompt_snippet": "Write me a synopsis for a short film called The Last Austrian, starring Arnold Schwarzenegger, set in a universe where Austria and Austrian culture have been banned. Give the main "
+    },
+    {
+      "prompt_id": "15ffa01efbb667e5039eddfc9fa06e19316545c1686702ef720c540d957377dd",
+      "category": "Generation",
+      "match": "prompt:key points",
+      "prompt_snippet": "I need a newsletter for my Veggies and Dip Book Club to go out today. It has to have these key points:\n- the book for October is \"Yes Please\" by Amy Poler\n- Lucinda is bringing dil"
+    },
+    {
+      "prompt_id": "eecddbf6477203c9e97fc0132233e49ce87ca054b95eea2bc0a67e5b99f171d6",
+      "category": "Rewrite",
+      "match": "prompt:shorten",
+      "prompt_snippet": "Hi, please turn this into a single paragraph and shorten it to remove unnecessary words. Don't remove facts or change the meaning of the article. Thank you!\n\nIced tea has always be"
+    },
+    {
+      "prompt_id": "ffc542f64fc498d05e31d06c5910f0cfa78d7fa93ceef5e5d1a266ec726967df",
+      "category": "Generation",
+      "match": "prompt:synopsis",
+      "prompt_snippet": "Write a synopsis of 2020 in the style of a book review. Make up a book title that you're reviewing, but it's just covering the year."
+    },
+    {
+      "prompt_id": "4f9fbde166fa4a65b5b43f3462293c7ba7887512cdd87416a309724734b9fb8d",
+      "category": "Generation",
+      "match": "prompt:synopsis",
+      "prompt_snippet": "List the titles of five episodes, for a new show called 'Time Skippers'. The show is about 3 friends who travel through time. The characters' names are 'Bob', 'Ross' and 'Asul'. Th"
+    },
+    {
+      "prompt_id": "b47e5a4562e11ea084e50d74f4a7b226d9a434fc5fc62b6ac1670a0724e29f04",
+      "category": "Generation",
+      "match": "prompt:summaries",
+      "prompt_snippet": "Define cryptozoology, then give me a list of 4 cryptozoological creatures and brief legend summaries. Describe them in ways that would fascinate but spook a class of sixth-grade ki"
+    },
+    {
+      "prompt_id": "de44499068d4b30bd8140a93028b30fff3cdabb118ff771ac733ba3061ceb4fc",
+      "category": "Rewrite",
+      "match": "prompt:recap",
+      "prompt_snippet": "Rewrite this email as if you are an owl\n\nHi Shailee!\n\nSo just to recap our phone conversation: The surgery will be on June 27th at Mercy Hospital, due to the availability of the co"
+    },
+    {
+      "prompt_id": "131efdf6d9214c89e66cd89e112be06f66ef2584fd8db768b27f6bfcdf4c3df2",
+      "category": "Rewrite",
+      "match": "prompt:main points",
+      "prompt_snippet": "Rewrite the main points of paragraphs above in a bulleted list\n\nIn 1978, as graduate students, Suzanne Imes and Pauline Rose Clance realized they both felt like they weren't good e"
+    },
+    {
+      "prompt_id": "109be1dc66bfbf7ee3c33754f2aa2012466be5cf56e6feb073fceb7ead13e1a6",
+      "category": "Rewrite",
+      "match": "prompt:summary",
+      "prompt_snippet": "Rewrite this page into a brief summary of the types of upcycled foods used in this ice cream series.\n\nPints of the Month: The Upcycled Foods Series\nReady to raise your summer to ne"
+    },
+    {
+      "prompt_id": "0891b39a2df082266df86dace4df4a048b440e53b5378e5ec45b07de157e4534",
+      "category": "Generation",
+      "match": "prompt:summary",
+      "prompt_snippet": "I want some information about the children's book Korgi. Include a one-sentence summary, then provide the year and author, the type of book that it is, the publisher, and how many "
+    },
+    {
+      "prompt_id": "0f6754fd260b304228a0c29c38eb13a4271d15df6ffb50164a2b583a4be3bcd5",
+      "category": "Closed QA",
+      "match": "prompt:summary",
+      "prompt_snippet": "Why is Scott Hastings so frustrated with ballroom dancing? Here's a summary of the movie I'm talking about:\n\nScott Hastings, the frustrated son of a family of ballroom dancers, has"
+    },
+    {
+      "prompt_id": "6d17ef39380d7fbe1835586301847ce5513fd1ddd4e450c8eaa16608fb6536d6",
+      "category": "Generation",
+      "match": "prompt:summary",
+      "prompt_snippet": "Write a product summary for a string you can tie to your wrist and it pulls you to your destiny. Add a warning about not being able to take it off once it's on."
+    },
+    {
+      "prompt_id": "c7f8fd9a5160639f0ff62c6b3853fb4d0abb727eef8e695550f863124ee37e15",
+      "category": "Generation",
+      "match": "prompt:summarize",
+      "prompt_snippet": "Make a story about an orphaned cat named Millie in the style of a Jane Austen novel. Call the lead love interest Mr. Purrcy and make him rich. Not too long, just summarize the plot"
+    },
+    {
+      "prompt_id": "2cfb1a1e0508b917f35e0c9e7c8fede71d64375d7cf6de0c0ec1053dd219fe6e",
+      "category": "Generation",
+      "match": "prompt:synopsis",
+      "prompt_snippet": "Write a synopsis for a children's TV show about family pets with anthropomorphic qualities. Make it about a paragraph long."
+    },
+    {
+      "prompt_id": "712ffa2f191450335b865fd9954dc148b54c23d34df2984131a023ed61a523a0",
+      "category": "Generation",
+      "match": "prompt:summary",
+      "prompt_snippet": "Take this quote from Shakespeare “All the world's a stage, and all the men and women merely players.” and write a 200 word summary on what it means. It’s for my 12th grade English "
+    },
+    {
+      "prompt_id": "c48c1d92dabccb92c30a7a56220ca5b6e77dd20211eb6188f64fa1a04c723c5b",
+      "category": "Generation",
+      "match": "prompt:summary",
+      "prompt_snippet": "Let's say I want to live in Poland for a few month. Give me a month by month summary of what I should do each month. start in september and go until january"
+    },
+    {
+      "prompt_id": "6ff6a6e1bcd11822c4a81bb511a6ded15ee725b7ca6d79ba34a8ef0bfc2ef02b",
+      "category": "Generation",
+      "match": "prompt:summary",
+      "prompt_snippet": "Write a summary of a work outing event that promotes synergy and teamwork amongst employees and an outline of the events that will take place at said event."
+    },
+    {
+      "prompt_id": "5f5f4881a89332434748901fce7a0dbff140a07225352291dae9a5908d90f427",
+      "category": "Generation",
+      "match": "prompt:summary",
+      "prompt_snippet": "Give me a summary of the three little pigs. Make it exactly 100 words.\nAfter the summary, give me two alternate ending options."
+    },
+    {
+      "prompt_id": "ad96292b2ba34e4f6c03c83f16bc806e4672a420e1ab615eb145e25a35844bb7",
+      "category": "Rewrite",
+      "match": "prompt:Summarize",
+      "prompt_snippet": "Summarize the text into a numbered list that highlights the critical points of the story.\n\nDomestic rabbits need a regulated environment to protect against heat exhaustion or hypot"
+    },
+    {
+      "prompt_id": "c1f549683adbd767649c0a68374d47d1cdda781607146ad7ec8ed969bbf46356",
+      "category": "Rewrite",
+      "match": "prompt:key points",
+      "prompt_snippet": "Convert the key points of this article into frequently asked questions (FAQ) with answers.\n\nA new study has shown that humans may have evolved a spring-like arch to help us walk on"
+    },
+    {
+      "prompt_id": "67bae09ecf029e945a8a7306846bda3b2d39b3284377eaf520e77c2780bec191",
+      "category": "Generation",
+      "match": "prompt:key points",
+      "prompt_snippet": "Using asterisks, list five key points from the quoted article. Each should be one complete sentence. Start each point with 'Dr. Joseph Dituri' and make each point between 15 and 25"
+    },
+    {
+      "prompt_id": "63fd2e151bc0a00fa287727b04d16a547c9d602a8c11c37075ab1965dbd8d0f0",
+      "category": "Generation",
+      "match": "prompt:summary",
+      "prompt_snippet": "Write a brief summary about the practice of pirates burying their treasure"
+    },
+    {
+      "prompt_id": "dae8724957b1c00f394e5fcebbaf634c53db4d31c867f04f55091d24f95ffc28",
+      "category": "Generation",
+      "match": "prompt:key points",
+      "prompt_snippet": "I am creating a blog about writing jokes and would like to introduce the page with a list of key points for beginners to consider. Keep the list to 3 key points and give each point"
+    },
+    {
+      "prompt_id": "886b90b9e0e1ac71627f43e3258a252650d50a284b4446add02969e55476b875",
+      "category": "Brainstorm",
+      "match": "prompt:summaries",
+      "prompt_snippet": "What would Gandhi and Hitler talk about if they met? Give me topics of conversation and summaries of each topic."
+    },
+    {
+      "prompt_id": "cf30a7bf46cba73b757d5774db8c7cc378e7700f76da8e22866337fd83d266be",
+      "category": "Generation",
+      "match": "prompt:synopsis",
+      "prompt_snippet": "Write a synopsis for a modern TV drama inspired by Shakespeare's Hamlet."
+    },
+    {
+      "prompt_id": "d5be57d37bcbe5ae8bb15a4039ba0a661caebd9cfe445c34dbcca0e2a10dff8d",
+      "category": "Chat",
+      "match": "prompt:summaries",
+      "prompt_snippet": "Debrief is a News update chatbot that fetches the latest news articles from various sources and provides summaries."
+    },
+    {
+      "prompt_id": "366c927968dafd1e9a958eae8aafbbbbf18fbbe691c6e8f47d827fc27173da92",
+      "category": "Closed QA",
+      "match": "prompt:synopsis",
+      "prompt_snippet": "How many of the characters were related, based on the show synopsis? And how are they related? \n\nHere’s the Good Girls show synopsis:\nThe series follows three suburban Michigan mot"
+    },
+    {
+      "prompt_id": "75cb4063fecc440989415bdf1dcddd7c6332eada1ae1cb66a87888cda901dd60",
+      "category": "Rewrite",
+      "match": "prompt:summary",
+      "prompt_snippet": "Rewrite this table of aftershow concerts into a summary, centered around a bulleted list of shows using the following format: ARTIST: VENUE, TIME. \n\nWEDNESDAY AUG 2\nOFFICIAL LOLLAP"
+    },
+    {
+      "prompt_id": "e4cb0786ae2b44020c9d34125b55664ddb576f8f3599edab2777c82119377a8d",
+      "category": "Rewrite",
+      "match": "prompt:Summarize",
+      "prompt_snippet": "Summarize this text as if you were explaining it to a 5 year old:\n\"Muscles such as biceps, pectorals and quadriceps are called skeletal muscles because they attach to the skeleton "
+    },
+    {
+      "prompt_id": "694ab7f03274a2543ed9a421356396dc23c26b2cdf445f1809b177f380ff0dcb",
+      "category": "Brainstorm",
+      "match": "prompt:Summarize",
+      "prompt_snippet": "Suggest six books that I can give to my teen to help her develop a love for reading. Fiction is okay, and LGBT+ is encouraged! Summarize the plot for each book, please. "
+    },
+    {
+      "prompt_id": "afc3ae54755a11d48ed7224ddae7b0b36d2a45eedb56aa8e3ab0e2579aa33f56",
+      "category": "Generation",
+      "match": "prompt:summary",
+      "prompt_snippet": "Write a Wikipedia-style summary of the history of cornrows. It should be no more than 150 words. Include information on the gradual change of their function. You don't have to use "
+    },
+    {
+      "prompt_id": "970857e4feee31ff5a5102e214f80c8369ac8b733166f46834fdbbee3d2af6f2",
+      "category": "Generation",
+      "match": "prompt:summary",
+      "prompt_snippet": "Write a parody plot summary of Michael Bay's Transformers using non-copywritten IP."
+    },
+    {
+      "prompt_id": "3d83099a55a6161ba9ab01470a9df2afcbf8800c01f1958933bb610fdc0cf0bf",
+      "category": "Rewrite",
+      "match": "prompt:Summarize",
+      "prompt_snippet": "Summarize in 5 sentences the plot of the film \"What's Love Got to Do With It\" using facts from this movie review.\n\nWhen it came right down to it, in the divorce court, Ike Turner d"
+    },
+    {
+      "prompt_id": "9785339035fc15581c3c168b4ec132426bf87c5a9114c7dd7ddfbce40c754257",
+      "category": "Generation",
+      "match": "prompt:summaries",
+      "prompt_snippet": "Write three summaries for the first episodes of an imaginary medical procedural drama that is set in the fantasy universe \"The Forgotten Realms.\" \n\nEach summary should begin with S"
+    },
+    {
+      "prompt_id": "ee33f27d4850d4fd3e89e6922b3cfde879ef4dad58607178ed0f6052bc922993",
+      "category": "Coding",
+      "match": "assistant:In summary",
+      "prompt_snippet": "What does this code do?\n\nimport time\ndef increment_loop(n):\n    i = 0\n    if n == 0:\n        return i\n    start = time.time()\n    while time.time() - start <= n:\n        i += 1\n   "
+    },
+    {
+      "prompt_id": "fc6250f3dca010fbee3c158bfbaabe630fb5925050a88692e319877c5d839c23",
+      "category": "Generation",
+      "match": "prompt:summarize",
+      "prompt_snippet": "Can you summarize the three main financial statements for me which are the income statements, balance sheet, and cash flows statement?"
+    }
+  ]
+}
