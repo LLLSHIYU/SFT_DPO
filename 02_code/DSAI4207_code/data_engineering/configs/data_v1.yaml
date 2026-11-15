@@ -1,0 +1,81 @@
+data_version: "v1.0"
+protocol_version: "v1.2-final"
+formatter_version: "v1.2"
+owner: "PAN Haoren (24104216d)"
+
+sources:
+  tldr:
+    repo: "openai/summarize_from_feedback"
+    config: "comparisons"
+    splits: ["train", "validation"]
+  warmup:
+    repo: "HuggingFaceH4/no_robots"
+    split: "train"
+  tokenizer:
+    repo: "Qwen/Qwen2.5-0.5B-Base"
+    eos_token: "<|im_end|>"
+    eos_token_id: 151645
+    pad_token: "<|endoftext|>"
+    pad_token_id: 151643
+  benchmarks:
+    mmlu:
+      repo: "cais/mmlu"
+      config: "all"
+      split: "test"
+      sample_size: 500
+      seed: 42
+    arc_challenge:
+      repo: "allenai/ai2_arc"
+      config: "ARC-Challenge"
+      split: "test"
+      sample_size: 300
+      seed: 42
+    ifeval:
+      repo: "google/IFEval"
+      split: "train"
+      sample_size: 541
+      max_new_tokens: 1280
+
+salts:
+  test: "dsai4207_test_v1.2_20261018"
+  test_order: "dsai4207_test_order_v1.2"
+  pair: "dsai4207_pair_v1.2"
+  ab: "dsai4207_ab_v1.2"
+  order: "dsai4207_order_v1.2"
+  warmup: "dsai4207_warmup_v1.2"
+
+training_seeds: [42, 1337, 2024]
+budgets: [500, 2000, 10000]
+
+system_prompt: "You are a helpful assistant who is an expert at summarizing content into TL;DR sentences. Summarize the following text"
+
+filters:
+  exclude_cnndm: true
+  require_t3_id: true
+  prompt_words: [30, 2000]
+  chosen_words: [5, 100]
+  rejected_words: [5, 120]
+  max_prompt_tokens: 768
+  max_chosen_tokens: 160
+  max_rejected_tokens: 200
+  max_total_tokens: 1024
+  max_warmup_tokens: 2048
+
+minhash:
+  shingle_words: 5
+  num_perm: 128
+  lsh_recall_threshold: 0.75
+  exact_jaccard_threshold: 0.8
+  sensitivity_thresholds: [0.7, 0.8, 0.9]
+
+testset:
+  full_size: 500
+  main_size: 200
+  top_subreddits_k: 6
+  length_quantiles: 5
+
+warmup:
+  target_size: 5000
+  excluded_category: "Summarize"
+  user_system_regex: '\b(summar(y|ies|ize|ise|ized|ised|izing|ising|ization|isation)|tl[;/]?dr|condense|recap|shorten|gist|synops[ie]s|key points|main points|in a nutshell|brief overview|abstract of)\b'
+  assistant_regex: '\b(tl[;/]?dr|in summary|to summarize|here is a summary)\b'
