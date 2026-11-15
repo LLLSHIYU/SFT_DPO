@@ -1,0 +1,36 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Large data artifacts & raw cache (keep manifests, DATA_CARD.md, and scripts in git)
+data/**/raw_cache/
+data/**/*.jsonl
+data/**/*.parquet
+data/smoke/
+
+# Restrict blind audit answer key from public git tree (P3-4: distribute separately to statistical lead)
+data/**/manifests/data_label_audit_100_key.json
+
+# Training checkpoints & temporary logs
+checkpoints/
+outputs/
+wandb/
+*.pt
+*.bin
+*.safetensors
+
+# macOS system files & local draft archives
+.DS_Store
+.workbuddy/
+*.zip
+proposal v*/
+proposal*.html
+balancing the budget.pdf
+*Course Project*.pdf

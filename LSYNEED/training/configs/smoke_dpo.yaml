@@ -1,0 +1,12 @@
+model_path: C:/Users/liush/Desktop/DSAI4207_shared/LSYNEED/models/Qwen2.5-0.5B
+ref_model_path: C:/Users/liush/Desktop/DSAI4207_shared/LSYNEED/models/Qwen2.5-0.5B
+data_path: C:/Users/liush/Desktop/DSAI4207_shared/SUMMARY_DATA/arms/G3_dpo_500.jsonl
+output_dir: C:/Users/liush/Desktop/DSAI4207_shared/LSYNEED/training/smoke/dpo
+seed: 42
+learning_rate: 5.0e-6
+beta: 0.1
+max_length: 1024
+max_steps: 1
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 1
+warmup_steps: 0

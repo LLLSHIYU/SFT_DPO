@@ -1,0 +1,9 @@
+{
+  "task": "dpo",
+  "global_step": 1,
+  "training_loss": 0.6931471824645996,
+  "model_path": "C:\\Users\\liush\\Desktop\\DSAI4207_shared\\LSYNEED\\models\\Qwen2.5-0.5B",
+  "ref_model_path": "C:\\Users\\liush\\Desktop\\DSAI4207_shared\\LSYNEED\\models\\Qwen2.5-0.5B",
+  "data_path": "C:\\Users\\liush\\Desktop\\DSAI4207_shared\\01_data\\v1.0\\arms\\G3_dpo_500.jsonl",
+  "output_dir": "C:\\Users\\liush\\Desktop\\DSAI4207_shared\\LSYNEED\\training\\smoke\\dpo"
+}

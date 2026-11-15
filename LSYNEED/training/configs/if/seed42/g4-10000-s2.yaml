@@ -1,0 +1,12 @@
+model_path: C:/Users/liush/Desktop/DSAI4207_shared/03_runs/IF_G4_stage1_sft_10000_seed42/checkpoint/merged
+data_path: C:/Users/liush/Desktop/DSAI4207_shared/IF_DATA/arms/G4_stage2_dpo_10000.jsonl
+output_dir: C:/Users/liush/Desktop/DSAI4207_shared/03_runs/IF_G4_stage2_dpo_10000_seed42/checkpoint/adapter
+seed: 42
+learning_rate: 5.0e-06
+max_length: 1024
+max_steps: 313
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 16
+warmup_steps: 0.03
+ref_model_path: C:/Users/liush/Desktop/DSAI4207_shared/03_runs/IF_G4_stage1_sft_10000_seed42/checkpoint/merged
+beta: 0.1

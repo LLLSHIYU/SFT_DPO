@@ -1,0 +1,20 @@
+[
+    {
+        "run_id": "M0_warmup_20261028",
+        "run_dir": "03_runs/M0_warmup_20261028",
+        "arm": "M0",
+        "budget": "0",
+        "seed": "42",
+        "model": "Qwen/Qwen2.5-0.5B",
+        "adapter": "/absolute/path/to/M0/adapter-or-merged-checkpoint"
+    },
+    {
+        "run_id": "G4_stage2_dpo_500_seed42_20261028",
+        "run_dir": "03_runs/G4_stage2_dpo_500_seed42_20261028",
+        "arm": "G4",
+        "budget": "500",
+        "seed": "42",
+        "model": "Qwen/Qwen2.5-0.5B",
+        "adapter": "/absolute/path/to/G4/adapter-or-merged-checkpoint"
+    }
+]

@@ -1,0 +1,10 @@
+model_path: C:/Users/liush/Desktop/DSAI4207_shared/03_runs/IF_G5_stage1_dpo_500_seed1337/checkpoint/merged
+data_path: C:/Users/liush/Desktop/DSAI4207_shared/IF_DATA/arms/G5_stage2_sft_500.jsonl
+output_dir: C:/Users/liush/Desktop/DSAI4207_shared/03_runs/IF_G5_stage2_sft_500_seed1337/checkpoint/adapter
+seed: 1337
+learning_rate: 0.0001
+max_length: 1024
+max_steps: 16
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 16
+warmup_steps: 0.03

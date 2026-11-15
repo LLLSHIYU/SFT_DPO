@@ -1,0 +1,4 @@
+2026-11-04 17:54:36,689 INFO cuda device=NVIDIA GeForce RTX 4060 Laptop GPU
+2026-11-04 17:54:38,913 INFO dpo row roles prompt=['system', 'user'] chosen=['assistant'] rejected=['assistant']
+2026-11-04 17:54:57,773 INFO training_loss=0.693147 global_step=1
+2026-11-04 17:54:58,448 INFO saved adapter to C:\Users\liush\Desktop\DSAI4207_shared\LSYNEED\training\smoke\dpo

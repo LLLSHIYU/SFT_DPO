@@ -1,0 +1,178 @@
+{
+  "minhash": {
+    "shingle_words": 5,
+    "num_perm": 128,
+    "lsh_recall_threshold": 0.75,
+    "exact_jaccard_threshold": 0.8,
+    "sensitivity_thresholds": [
+      0.7,
+      0.8,
+      0.9
+    ]
+  },
+  "initial_canonical_train_n": 14760,
+  "final_canonical_pool_n": 14733,
+  "surplus_above_10k": 4733,
+  "scopes": [
+    {
+      "name": "pool_vs_test_500",
+      "left_n": 14760,
+      "right_n": 500,
+      "matches": 0,
+      "dropped_from_left": 0,
+      "examples": []
+    },
+    {
+      "name": "pool_vs_ifeval",
+      "left_n": 14760,
+      "right_n": 541,
+      "matches": 0,
+      "dropped_from_left": 0,
+      "examples": []
+    },
+    {
+      "name": "pool_vs_mmlu",
+      "left_n": 14760,
+      "right_n": 500,
+      "matches": 0,
+      "dropped_from_left": 0,
+      "examples": []
+    },
+    {
+      "name": "pool_vs_arc_challenge",
+      "left_n": 14760,
+      "right_n": 300,
+      "matches": 0,
+      "dropped_from_left": 0,
+      "examples": []
+    },
+    {
+      "name": "pool_internal_exact",
+      "input_n": 14760,
+      "output_n": 14756,
+      "dropped": 4,
+      "examples": [
+        {
+          "kept_pid": "t3_1zvnaa",
+          "dropped_pid": "t3_1zvmpf",
+          "hash_prompt": "42d1bc3a0e58c2e47494e2930e91af5178d7870cdf4ac5cf08356536bb9fc502"
+        },
+        {
+          "kept_pid": "t3_2s7i1z",
+          "dropped_pid": "t3_2s7tem",
+          "hash_prompt": "749f11dc46faa3e579298e08df9145dc219a878794a956f8db76c7c290758256"
+        },
+        {
+          "kept_pid": "t3_kt0as",
+          "dropped_pid": "t3_kszu1",
+          "hash_prompt": "83925b94ff63bca8747ece3fee261273e90c67baa788106d69e12a17e7af9fd5"
+        },
+        {
+          "kept_pid": "t3_317v7a",
+          "dropped_pid": "t3_31778w",
+          "hash_prompt": "9cdb22e0737263195db9c148bb27b43de3cca25800760b60bff4340e83a1b3a5"
+        }
+      ]
+    },
+    {
+      "name": "pool_internal_minhash_0.8",
+      "input_n": 14756,
+      "output_n": 14733,
+      "clusters": 23,
+      "dropped": 23,
+      "sensitivity_thresholds": {
+        "0.7": {
+          "verified_pairs": 25,
+          "clusters": 25,
+          "dropped_prompts": 25
+        },
+        "0.8": {
+          "verified_pairs": 23,
+          "clusters": 23,
+          "dropped_prompts": 23
+        },
+        "0.9": {
+          "verified_pairs": 12,
+          "clusters": 12,
+          "dropped_prompts": 12
+        }
+      },
+      "examples": [
+        {
+          "kept_pid": "t3_1427y3",
+          "dropped_pid": "t3_14247c",
+          "jaccard": 0.8035,
+          "subreddit": "relationship_advice"
+        },
+        {
+          "kept_pid": "t3_1cd9au",
+          "dropped_pid": "t3_1cda1d",
+          "jaccard": 0.9419,
+          "subreddit": "dating_advice"
+        },
+        {
+          "kept_pid": "t3_1dbj16",
+          "dropped_pid": "t3_1dbxop",
+          "jaccard": 0.9304,
+          "subreddit": "relationships"
+        },
+        {
+          "kept_pid": "t3_1j29ju",
+          "dropped_pid": "t3_1j22ji",
+          "jaccard": 0.8158,
+          "subreddit": "relationships"
+        },
+        {
+          "kept_pid": "t3_2ddhx8",
+          "dropped_pid": "t3_2ddlxa",
+          "jaccard": 0.9346,
+          "subreddit": "Advice"
+        },
+        {
+          "kept_pid": "t3_2ekqkj",
+          "dropped_pid": "t3_2eklzg",
+          "jaccard": 0.9621,
+          "subreddit": "dating_advice"
+        },
+        {
+          "kept_pid": "t3_2fnr96",
+          "dropped_pid": "t3_2fodac",
+          "jaccard": 0.9659,
+          "subreddit": "personalfinance"
+        },
+        {
+          "kept_pid": "t3_2q4mbn",
+          "dropped_pid": "t3_2q3esk",
+          "jaccard": 0.841,
+          "subreddit": "relationships"
+        },
+        {
+          "kept_pid": "t3_2taztc",
+          "dropped_pid": "t3_2t943m",
+          "jaccard": 0.8889,
+          "subreddit": "relationship_advice"
+        },
+        {
+          "kept_pid": "t3_2xzov9",
+          "dropped_pid": "t3_2xzmah",
+          "jaccard": 0.9243,
+          "subreddit": "relationships"
+        }
+      ]
+    },
+    {
+      "name": "warmup_vs_pool_test_benchmarks",
+      "left_n": 8951,
+      "matches": 0,
+      "dropped_from_left": 0,
+      "examples": []
+    },
+    {
+      "name": "warmup_internal_dedup",
+      "input_n": 8951,
+      "output_n": 8949,
+      "exact_dropped": 0,
+      "minhash_0.8_dropped": 2
+    }
+  ]
+}

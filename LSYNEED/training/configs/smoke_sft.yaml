@@ -1,0 +1,10 @@
+model_path: C:/Users/liush/Desktop/DSAI4207_shared/LSYNEED/models/Qwen2.5-0.5B
+data_path: C:/Users/liush/Desktop/DSAI4207_shared/SUMMARY_DATA/arms/G2_sft_500.jsonl
+output_dir: C:/Users/liush/Desktop/DSAI4207_shared/LSYNEED/training/smoke/sft
+seed: 42
+learning_rate: 1.0e-4
+max_length: 1024
+max_steps: 1
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 1
+warmup_steps: 0

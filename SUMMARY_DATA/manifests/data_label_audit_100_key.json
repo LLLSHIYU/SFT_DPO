@@ -1,0 +1,1002 @@
+[
+  {
+    "audit_id": 0,
+    "pid": "t3_1uend6",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 1,
+    "pid": "t3_1tzn36",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup2",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 2,
+    "pid": "t3_50xblt",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup4_bo8_rm3",
+    "rejected_policy": "sup4_ppo_rm3",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 8
+  },
+  {
+    "audit_id": 3,
+    "pid": "t3_129hy2",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2_bo8_rm1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 8
+  },
+  {
+    "audit_id": 4,
+    "pid": "t3_umw0t",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup4_t0.7",
+    "rejected_policy": "sup4_t0.7",
+    "chosen_policy_family": "sft_strong",
+    "rejected_policy_family": "sft_strong",
+    "confidence": 6
+  },
+  {
+    "audit_id": 5,
+    "pid": "t3_2fsgiv",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup2",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 6,
+    "pid": "t3_30lryz",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 7,
+    "pid": "t3_1ld705",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 8,
+    "pid": "t3_lcgwj",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 9,
+    "pid": "t3_1j0yy1",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup4_ppo_rm3",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "human_ref",
+    "confidence": 4
+  },
+  {
+    "audit_id": 10,
+    "pid": "t3_1ippa5",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup4_6b_t0.7",
+    "rejected_policy": "sup4_6b_t0.7",
+    "chosen_policy_family": "sft_strong",
+    "rejected_policy_family": "sft_strong",
+    "confidence": 7
+  },
+  {
+    "audit_id": 11,
+    "pid": "t3_2yuv1j",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup1",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "human_ref",
+    "confidence": null
+  },
+  {
+    "audit_id": 12,
+    "pid": "t3_3w3slz",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 13,
+    "pid": "t3_37guzq",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup4_ppo_rm3_kl20",
+    "rejected_policy": "sup4_ppo_rm3_kl20",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 8
+  },
+  {
+    "audit_id": 14,
+    "pid": "t3_335cmc",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup4_ppo_rm3_kl20",
+    "rejected_policy": "sup4_ppo_rm3_kl20",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 4
+  },
+  {
+    "audit_id": 15,
+    "pid": "t3_1na6d1",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup1",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "human_ref",
+    "confidence": null
+  },
+  {
+    "audit_id": 16,
+    "pid": "t3_z80e3",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup2",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "human_ref",
+    "confidence": null
+  },
+  {
+    "audit_id": 17,
+    "pid": "t3_1p98z2",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup4_bo8_rm3",
+    "rejected_policy": "sup4_ppo_rm3",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 7
+  },
+  {
+    "audit_id": 18,
+    "pid": "t3_ghutu",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup4_ppo_rm3_kl10",
+    "rejected_policy": "sup4_ppo_rm3_kl10",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 7
+  },
+  {
+    "audit_id": 19,
+    "pid": "t3_2olrqd",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 20,
+    "pid": "t3_13dbfj",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup4_6b_t0.7",
+    "rejected_policy": "sup4_6b_t0.7",
+    "chosen_policy_family": "sft_strong",
+    "rejected_policy_family": "sft_strong",
+    "confidence": 4
+  },
+  {
+    "audit_id": 21,
+    "pid": "t3_r21mu",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup3_bo8_rm2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 9
+  },
+  {
+    "audit_id": 22,
+    "pid": "t3_xudna",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup2_bo8_rm1",
+    "rejected_policy": "sup3_6b",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "sft_strong",
+    "confidence": 6
+  },
+  {
+    "audit_id": 23,
+    "pid": "t3_is0ms",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 24,
+    "pid": "t3_3ky265",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 25,
+    "pid": "t3_1jl5mo",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 26,
+    "pid": "t3_unj6d",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup2",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "human_ref",
+    "confidence": null
+  },
+  {
+    "audit_id": 27,
+    "pid": "t3_3bu9vp",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup2",
+    "rejected_policy": "sup2_bo8_rm1",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 7
+  },
+  {
+    "audit_id": 28,
+    "pid": "t3_32aqco",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup4_bo8_rm3",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "human_ref",
+    "confidence": 8
+  },
+  {
+    "audit_id": 29,
+    "pid": "t3_3wlmgf",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup4_ppo_rm3_kl20",
+    "rejected_policy": "sup4_ppo_rm3_kl20",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 6
+  },
+  {
+    "audit_id": 30,
+    "pid": "t3_4747ud",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup4_6b_t0.7",
+    "rejected_policy": "sup4_ppo_rm3_kl20",
+    "chosen_policy_family": "sft_strong",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 7
+  },
+  {
+    "audit_id": 31,
+    "pid": "t3_1qfjll",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup3_6b",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "sft_strong",
+    "rejected_policy_family": "sft_early",
+    "confidence": 8
+  },
+  {
+    "audit_id": 32,
+    "pid": "t3_4ala25",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 33,
+    "pid": "t3_3p7ixx",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 34,
+    "pid": "t3_10y4l5",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup2",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "human_ref",
+    "confidence": null
+  },
+  {
+    "audit_id": 35,
+    "pid": "t3_12fqwy",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 36,
+    "pid": "t3_3iche0",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup4_ppo_rm3_kl20",
+    "rejected_policy": "sup4_ppo_rm3_kl20",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 6
+  },
+  {
+    "audit_id": 37,
+    "pid": "t3_swnpt",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup4_ppo_rm3_kl20",
+    "rejected_policy": "sup4_ppo_rm3_kl20",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 4
+  },
+  {
+    "audit_id": 38,
+    "pid": "t3_yuuhr",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup1",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 39,
+    "pid": "t3_28xd6k",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 40,
+    "pid": "t3_51dt8q",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 41,
+    "pid": "t3_10v73i",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup2",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "human_ref",
+    "confidence": null
+  },
+  {
+    "audit_id": 42,
+    "pid": "t3_f9ocx",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup4_6b_t0.7",
+    "rejected_policy": "sup4_6b_t0.7",
+    "chosen_policy_family": "sft_strong",
+    "rejected_policy_family": "sft_strong",
+    "confidence": 6
+  },
+  {
+    "audit_id": 43,
+    "pid": "t3_lvf4q",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup2",
+    "rejected_policy": "sup3_6b",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "sft_strong",
+    "confidence": 6
+  },
+  {
+    "audit_id": 44,
+    "pid": "t3_4u0tnv",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup1",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 45,
+    "pid": "t3_4ctvoq",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup1",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "human_ref",
+    "confidence": null
+  },
+  {
+    "audit_id": 46,
+    "pid": "t3_x0di0",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup2",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "human_ref",
+    "confidence": null
+  },
+  {
+    "audit_id": 47,
+    "pid": "t3_ll8rs",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 48,
+    "pid": "t3_yofn5",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 49,
+    "pid": "t3_1s3lgg",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 50,
+    "pid": "t3_y9coo",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 51,
+    "pid": "t3_3ya3it",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 52,
+    "pid": "t3_3dvkxl",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup3_bo8_rm2",
+    "rejected_policy": "sup3_ppo_rm1",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 9
+  },
+  {
+    "audit_id": 53,
+    "pid": "t3_549r4p",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 54,
+    "pid": "t3_4vbypg",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup3_bo8_rm2",
+    "rejected_policy": "sup3_ppo_rm1",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 3
+  },
+  {
+    "audit_id": 55,
+    "pid": "t3_2m3m95",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup2",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 56,
+    "pid": "t3_52cn4u",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup3_bo8_rm2",
+    "rejected_policy": "sup3_bo63_rm2",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 7
+  },
+  {
+    "audit_id": 57,
+    "pid": "t3_2pn8n9",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup4_ppo_rm3_kl10",
+    "rejected_policy": "sup4_ppo_rm3_kl10",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 3
+  },
+  {
+    "audit_id": 58,
+    "pid": "t3_o3j87",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 59,
+    "pid": "t3_44hvwg",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 60,
+    "pid": "t3_es1eq",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 61,
+    "pid": "t3_n15d9",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup4_6b_t0.7",
+    "rejected_policy": "sup4_6b_t0.7",
+    "chosen_policy_family": "sft_strong",
+    "rejected_policy_family": "sft_strong",
+    "confidence": 9
+  },
+  {
+    "audit_id": 62,
+    "pid": "t3_39r1x7",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 63,
+    "pid": "t3_4578nj",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup3_ppo_rm1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 7
+  },
+  {
+    "audit_id": 64,
+    "pid": "t3_14jjv2",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 65,
+    "pid": "t3_4qw9tn",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup4_6b_t0.7",
+    "rejected_policy": "sup4_6b_t0.7",
+    "chosen_policy_family": "sft_strong",
+    "rejected_policy_family": "sft_strong",
+    "confidence": 1
+  },
+  {
+    "audit_id": 66,
+    "pid": "t3_1t5ijn",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 67,
+    "pid": "t3_3jxluj",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup2",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "human_ref",
+    "confidence": null
+  },
+  {
+    "audit_id": 68,
+    "pid": "t3_53dn7n",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup2",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 69,
+    "pid": "t3_qlbpa",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2_bo8_rm1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 7
+  },
+  {
+    "audit_id": 70,
+    "pid": "t3_3udolv",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup3_6b",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_strong",
+    "confidence": 7
+  },
+  {
+    "audit_id": 71,
+    "pid": "t3_104lkz",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 72,
+    "pid": "t3_4slndn",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup3_bo63_rm2",
+    "rejected_policy": "sup3_bo8_rm2",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 4
+  },
+  {
+    "audit_id": 73,
+    "pid": "t3_4qbmo0",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 74,
+    "pid": "t3_47m9eh",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup4_ppo_rm3_kl20",
+    "rejected_policy": "sup4_ppo_rm3_kl20",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 7
+  },
+  {
+    "audit_id": 75,
+    "pid": "t3_3tyzfc",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 76,
+    "pid": "t3_4jiioa",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup3_6b",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "sft_strong",
+    "rejected_policy_family": "sft_early",
+    "confidence": 8
+  },
+  {
+    "audit_id": 77,
+    "pid": "t3_26u8k0",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup2",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 78,
+    "pid": "t3_3shd0s",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup4_6b_t0.7",
+    "rejected_policy": "sup4_6b_t0.7",
+    "chosen_policy_family": "sft_strong",
+    "rejected_policy_family": "sft_strong",
+    "confidence": 6
+  },
+  {
+    "audit_id": 79,
+    "pid": "t3_54mn0x",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup3_6b",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_strong",
+    "confidence": 7
+  },
+  {
+    "audit_id": 80,
+    "pid": "t3_49u76v",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup1",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "human_ref",
+    "confidence": null
+  },
+  {
+    "audit_id": 81,
+    "pid": "t3_w7ewz",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup1",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 82,
+    "pid": "t3_3a18da",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup4_t0.7",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "sft_strong",
+    "rejected_policy_family": "human_ref",
+    "confidence": 9
+  },
+  {
+    "audit_id": 83,
+    "pid": "t3_svrxs",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup2",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 84,
+    "pid": "t3_2clh6l",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup4_ppo_rm3",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "human_ref",
+    "confidence": 9
+  },
+  {
+    "audit_id": 85,
+    "pid": "t3_4mb95n",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup2",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 86,
+    "pid": "t3_31adfu",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup3_ppo_rm1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 6
+  },
+  {
+    "audit_id": 87,
+    "pid": "t3_2qmgny",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup3_ppo_rm1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 9
+  },
+  {
+    "audit_id": 88,
+    "pid": "t3_21xn1g",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup2_bo8_rm1",
+    "rejected_policy": "sup3_6b",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "sft_strong",
+    "confidence": 7
+  },
+  {
+    "audit_id": 89,
+    "pid": "t3_421r8b",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 90,
+    "pid": "t3_1yer3k",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup3_ppo_rm1",
+    "rejected_policy": "sup3_bo8_rm2",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "rl_aligned",
+    "confidence": 6
+  },
+  {
+    "audit_id": 91,
+    "pid": "t3_zlv6p",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 92,
+    "pid": "t3_14qzye",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 93,
+    "pid": "t3_11rvc1",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup2",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "human_ref",
+    "confidence": null
+  },
+  {
+    "audit_id": 94,
+    "pid": "t3_1f8odu",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup2",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "sft_early",
+    "rejected_policy_family": "human_ref",
+    "confidence": null
+  },
+  {
+    "audit_id": 95,
+    "pid": "t3_1o90nd",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup2",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 96,
+    "pid": "t3_1ozz48",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup3_ppo_rm1",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "rl_aligned",
+    "rejected_policy_family": "human_ref",
+    "confidence": 9
+  },
+  {
+    "audit_id": 97,
+    "pid": "t3_4wxa5h",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "ref",
+    "rejected_policy": "sup1",
+    "chosen_policy_family": "human_ref",
+    "rejected_policy_family": "sft_early",
+    "confidence": null
+  },
+  {
+    "audit_id": 98,
+    "pid": "t3_ywywd",
+    "dataset_preferred_key": "A",
+    "chosen_policy": "sup4_6b_t0.7",
+    "rejected_policy": "sup4_6b_t0.7",
+    "chosen_policy_family": "sft_strong",
+    "rejected_policy_family": "sft_strong",
+    "confidence": 4
+  },
+  {
+    "audit_id": 99,
+    "pid": "t3_1y8n66",
+    "dataset_preferred_key": "B",
+    "chosen_policy": "sup3_6b",
+    "rejected_policy": "ref",
+    "chosen_policy_family": "sft_strong",
+    "rejected_policy_family": "human_ref",
+    "confidence": 3
+  }
+]

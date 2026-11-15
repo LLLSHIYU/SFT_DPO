@@ -1,0 +1,304 @@
+{
+  "clean_validation_pool_n": 6210,
+  "num_strata_configured": 35,
+  "num_strata_active": 35,
+  "merged_strata": [],
+  "prompt_token_quantiles_20_40_60_80": [
+    274.0,
+    335.0,
+    396.0,
+    456.0
+  ],
+  "top_6_subreddits": [
+    "AskReddit",
+    "dating_advice",
+    "personalfinance",
+    "relationship_advice",
+    "relationships",
+    "tifu"
+  ],
+  "max_abs_stratum_prop_drift_200_vs_500": 0.003,
+  "max_stratum_count_error_vs_exact_quota": 0.6,
+  "strata": {
+    "q0_AskReddit": {
+      "count_500": 20,
+      "count_200": 8,
+      "ideal_200": 8.0,
+      "prop_500": 0.04,
+      "prop_200": 0.04,
+      "abs_prop_drift": 0.0
+    },
+    "q0_dating_advice": {
+      "count_500": 3,
+      "count_200": 1,
+      "ideal_200": 1.2,
+      "prop_500": 0.006,
+      "prop_200": 0.005,
+      "abs_prop_drift": 0.001
+    },
+    "q0_other": {
+      "count_500": 14,
+      "count_200": 6,
+      "ideal_200": 5.6,
+      "prop_500": 0.028,
+      "prop_200": 0.03,
+      "abs_prop_drift": 0.002
+    },
+    "q0_personalfinance": {
+      "count_500": 2,
+      "count_200": 1,
+      "ideal_200": 0.8,
+      "prop_500": 0.004,
+      "prop_200": 0.005,
+      "abs_prop_drift": 0.001
+    },
+    "q0_relationship_advice": {
+      "count_500": 6,
+      "count_200": 2,
+      "ideal_200": 2.4,
+      "prop_500": 0.012,
+      "prop_200": 0.01,
+      "abs_prop_drift": 0.002
+    },
+    "q0_relationships": {
+      "count_500": 48,
+      "count_200": 19,
+      "ideal_200": 19.2,
+      "prop_500": 0.096,
+      "prop_200": 0.095,
+      "abs_prop_drift": 0.001
+    },
+    "q0_tifu": {
+      "count_500": 6,
+      "count_200": 2,
+      "ideal_200": 2.4,
+      "prop_500": 0.012,
+      "prop_200": 0.01,
+      "abs_prop_drift": 0.002
+    },
+    "q1_AskReddit": {
+      "count_500": 15,
+      "count_200": 6,
+      "ideal_200": 6.0,
+      "prop_500": 0.03,
+      "prop_200": 0.03,
+      "abs_prop_drift": 0.0
+    },
+    "q1_dating_advice": {
+      "count_500": 3,
+      "count_200": 1,
+      "ideal_200": 1.2,
+      "prop_500": 0.006,
+      "prop_200": 0.005,
+      "abs_prop_drift": 0.001
+    },
+    "q1_other": {
+      "count_500": 12,
+      "count_200": 5,
+      "ideal_200": 4.8,
+      "prop_500": 0.024,
+      "prop_200": 0.025,
+      "abs_prop_drift": 0.001
+    },
+    "q1_personalfinance": {
+      "count_500": 2,
+      "count_200": 1,
+      "ideal_200": 0.8,
+      "prop_500": 0.004,
+      "prop_200": 0.005,
+      "abs_prop_drift": 0.001
+    },
+    "q1_relationship_advice": {
+      "count_500": 8,
+      "count_200": 3,
+      "ideal_200": 3.2,
+      "prop_500": 0.016,
+      "prop_200": 0.015,
+      "abs_prop_drift": 0.001
+    },
+    "q1_relationships": {
+      "count_500": 53,
+      "count_200": 21,
+      "ideal_200": 21.2,
+      "prop_500": 0.106,
+      "prop_200": 0.105,
+      "abs_prop_drift": 0.001
+    },
+    "q1_tifu": {
+      "count_500": 7,
+      "count_200": 3,
+      "ideal_200": 2.8,
+      "prop_500": 0.014,
+      "prop_200": 0.015,
+      "abs_prop_drift": 0.001
+    },
+    "q2_AskReddit": {
+      "count_500": 14,
+      "count_200": 6,
+      "ideal_200": 5.6,
+      "prop_500": 0.028,
+      "prop_200": 0.03,
+      "abs_prop_drift": 0.002
+    },
+    "q2_dating_advice": {
+      "count_500": 2,
+      "count_200": 1,
+      "ideal_200": 0.8,
+      "prop_500": 0.004,
+      "prop_200": 0.005,
+      "abs_prop_drift": 0.001
+    },
+    "q2_other": {
+      "count_500": 15,
+      "count_200": 6,
+      "ideal_200": 6.0,
+      "prop_500": 0.03,
+      "prop_200": 0.03,
+      "abs_prop_drift": 0.0
+    },
+    "q2_personalfinance": {
+      "count_500": 3,
+      "count_200": 1,
+      "ideal_200": 1.2,
+      "prop_500": 0.006,
+      "prop_200": 0.005,
+      "abs_prop_drift": 0.001
+    },
+    "q2_relationship_advice": {
+      "count_500": 7,
+      "count_200": 3,
+      "ideal_200": 2.8,
+      "prop_500": 0.014,
+      "prop_200": 0.015,
+      "abs_prop_drift": 0.001
+    },
+    "q2_relationships": {
+      "count_500": 53,
+      "count_200": 21,
+      "ideal_200": 21.2,
+      "prop_500": 0.106,
+      "prop_200": 0.105,
+      "abs_prop_drift": 0.001
+    },
+    "q2_tifu": {
+      "count_500": 6,
+      "count_200": 2,
+      "ideal_200": 2.4,
+      "prop_500": 0.012,
+      "prop_200": 0.01,
+      "abs_prop_drift": 0.002
+    },
+    "q3_AskReddit": {
+      "count_500": 10,
+      "count_200": 4,
+      "ideal_200": 4.0,
+      "prop_500": 0.02,
+      "prop_200": 0.02,
+      "abs_prop_drift": 0.0
+    },
+    "q3_dating_advice": {
+      "count_500": 2,
+      "count_200": 1,
+      "ideal_200": 0.8,
+      "prop_500": 0.004,
+      "prop_200": 0.005,
+      "abs_prop_drift": 0.001
+    },
+    "q3_other": {
+      "count_500": 13,
+      "count_200": 5,
+      "ideal_200": 5.2,
+      "prop_500": 0.026,
+      "prop_200": 0.025,
+      "abs_prop_drift": 0.001
+    },
+    "q3_personalfinance": {
+      "count_500": 2,
+      "count_200": 1,
+      "ideal_200": 0.8,
+      "prop_500": 0.004,
+      "prop_200": 0.005,
+      "abs_prop_drift": 0.001
+    },
+    "q3_relationship_advice": {
+      "count_500": 10,
+      "count_200": 4,
+      "ideal_200": 4.0,
+      "prop_500": 0.02,
+      "prop_200": 0.02,
+      "abs_prop_drift": 0.0
+    },
+    "q3_relationships": {
+      "count_500": 56,
+      "count_200": 22,
+      "ideal_200": 22.4,
+      "prop_500": 0.112,
+      "prop_200": 0.11,
+      "abs_prop_drift": 0.002
+    },
+    "q3_tifu": {
+      "count_500": 6,
+      "count_200": 2,
+      "ideal_200": 2.4,
+      "prop_500": 0.012,
+      "prop_200": 0.01,
+      "abs_prop_drift": 0.002
+    },
+    "q4_AskReddit": {
+      "count_500": 10,
+      "count_200": 4,
+      "ideal_200": 4.0,
+      "prop_500": 0.02,
+      "prop_200": 0.02,
+      "abs_prop_drift": 0.0
+    },
+    "q4_dating_advice": {
+      "count_500": 2,
+      "count_200": 1,
+      "ideal_200": 0.8,
+      "prop_500": 0.004,
+      "prop_200": 0.005,
+      "abs_prop_drift": 0.001
+    },
+    "q4_other": {
+      "count_500": 14,
+      "count_200": 6,
+      "ideal_200": 5.6,
+      "prop_500": 0.028,
+      "prop_200": 0.03,
+      "abs_prop_drift": 0.002
+    },
+    "q4_personalfinance": {
+      "count_500": 1,
+      "count_200": 0,
+      "ideal_200": 0.4,
+      "prop_500": 0.002,
+      "prop_200": 0.0,
+      "abs_prop_drift": 0.002
+    },
+    "q4_relationship_advice": {
+      "count_500": 7,
+      "count_200": 3,
+      "ideal_200": 2.8,
+      "prop_500": 0.014,
+      "prop_200": 0.015,
+      "abs_prop_drift": 0.001
+    },
+    "q4_relationships": {
+      "count_500": 61,
+      "count_200": 25,
+      "ideal_200": 24.4,
+      "prop_500": 0.122,
+      "prop_200": 0.125,
+      "abs_prop_drift": 0.003
+    },
+    "q4_tifu": {
+      "count_500": 7,
+      "count_200": 3,
+      "ideal_200": 2.8,
+      "prop_500": 0.014,
+      "prop_200": 0.015,
+      "abs_prop_drift": 0.001
+    }
+  }
+}

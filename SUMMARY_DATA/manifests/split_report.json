@@ -1,0 +1,1048 @@
+{
+  "total_canonical_pool": 14733,
+  "total_pairs_selected": 5000,
+  "reserve_total_count": 4733,
+  "joint_source_pair_quotas_per_500": {
+    "rl_aligned -> rl_aligned": 36,
+    "human_ref -> sft_early": 97,
+    "sft_strong -> rl_aligned": 2,
+    "rl_aligned -> human_ref": 9,
+    "sft_strong -> sft_strong": 17,
+    "human_ref -> sft_strong": 8,
+    "sft_early -> sft_strong": 1,
+    "sft_early -> sft_early": 31,
+    "human_ref -> rl_aligned": 14,
+    "sft_early -> human_ref": 22,
+    "rl_aligned -> sft_strong": 4,
+    "rl_aligned -> sft_early": 3,
+    "sft_strong -> human_ref": 2,
+    "sft_early -> rl_aligned": 2,
+    "sft_strong -> sft_early": 2
+  },
+  "canonical_pool_chosen_policy_family_counts": {
+    "rl_aligned": 3110,
+    "human_ref": 7016,
+    "sft_strong": 1320,
+    "sft_early": 3287
+  },
+  "canonical_pool_rejected_policy_family_counts": {
+    "rl_aligned": 3176,
+    "sft_early": 7821,
+    "human_ref": 1991,
+    "sft_strong": 1745
+  },
+  "budgets": {
+    "500": {
+      "budget_N": 500,
+      "pool_joint_source_counts": {
+        "human_ref -> sft_early": 194,
+        "sft_early -> sft_early": 62,
+        "sft_early -> human_ref": 44,
+        "rl_aligned -> human_ref": 18,
+        "rl_aligned -> rl_aligned": 72,
+        "sft_strong -> sft_strong": 34,
+        "human_ref -> rl_aligned": 28,
+        "human_ref -> sft_strong": 16,
+        "rl_aligned -> sft_early": 6,
+        "sft_early -> sft_strong": 2,
+        "rl_aligned -> sft_strong": 8,
+        "sft_strong -> rl_aligned": 4,
+        "sft_early -> rl_aligned": 4,
+        "sft_strong -> sft_early": 4,
+        "sft_strong -> human_ref": 4
+      },
+      "pool_rejected_source_proportions": {
+        "human_ref": 0.132,
+        "rl_aligned": 0.216,
+        "sft_early": 0.532,
+        "sft_strong": 0.12
+      },
+      "pool_missing_confidence_fraction": 0.576,
+      "partA_n": 250,
+      "partB_n": 250,
+      "smd": {
+        "prompt_tokens": 0.0001,
+        "chosen_tokens": -0.0031,
+        "rejected_tokens": 0.004,
+        "all_within_0_10": true
+      },
+      "policy_balance_tests": {
+        "rejected_policy_family_chi2": {
+          "chi2": 0.0,
+          "df": 3,
+          "p_value": 1.0,
+          "max_prop_diff": 0.0
+        },
+        "joint_chosen_rejected_3x3_chi2": {
+          "chi2": 0.0,
+          "df": 7,
+          "p_value": 1.0,
+          "max_prop_diff": 0.0
+        }
+      },
+      "partA_stats": {
+        "prompt_tokens": {
+          "mean": 364.72,
+          "median": 363.0,
+          "std": 92.95,
+          "p10": 240.0,
+          "p90": 496.0,
+          "p99": 530.51,
+          "max": 532
+        },
+        "chosen_tokens": {
+          "mean": 35.12,
+          "median": 33.0,
+          "std": 13.0,
+          "p10": 21.0,
+          "p90": 51.0,
+          "p99": 79.51,
+          "max": 110
+        },
+        "rejected_tokens": {
+          "mean": 31.05,
+          "median": 29.0,
+          "std": 11.76,
+          "p10": 18.0,
+          "p90": 44.0,
+          "p99": 67.0,
+          "max": 89
+        },
+        "chosen_policy_family": {
+          "human_ref": 0.476,
+          "rl_aligned": 0.208,
+          "sft_early": 0.224,
+          "sft_strong": 0.092
+        },
+        "rejected_policy_family": {
+          "human_ref": 0.132,
+          "rl_aligned": 0.216,
+          "sft_early": 0.532,
+          "sft_strong": 0.12
+        },
+        "joint_policy_3x3": {
+          "rl_or_strong": {
+            "rl_or_strong": 0.236,
+            "human_ref": 0.044,
+            "sft_early": 0.02
+          },
+          "human_ref": {
+            "rl_or_strong": 0.088,
+            "human_ref": 0.0,
+            "sft_early": 0.388
+          },
+          "sft_early": {
+            "rl_or_strong": 0.012,
+            "human_ref": 0.088,
+            "sft_early": 0.124
+          }
+        },
+        "joint_policy_4x4": {
+          "rl_aligned": {
+            "rl_aligned": 0.144,
+            "sft_strong": 0.016,
+            "human_ref": 0.036,
+            "sft_early": 0.012
+          },
+          "sft_strong": {
+            "rl_aligned": 0.008,
+            "sft_strong": 0.068,
+            "human_ref": 0.008,
+            "sft_early": 0.008
+          },
+          "human_ref": {
+            "rl_aligned": 0.056,
+            "sft_strong": 0.032,
+            "human_ref": 0.0,
+            "sft_early": 0.388
+          },
+          "sft_early": {
+            "rl_aligned": 0.008,
+            "sft_strong": 0.004,
+            "human_ref": 0.088,
+            "sft_early": 0.124
+          }
+        },
+        "subreddit_top6": {
+          "relationships": 0.576,
+          "AskReddit": 0.14,
+          "relationship_advice": 0.072,
+          "dating_advice": 0.02,
+          "personalfinance": 0.02,
+          "tifu": 0.016,
+          "other": 0.156
+        }
+      },
+      "partB_stats": {
+        "prompt_tokens": {
+          "mean": 364.71,
+          "median": 366.0,
+          "std": 93.17,
+          "p10": 226.9,
+          "p90": 490.1,
+          "p99": 527.51,
+          "max": 532
+        },
+        "chosen_tokens": {
+          "mean": 35.16,
+          "median": 34.0,
+          "std": 13.21,
+          "p10": 21.9,
+          "p90": 50.0,
+          "p99": 85.55,
+          "max": 113
+        },
+        "rejected_tokens": {
+          "mean": 31.0,
+          "median": 28.0,
+          "std": 12.35,
+          "p10": 18.0,
+          "p90": 47.1,
+          "p99": 71.51,
+          "max": 79
+        },
+        "chosen_policy_family": {
+          "human_ref": 0.476,
+          "rl_aligned": 0.208,
+          "sft_early": 0.224,
+          "sft_strong": 0.092
+        },
+        "rejected_policy_family": {
+          "human_ref": 0.132,
+          "rl_aligned": 0.216,
+          "sft_early": 0.532,
+          "sft_strong": 0.12
+        },
+        "joint_policy_3x3": {
+          "rl_or_strong": {
+            "rl_or_strong": 0.236,
+            "human_ref": 0.044,
+            "sft_early": 0.02
+          },
+          "human_ref": {
+            "rl_or_strong": 0.088,
+            "human_ref": 0.0,
+            "sft_early": 0.388
+          },
+          "sft_early": {
+            "rl_or_strong": 0.012,
+            "human_ref": 0.088,
+            "sft_early": 0.124
+          }
+        },
+        "joint_policy_4x4": {
+          "rl_aligned": {
+            "rl_aligned": 0.144,
+            "sft_strong": 0.016,
+            "human_ref": 0.036,
+            "sft_early": 0.012
+          },
+          "sft_strong": {
+            "rl_aligned": 0.008,
+            "sft_strong": 0.068,
+            "human_ref": 0.008,
+            "sft_early": 0.008
+          },
+          "human_ref": {
+            "rl_aligned": 0.056,
+            "sft_strong": 0.032,
+            "human_ref": 0.0,
+            "sft_early": 0.388
+          },
+          "sft_early": {
+            "rl_aligned": 0.008,
+            "sft_strong": 0.004,
+            "human_ref": 0.088,
+            "sft_early": 0.124
+          }
+        },
+        "subreddit_top6": {
+          "relationships": 0.576,
+          "AskReddit": 0.14,
+          "relationship_advice": 0.072,
+          "dating_advice": 0.02,
+          "personalfinance": 0.016,
+          "tifu": 0.016,
+          "other": 0.16
+        }
+      },
+      "max_subreddit_drift_vs_10k": 0.0143
+    },
+    "2000": {
+      "budget_N": 2000,
+      "pool_joint_source_counts": {
+        "human_ref -> sft_early": 776,
+        "sft_early -> sft_early": 248,
+        "sft_early -> human_ref": 176,
+        "rl_aligned -> human_ref": 72,
+        "rl_aligned -> rl_aligned": 288,
+        "sft_strong -> sft_strong": 136,
+        "human_ref -> rl_aligned": 112,
+        "human_ref -> sft_strong": 64,
+        "rl_aligned -> sft_early": 24,
+        "sft_early -> sft_strong": 8,
+        "rl_aligned -> sft_strong": 32,
+        "sft_strong -> rl_aligned": 16,
+        "sft_early -> rl_aligned": 16,
+        "sft_strong -> sft_early": 16,
+        "sft_strong -> human_ref": 16
+      },
+      "pool_rejected_source_proportions": {
+        "human_ref": 0.132,
+        "rl_aligned": 0.216,
+        "sft_early": 0.532,
+        "sft_strong": 0.12
+      },
+      "pool_missing_confidence_fraction": 0.5765,
+      "partA_n": 1000,
+      "partB_n": 1000,
+      "smd": {
+        "prompt_tokens": -0.0001,
+        "chosen_tokens": -0.0005,
+        "rejected_tokens": 0.0002,
+        "all_within_0_10": true
+      },
+      "policy_balance_tests": {
+        "rejected_policy_family_chi2": {
+          "chi2": 0.0,
+          "df": 3,
+          "p_value": 1.0,
+          "max_prop_diff": 0.0
+        },
+        "joint_chosen_rejected_3x3_chi2": {
+          "chi2": 0.0,
+          "df": 7,
+          "p_value": 1.0,
+          "max_prop_diff": 0.0
+        }
+      },
+      "partA_stats": {
+        "prompt_tokens": {
+          "mean": 359.24,
+          "median": 358.5,
+          "std": 93.75,
+          "p10": 234.9,
+          "p90": 490.0,
+          "p99": 529.0,
+          "max": 538
+        },
+        "chosen_tokens": {
+          "mean": 35.75,
+          "median": 34.0,
+          "std": 13.05,
+          "p10": 22.0,
+          "p90": 51.0,
+          "p99": 80.01,
+          "max": 110
+        },
+        "rejected_tokens": {
+          "mean": 32.18,
+          "median": 31.0,
+          "std": 11.8,
+          "p10": 19.0,
+          "p90": 46.1,
+          "p99": 67.0,
+          "max": 107
+        },
+        "chosen_policy_family": {
+          "human_ref": 0.476,
+          "rl_aligned": 0.208,
+          "sft_early": 0.224,
+          "sft_strong": 0.092
+        },
+        "rejected_policy_family": {
+          "human_ref": 0.132,
+          "rl_aligned": 0.216,
+          "sft_early": 0.532,
+          "sft_strong": 0.12
+        },
+        "joint_policy_3x3": {
+          "rl_or_strong": {
+            "rl_or_strong": 0.236,
+            "human_ref": 0.044,
+            "sft_early": 0.02
+          },
+          "human_ref": {
+            "rl_or_strong": 0.088,
+            "human_ref": 0.0,
+            "sft_early": 0.388
+          },
+          "sft_early": {
+            "rl_or_strong": 0.012,
+            "human_ref": 0.088,
+            "sft_early": 0.124
+          }
+        },
+        "joint_policy_4x4": {
+          "rl_aligned": {
+            "rl_aligned": 0.144,
+            "sft_strong": 0.016,
+            "human_ref": 0.036,
+            "sft_early": 0.012
+          },
+          "sft_strong": {
+            "rl_aligned": 0.008,
+            "sft_strong": 0.068,
+            "human_ref": 0.008,
+            "sft_early": 0.008
+          },
+          "human_ref": {
+            "rl_aligned": 0.056,
+            "sft_strong": 0.032,
+            "human_ref": 0.0,
+            "sft_early": 0.388
+          },
+          "sft_early": {
+            "rl_aligned": 0.008,
+            "sft_strong": 0.004,
+            "human_ref": 0.088,
+            "sft_early": 0.124
+          }
+        },
+        "subreddit_top6": {
+          "relationships": 0.563,
+          "AskReddit": 0.144,
+          "relationship_advice": 0.078,
+          "dating_advice": 0.025,
+          "personalfinance": 0.021,
+          "tifu": 0.018,
+          "other": 0.151
+        }
+      },
+      "partB_stats": {
+        "prompt_tokens": {
+          "mean": 359.25,
+          "median": 355.0,
+          "std": 94.95,
+          "p10": 230.0,
+          "p90": 489.0,
+          "p99": 530.0,
+          "max": 537
+        },
+        "chosen_tokens": {
+          "mean": 35.76,
+          "median": 34.0,
+          "std": 12.82,
+          "p10": 22.0,
+          "p90": 51.0,
+          "p99": 83.01,
+          "max": 113
+        },
+        "rejected_tokens": {
+          "mean": 32.18,
+          "median": 30.0,
+          "std": 12.27,
+          "p10": 19.0,
+          "p90": 46.1,
+          "p99": 72.01,
+          "max": 130
+        },
+        "chosen_policy_family": {
+          "human_ref": 0.476,
+          "rl_aligned": 0.208,
+          "sft_early": 0.224,
+          "sft_strong": 0.092
+        },
+        "rejected_policy_family": {
+          "human_ref": 0.132,
+          "rl_aligned": 0.216,
+          "sft_early": 0.532,
+          "sft_strong": 0.12
+        },
+        "joint_policy_3x3": {
+          "rl_or_strong": {
+            "rl_or_strong": 0.236,
+            "human_ref": 0.044,
+            "sft_early": 0.02
+          },
+          "human_ref": {
+            "rl_or_strong": 0.088,
+            "human_ref": 0.0,
+            "sft_early": 0.388
+          },
+          "sft_early": {
+            "rl_or_strong": 0.012,
+            "human_ref": 0.088,
+            "sft_early": 0.124
+          }
+        },
+        "joint_policy_4x4": {
+          "rl_aligned": {
+            "rl_aligned": 0.144,
+            "sft_strong": 0.016,
+            "human_ref": 0.036,
+            "sft_early": 0.012
+          },
+          "sft_strong": {
+            "rl_aligned": 0.008,
+            "sft_strong": 0.068,
+            "human_ref": 0.008,
+            "sft_early": 0.008
+          },
+          "human_ref": {
+            "rl_aligned": 0.056,
+            "sft_strong": 0.032,
+            "human_ref": 0.0,
+            "sft_early": 0.388
+          },
+          "sft_early": {
+            "rl_aligned": 0.008,
+            "sft_strong": 0.004,
+            "human_ref": 0.088,
+            "sft_early": 0.124
+          }
+        },
+        "subreddit_top6": {
+          "relationships": 0.563,
+          "AskReddit": 0.143,
+          "relationship_advice": 0.078,
+          "dating_advice": 0.026,
+          "personalfinance": 0.02,
+          "tifu": 0.018,
+          "other": 0.152
+        }
+      },
+      "max_subreddit_drift_vs_10k": 0.0013
+    },
+    "10000": {
+      "budget_N": 10000,
+      "pool_joint_source_counts": {
+        "human_ref -> sft_early": 3880,
+        "sft_early -> sft_early": 1240,
+        "sft_early -> human_ref": 880,
+        "rl_aligned -> human_ref": 360,
+        "rl_aligned -> rl_aligned": 1440,
+        "sft_strong -> sft_strong": 680,
+        "human_ref -> rl_aligned": 560,
+        "human_ref -> sft_strong": 320,
+        "rl_aligned -> sft_early": 120,
+        "sft_early -> sft_strong": 40,
+        "rl_aligned -> sft_strong": 160,
+        "sft_strong -> rl_aligned": 80,
+        "sft_early -> rl_aligned": 80,
+        "sft_strong -> sft_early": 80,
+        "sft_strong -> human_ref": 80
+      },
+      "pool_rejected_source_proportions": {
+        "human_ref": 0.132,
+        "rl_aligned": 0.216,
+        "sft_early": 0.532,
+        "sft_strong": 0.12
+      },
+      "pool_missing_confidence_fraction": 0.5775,
+      "partA_n": 5000,
+      "partB_n": 5000,
+      "smd": {
+        "prompt_tokens": 0.0001,
+        "chosen_tokens": 0.0001,
+        "rejected_tokens": 0.0001,
+        "all_within_0_10": true
+      },
+      "policy_balance_tests": {
+        "rejected_policy_family_chi2": {
+          "chi2": 0.0,
+          "df": 3,
+          "p_value": 1.0,
+          "max_prop_diff": 0.0
+        },
+        "joint_chosen_rejected_3x3_chi2": {
+          "chi2": 0.0,
+          "df": 7,
+          "p_value": 1.0,
+          "max_prop_diff": 0.0
+        }
+      },
+      "partA_stats": {
+        "prompt_tokens": {
+          "mean": 362.46,
+          "median": 364.0,
+          "std": 94.21,
+          "p10": 233.0,
+          "p90": 492.0,
+          "p99": 530.0,
+          "max": 574
+        },
+        "chosen_tokens": {
+          "mean": 35.92,
+          "median": 34.0,
+          "std": 12.71,
+          "p10": 22.0,
+          "p90": 51.0,
+          "p99": 80.0,
+          "max": 122
+        },
+        "rejected_tokens": {
+          "mean": 32.1,
+          "median": 31.0,
+          "std": 11.57,
+          "p10": 19.0,
+          "p90": 46.0,
+          "p99": 67.01,
+          "max": 122
+        },
+        "chosen_policy_family": {
+          "human_ref": 0.476,
+          "rl_aligned": 0.208,
+          "sft_early": 0.224,
+          "sft_strong": 0.092
+        },
+        "rejected_policy_family": {
+          "human_ref": 0.132,
+          "rl_aligned": 0.216,
+          "sft_early": 0.532,
+          "sft_strong": 0.12
+        },
+        "joint_policy_3x3": {
+          "rl_or_strong": {
+            "rl_or_strong": 0.236,
+            "human_ref": 0.044,
+            "sft_early": 0.02
+          },
+          "human_ref": {
+            "rl_or_strong": 0.088,
+            "human_ref": 0.0,
+            "sft_early": 0.388
+          },
+          "sft_early": {
+            "rl_or_strong": 0.012,
+            "human_ref": 0.088,
+            "sft_early": 0.124
+          }
+        },
+        "joint_policy_4x4": {
+          "rl_aligned": {
+            "rl_aligned": 0.144,
+            "sft_strong": 0.016,
+            "human_ref": 0.036,
+            "sft_early": 0.012
+          },
+          "sft_strong": {
+            "rl_aligned": 0.008,
+            "sft_strong": 0.068,
+            "human_ref": 0.008,
+            "sft_early": 0.008
+          },
+          "human_ref": {
+            "rl_aligned": 0.056,
+            "sft_strong": 0.032,
+            "human_ref": 0.0,
+            "sft_early": 0.388
+          },
+          "sft_early": {
+            "rl_aligned": 0.008,
+            "sft_strong": 0.004,
+            "human_ref": 0.088,
+            "sft_early": 0.124
+          }
+        },
+        "subreddit_top6": {
+          "relationships": 0.5618,
+          "AskReddit": 0.1442,
+          "relationship_advice": 0.0788,
+          "dating_advice": 0.0258,
+          "personalfinance": 0.0206,
+          "tifu": 0.0182,
+          "other": 0.1506
+        }
+      },
+      "partB_stats": {
+        "prompt_tokens": {
+          "mean": 362.45,
+          "median": 362.0,
+          "std": 94.31,
+          "p10": 232.0,
+          "p90": 492.0,
+          "p99": 530.0,
+          "max": 566
+        },
+        "chosen_tokens": {
+          "mean": 35.92,
+          "median": 34.0,
+          "std": 12.9,
+          "p10": 22.0,
+          "p90": 51.0,
+          "p99": 81.0,
+          "max": 119
+        },
+        "rejected_tokens": {
+          "mean": 32.1,
+          "median": 30.0,
+          "std": 11.78,
+          "p10": 19.0,
+          "p90": 46.0,
+          "p99": 68.0,
+          "max": 133
+        },
+        "chosen_policy_family": {
+          "human_ref": 0.476,
+          "rl_aligned": 0.208,
+          "sft_early": 0.224,
+          "sft_strong": 0.092
+        },
+        "rejected_policy_family": {
+          "human_ref": 0.132,
+          "rl_aligned": 0.216,
+          "sft_early": 0.532,
+          "sft_strong": 0.12
+        },
+        "joint_policy_3x3": {
+          "rl_or_strong": {
+            "rl_or_strong": 0.236,
+            "human_ref": 0.044,
+            "sft_early": 0.02
+          },
+          "human_ref": {
+            "rl_or_strong": 0.088,
+            "human_ref": 0.0,
+            "sft_early": 0.388
+          },
+          "sft_early": {
+            "rl_or_strong": 0.012,
+            "human_ref": 0.088,
+            "sft_early": 0.124
+          }
+        },
+        "joint_policy_4x4": {
+          "rl_aligned": {
+            "rl_aligned": 0.144,
+            "sft_strong": 0.016,
+            "human_ref": 0.036,
+            "sft_early": 0.012
+          },
+          "sft_strong": {
+            "rl_aligned": 0.008,
+            "sft_strong": 0.068,
+            "human_ref": 0.008,
+            "sft_early": 0.008
+          },
+          "human_ref": {
+            "rl_aligned": 0.056,
+            "sft_strong": 0.032,
+            "human_ref": 0.0,
+            "sft_early": 0.388
+          },
+          "sft_early": {
+            "rl_aligned": 0.008,
+            "sft_strong": 0.004,
+            "human_ref": 0.088,
+            "sft_early": 0.124
+          }
+        },
+        "subreddit_top6": {
+          "relationships": 0.5616,
+          "AskReddit": 0.1446,
+          "relationship_advice": 0.0788,
+          "dating_advice": 0.0256,
+          "personalfinance": 0.0206,
+          "tifu": 0.018,
+          "other": 0.1508
+        }
+      },
+      "max_subreddit_drift_vs_10k": 0.0
+    }
+  },
+  "test_200_vs_500_stratification": {
+    "clean_validation_pool_n": 6210,
+    "num_strata_configured": 35,
+    "num_strata_active": 35,
+    "merged_strata": [],
+    "prompt_token_quantiles_20_40_60_80": [
+      274.0,
+      335.0,
+      396.0,
+      456.0
+    ],
+    "top_6_subreddits": [
+      "AskReddit",
+      "dating_advice",
+      "personalfinance",
+      "relationship_advice",
+      "relationships",
+      "tifu"
+    ],
+    "max_abs_stratum_prop_drift_200_vs_500": 0.003,
+    "max_stratum_count_error_vs_exact_quota": 0.6,
+    "strata": {
+      "q0_AskReddit": {
+        "count_500": 20,
+        "count_200": 8,
+        "ideal_200": 8.0,
+        "prop_500": 0.04,
+        "prop_200": 0.04,
+        "abs_prop_drift": 0.0
+      },
+      "q0_dating_advice": {
+        "count_500": 3,
+        "count_200": 1,
+        "ideal_200": 1.2,
+        "prop_500": 0.006,
+        "prop_200": 0.005,
+        "abs_prop_drift": 0.001
+      },
+      "q0_other": {
+        "count_500": 14,
+        "count_200": 6,
+        "ideal_200": 5.6,
+        "prop_500": 0.028,
+        "prop_200": 0.03,
+        "abs_prop_drift": 0.002
+      },
+      "q0_personalfinance": {
+        "count_500": 2,
+        "count_200": 1,
+        "ideal_200": 0.8,
+        "prop_500": 0.004,
+        "prop_200": 0.005,
+        "abs_prop_drift": 0.001
+      },
+      "q0_relationship_advice": {
+        "count_500": 6,
+        "count_200": 2,
+        "ideal_200": 2.4,
+        "prop_500": 0.012,
+        "prop_200": 0.01,
+        "abs_prop_drift": 0.002
+      },
+      "q0_relationships": {
+        "count_500": 48,
+        "count_200": 19,
+        "ideal_200": 19.2,
+        "prop_500": 0.096,
+        "prop_200": 0.095,
+        "abs_prop_drift": 0.001
+      },
+      "q0_tifu": {
+        "count_500": 6,
+        "count_200": 2,
+        "ideal_200": 2.4,
+        "prop_500": 0.012,
+        "prop_200": 0.01,
+        "abs_prop_drift": 0.002
+      },
+      "q1_AskReddit": {
+        "count_500": 15,
+        "count_200": 6,
+        "ideal_200": 6.0,
+        "prop_500": 0.03,
+        "prop_200": 0.03,
+        "abs_prop_drift": 0.0
+      },
+      "q1_dating_advice": {
+        "count_500": 3,
+        "count_200": 1,
+        "ideal_200": 1.2,
+        "prop_500": 0.006,
+        "prop_200": 0.005,
+        "abs_prop_drift": 0.001
+      },
+      "q1_other": {
+        "count_500": 12,
+        "count_200": 5,
+        "ideal_200": 4.8,
+        "prop_500": 0.024,
+        "prop_200": 0.025,
+        "abs_prop_drift": 0.001
+      },
+      "q1_personalfinance": {
+        "count_500": 2,
+        "count_200": 1,
+        "ideal_200": 0.8,
+        "prop_500": 0.004,
+        "prop_200": 0.005,
+        "abs_prop_drift": 0.001
+      },
+      "q1_relationship_advice": {
+        "count_500": 8,
+        "count_200": 3,
+        "ideal_200": 3.2,
+        "prop_500": 0.016,
+        "prop_200": 0.015,
+        "abs_prop_drift": 0.001
+      },
+      "q1_relationships": {
+        "count_500": 53,
+        "count_200": 21,
+        "ideal_200": 21.2,
+        "prop_500": 0.106,
+        "prop_200": 0.105,
+        "abs_prop_drift": 0.001
+      },
+      "q1_tifu": {
+        "count_500": 7,
+        "count_200": 3,
+        "ideal_200": 2.8,
+        "prop_500": 0.014,
+        "prop_200": 0.015,
+        "abs_prop_drift": 0.001
+      },
+      "q2_AskReddit": {
+        "count_500": 14,
+        "count_200": 6,
+        "ideal_200": 5.6,
+        "prop_500": 0.028,
+        "prop_200": 0.03,
+        "abs_prop_drift": 0.002
+      },
+      "q2_dating_advice": {
+        "count_500": 2,
+        "count_200": 1,
+        "ideal_200": 0.8,
+        "prop_500": 0.004,
+        "prop_200": 0.005,
+        "abs_prop_drift": 0.001
+      },
+      "q2_other": {
+        "count_500": 15,
+        "count_200": 6,
+        "ideal_200": 6.0,
+        "prop_500": 0.03,
+        "prop_200": 0.03,
+        "abs_prop_drift": 0.0
+      },
+      "q2_personalfinance": {
+        "count_500": 3,
+        "count_200": 1,
+        "ideal_200": 1.2,
+        "prop_500": 0.006,
+        "prop_200": 0.005,
+        "abs_prop_drift": 0.001
+      },
+      "q2_relationship_advice": {
+        "count_500": 7,
+        "count_200": 3,
+        "ideal_200": 2.8,
+        "prop_500": 0.014,
+        "prop_200": 0.015,
+        "abs_prop_drift": 0.001
+      },
+      "q2_relationships": {
+        "count_500": 53,
+        "count_200": 21,
+        "ideal_200": 21.2,
+        "prop_500": 0.106,
+        "prop_200": 0.105,
+        "abs_prop_drift": 0.001
+      },
+      "q2_tifu": {
+        "count_500": 6,
+        "count_200": 2,
+        "ideal_200": 2.4,
+        "prop_500": 0.012,
+        "prop_200": 0.01,
+        "abs_prop_drift": 0.002
+      },
+      "q3_AskReddit": {
+        "count_500": 10,
+        "count_200": 4,
+        "ideal_200": 4.0,
+        "prop_500": 0.02,
+        "prop_200": 0.02,
+        "abs_prop_drift": 0.0
+      },
+      "q3_dating_advice": {
+        "count_500": 2,
+        "count_200": 1,
+        "ideal_200": 0.8,
+        "prop_500": 0.004,
+        "prop_200": 0.005,
+        "abs_prop_drift": 0.001
+      },
+      "q3_other": {
+        "count_500": 13,
+        "count_200": 5,
+        "ideal_200": 5.2,
+        "prop_500": 0.026,
+        "prop_200": 0.025,
+        "abs_prop_drift": 0.001
+      },
+      "q3_personalfinance": {
+        "count_500": 2,
+        "count_200": 1,
+        "ideal_200": 0.8,
+        "prop_500": 0.004,
+        "prop_200": 0.005,
+        "abs_prop_drift": 0.001
+      },
+      "q3_relationship_advice": {
+        "count_500": 10,
+        "count_200": 4,
+        "ideal_200": 4.0,
+        "prop_500": 0.02,
+        "prop_200": 0.02,
+        "abs_prop_drift": 0.0
+      },
+      "q3_relationships": {
+        "count_500": 56,
+        "count_200": 22,
+        "ideal_200": 22.4,
+        "prop_500": 0.112,
+        "prop_200": 0.11,
+        "abs_prop_drift": 0.002
+      },
+      "q3_tifu": {
+        "count_500": 6,
+        "count_200": 2,
+        "ideal_200": 2.4,
+        "prop_500": 0.012,
+        "prop_200": 0.01,
+        "abs_prop_drift": 0.002
+      },
+      "q4_AskReddit": {
+        "count_500": 10,
+        "count_200": 4,
+        "ideal_200": 4.0,
+        "prop_500": 0.02,
+        "prop_200": 0.02,
+        "abs_prop_drift": 0.0
+      },
+      "q4_dating_advice": {
+        "count_500": 2,
+        "count_200": 1,
+        "ideal_200": 0.8,
+        "prop_500": 0.004,
+        "prop_200": 0.005,
+        "abs_prop_drift": 0.001
+      },
+      "q4_other": {
+        "count_500": 14,
+        "count_200": 6,
+        "ideal_200": 5.6,
+        "prop_500": 0.028,
+        "prop_200": 0.03,
+        "abs_prop_drift": 0.002
+      },
+      "q4_personalfinance": {
+        "count_500": 1,
+        "count_200": 0,
+        "ideal_200": 0.4,
+        "prop_500": 0.002,
+        "prop_200": 0.0,
+        "abs_prop_drift": 0.002
+      },
+      "q4_relationship_advice": {
+        "count_500": 7,
+        "count_200": 3,
+        "ideal_200": 2.8,
+        "prop_500": 0.014,
+        "prop_200": 0.015,
+        "abs_prop_drift": 0.001
+      },
+      "q4_relationships": {
+        "count_500": 61,
+        "count_200": 25,
+        "ideal_200": 24.4,
+        "prop_500": 0.122,
+        "prop_200": 0.125,
+        "abs_prop_drift": 0.003
+      },
+      "q4_tifu": {
+        "count_500": 7,
+        "count_200": 3,
+        "ideal_200": 2.8,
+        "prop_500": 0.014,
+        "prop_200": 0.015,
+        "abs_prop_drift": 0.001
+      }
+    }
+  }
+}

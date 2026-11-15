@@ -1,0 +1,7 @@
+{
+  "base": "C:\\Users\\liush\\Desktop\\DSAI4207_shared\\LSYNEED\\models\\Qwen2.5-0.5B",
+  "adapter": "C:\\Users\\liush\\Desktop\\DSAI4207_shared\\LSYNEED\\training\\smoke\\sft",
+  "output": "C:\\Users\\liush\\Desktop\\DSAI4207_shared\\LSYNEED\\training\\smoke\\sft_merged",
+  "eos_token_id": 151645,
+  "pad_token_id": 151643
+}

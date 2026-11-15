@@ -1,0 +1,78 @@
+{
+  "synthetic": false,
+  "tldr": {
+    "repo": "openai/summarize_from_feedback",
+    "config": "comparisons",
+    "splits": [
+      "train",
+      "validation"
+    ],
+    "revision": "b8f7d168b6f4e95b2a92e84768bd6c955bed2f29",
+    "train_parquet_sha256": "8520dcdbd838ec0d03a850a661a07a410450eafdcdd6c862d868510e82f8f1fb",
+    "val_parquet_sha256": "e38618270bbc24d35da7b03671a6a701d20efbd4c96a6a853e0096ab85b8e4de",
+    "train_sha256": "8520dcdbd838ec0d03a850a661a07a410450eafdcdd6c862d868510e82f8f1fb",
+    "val_sha256": "e38618270bbc24d35da7b03671a6a701d20efbd4c96a6a853e0096ab85b8e4de"
+  },
+  "warmup": {
+    "repo": "HuggingFaceH4/no_robots",
+    "split": "train",
+    "revision": "e6f9a4ac5c37faeb744ba9ecf0473184d7f8105b",
+    "train_parquet_sha256": "76d64120a2ab20eb85d6b22bdced5b1ec638a6213a97004741006745c92489ef",
+    "train_sha256": "76d64120a2ab20eb85d6b22bdced5b1ec638a6213a97004741006745c92489ef"
+  },
+  "tokenizer": {
+    "repo": "Qwen/Qwen2.5-0.5B-Base",
+    "hub_repo": "Qwen/Qwen2.5-0.5B",
+    "hf_hub_repo": "Qwen/Qwen2.5-0.5B",
+    "revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+    "revision_for_repo": "Qwen/Qwen2.5-0.5B",
+    "vocab_size": 151643,
+    "len_tokenizer": 151665,
+    "vocab_sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+    "merges_sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+    "tokenizer_json_sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "tokenizer_config_sha256": "c91efca15ceff6e9ee9424db58a6f59cd41294e550a86cbd07e3c1fb500b34f9",
+    "eos_token": "<|im_end|>",
+    "eos_token_id": 151645,
+    "pad_token": "<|endoftext|>",
+    "pad_token_id": 151643,
+    "probe_token_ids": {
+      "hello": [
+        14990
+      ],
+      " the": [
+        279
+      ]
+    }
+  },
+  "benchmarks": {
+    "ifeval": {
+      "repo": "google/IFEval",
+      "config": "default",
+      "split": "train",
+      "revision": "966cd89545d6b6acfd7638bc708b98261ca58e84",
+      "source_rows": 541,
+      "parquet_sha256": "97225bd6942c63417417c2066ce59106ed098f829af6c97d19d38f41437fefb5",
+      "sha256": "97225bd6942c63417417c2066ce59106ed098f829af6c97d19d38f41437fefb5"
+    },
+    "arc_challenge": {
+      "repo": "allenai/ai2_arc",
+      "config": "ARC-Challenge",
+      "split": "test",
+      "revision": "210d026faf9955653af8916fad021475a3f00453",
+      "source_rows": 1172,
+      "parquet_sha256": "9d3c0d843d90c401bd80fcc25b1e0faf88dab1cb34d50a12300988a5163f5202",
+      "sha256": "9d3c0d843d90c401bd80fcc25b1e0faf88dab1cb34d50a12300988a5163f5202"
+    },
+    "mmlu": {
+      "repo": "cais/mmlu",
+      "config": "all",
+      "split": "test",
+      "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "source_rows": 14042,
+      "num_subjects": 57,
+      "parquet_sha256": "db7ec2eee433afc28cdd7e700105caee0de855b4d21f43f57a7c43e5b5e2d494",
+      "sha256": "db7ec2eee433afc28cdd7e700105caee0de855b4d21f43f57a7c43e5b5e2d494"
+    }
+  }
+}

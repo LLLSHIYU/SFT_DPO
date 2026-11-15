@@ -1,0 +1,106 @@
+[
+  {
+    "run_id": "M0_warmup_seed42_20261105",
+    "run_dir": "03_runs/M0_warmup_seed42_20261105",
+    "arm": "M0",
+    "budget": "0",
+    "seed": "42",
+    "model": "03_runs/M0_warmup_seed42_20261105/checkpoint/merged"
+  },
+  {
+    "run_id": "IF_G2_sft_500_seed42",
+    "run_dir": "03_runs/IF_G2_sft_500_seed42",
+    "arm": "G2",
+    "budget": "500",
+    "seed": "42",
+    "model": "03_runs/IF_G2_sft_500_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "IF_G2_sft_2000_seed42",
+    "run_dir": "03_runs/IF_G2_sft_2000_seed42",
+    "arm": "G2",
+    "budget": "2000",
+    "seed": "42",
+    "model": "03_runs/IF_G2_sft_2000_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "IF_G2_sft_10000_seed42",
+    "run_dir": "03_runs/IF_G2_sft_10000_seed42",
+    "arm": "G2",
+    "budget": "10000",
+    "seed": "42",
+    "model": "03_runs/IF_G2_sft_10000_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "IF_G3_dpo_500_seed42",
+    "run_dir": "03_runs/IF_G3_dpo_500_seed42",
+    "arm": "G3",
+    "budget": "500",
+    "seed": "42",
+    "model": "03_runs/IF_G3_dpo_500_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "IF_G3_dpo_2000_seed42",
+    "run_dir": "03_runs/IF_G3_dpo_2000_seed42",
+    "arm": "G3",
+    "budget": "2000",
+    "seed": "42",
+    "model": "03_runs/IF_G3_dpo_2000_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "IF_G3_dpo_10000_seed42",
+    "run_dir": "03_runs/IF_G3_dpo_10000_seed42",
+    "arm": "G3",
+    "budget": "10000",
+    "seed": "42",
+    "model": "03_runs/IF_G3_dpo_10000_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "IF_G4_stage2_dpo_500_seed42",
+    "run_dir": "03_runs/IF_G4_stage2_dpo_500_seed42",
+    "arm": "G4",
+    "budget": "500",
+    "seed": "42",
+    "model": "03_runs/IF_G4_stage2_dpo_500_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "IF_G4_stage2_dpo_2000_seed42",
+    "run_dir": "03_runs/IF_G4_stage2_dpo_2000_seed42",
+    "arm": "G4",
+    "budget": "2000",
+    "seed": "42",
+    "model": "03_runs/IF_G4_stage2_dpo_2000_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "IF_G4_stage2_dpo_10000_seed42",
+    "run_dir": "03_runs/IF_G4_stage2_dpo_10000_seed42",
+    "arm": "G4",
+    "budget": "10000",
+    "seed": "42",
+    "model": "03_runs/IF_G4_stage2_dpo_10000_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "IF_G5_stage2_sft_500_seed42",
+    "run_dir": "03_runs/IF_G5_stage2_sft_500_seed42",
+    "arm": "G5",
+    "budget": "500",
+    "seed": "42",
+    "model": "03_runs/IF_G5_stage2_sft_500_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "IF_G5_stage2_sft_2000_seed42",
+    "run_dir": "03_runs/IF_G5_stage2_sft_2000_seed42",
+    "arm": "G5",
+    "budget": "2000",
+    "seed": "42",
+    "model": "03_runs/IF_G5_stage2_sft_2000_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "IF_G5_stage2_sft_10000_seed42",
+    "run_dir": "03_runs/IF_G5_stage2_sft_10000_seed42",
+    "arm": "G5",
+    "budget": "10000",
+    "seed": "42",
+    "model": "03_runs/IF_G5_stage2_sft_10000_seed42/checkpoint/merged"
+  }
+]

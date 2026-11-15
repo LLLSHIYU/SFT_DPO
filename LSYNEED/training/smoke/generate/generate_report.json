@@ -1,0 +1,29 @@
+{
+  "samples": 3,
+  "stopped_on_eos": 0,
+  "eos_token_id": 151645,
+  "pad_token_id": 151643,
+  "reports": [
+    {
+      "pid": "t3_1e152p",
+      "order": 0,
+      "new_token_count": 128,
+      "stopped_on_eos": false,
+      "text": "I'm concerned about the girl's relationship with her ex. She's been going through a tough time lately, and it's not just her girlfriend who's been talking about him. The girl has been talking about him in a very negative way, and it's not just her girlfriend who's been talking about him. She's been talking about him in a very negative way, and it's not just her girlfriend who's been talking about him. She's been talking about him in a very negative way, and it's not just her girlfriend who's been talking about him. She's been talking about him in a very negative way, and"
+    },
+    {
+      "pid": "t3_2om1b0",
+      "order": 1,
+      "new_token_count": 128,
+      "stopped_on_eos": false,
+      "text": "I'm extremely jealous of my bf and I can't help it. I know he wouldn't cheat on me, but I can't help it. I'm also pretty secure about myself, but when I think about other girls, they suddenly look like they have something that makes them better for him than me. It gets so but so so so hard to deal every night, I dream about him fucking random girls and I'm afraid of losing us every night. If someone have read \"the unbearable lightness of being\", I'm exactly Theresa, but without the real cheat from her partner. Deep inside knowing that is all bullshit, not true"
+    },
+    {
+      "pid": "t3_1fgao8",
+      "order": 2,
+      "new_token_count": 128,
+      "stopped_on_eos": false,
+      "text": "You are a helpful assistant who is an expert at summarizing content into TL;DR sentences. Summarize the following text(withIdentifier) in TL;DR format.\n(withIdentifier)user\nSubreddit: r/relationships\nTitle: Should I [17F] tell him [18M] about an extremely drunken peck that meant nothing?\n\nMe (17F) and my boyfriend (18M) have been going out for about a year, and I really, really love him. We have as close to a perfect relationship as you can get. It's exam season and to celebrate my friends had a wild party last"
+    }
+  ]
+}

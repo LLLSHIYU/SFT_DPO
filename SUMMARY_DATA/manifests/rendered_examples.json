@@ -1,0 +1,233 @@
+{
+  "formatter_version": "v1.2",
+  "chat_template_source": "Qwen/Qwen2.5-0.5B-Base official apply_chat_template",
+  "training_field_contract": {
+    "sft": {
+      "field": "messages",
+      "assistant_only_loss": true
+    },
+    "dpo": {
+      "fields": [
+        "prompt",
+        "chosen",
+        "rejected"
+      ]
+    }
+  },
+  "eos_token": "<|im_end|>",
+  "eos_token_id": 151645,
+  "pad_token": "<|endoftext|>",
+  "pad_token_id": 151643,
+  "sft_example": {
+    "pid": "t3_f88tm",
+    "rendered_chatml": "<|im_start|>system\nYou are a helpful assistant who is an expert at summarizing content into TL;DR sentences. Summarize the following text<|im_end|>\n<|im_start|>user\nSubreddit: r/AskReddit\nTitle: Do I rat on my co-workers?\n\nI'm in a moral dilemma. I work as a barista in a small local coffee shop. Today was about the 9th or 10th time a customer approached me and praised me while complaining about the prepared drinks of my two other co-workers. One doesn't even drink any sort of coffee. (She got the job because her mom works nearby and got it through the manager/owner) Its a bit disturbing to hear a customer say they will only come in when I'm working; and those are the ones outspoken about it. The business is struggling and we barely make it by due to location and *cough* that other coffee place. I don't want be a brown nose but I don't feel right allowing this happening every day.<|im_end|>\n<|im_start|>assistant\nI work in coffee shop. Customers keep complaining about my 2 other coworkers prepared drinks being gross. What to do?<|im_end|>\n",
+    "byte_identical_to_apply_chat_template": true,
+    "total_tokens": 235,
+    "supervised_assistant_tokens": 26,
+    "label_alignment_around_assistant_turn": [
+      {
+        "pos": 203,
+        "token_id": 13,
+        "token_str": ".",
+        "label": -100
+      },
+      {
+        "pos": 204,
+        "token_id": 151645,
+        "token_str": "<|im_end|>",
+        "label": -100
+      },
+      {
+        "pos": 205,
+        "token_id": 198,
+        "token_str": "\n",
+        "label": -100
+      },
+      {
+        "pos": 206,
+        "token_id": 151644,
+        "token_str": "<|im_start|>",
+        "label": -100
+      },
+      {
+        "pos": 207,
+        "token_id": 77091,
+        "token_str": "assistant",
+        "label": -100
+      },
+      {
+        "pos": 208,
+        "token_id": 198,
+        "token_str": "\n",
+        "label": -100
+      },
+      {
+        "pos": 209,
+        "token_id": 40,
+        "token_str": "I",
+        "label": 40
+      },
+      {
+        "pos": 210,
+        "token_id": 975,
+        "token_str": " work",
+        "label": 975
+      },
+      {
+        "pos": 211,
+        "token_id": 304,
+        "token_str": " in",
+        "label": 304
+      },
+      {
+        "pos": 212,
+        "token_id": 10799,
+        "token_str": " coffee",
+        "label": 10799
+      },
+      {
+        "pos": 213,
+        "token_id": 8061,
+        "token_str": " shop",
+        "label": 8061
+      },
+      {
+        "pos": 214,
+        "token_id": 13,
+        "token_str": ".",
+        "label": 13
+      },
+      {
+        "pos": 215,
+        "token_id": 39589,
+        "token_str": " Customers",
+        "label": 39589
+      },
+      {
+        "pos": 216,
+        "token_id": 2506,
+        "token_str": " keep",
+        "label": 2506
+      },
+      {
+        "pos": 217,
+        "token_id": 41026,
+        "token_str": " complaining",
+        "label": 41026
+      },
+      {
+        "pos": 218,
+        "token_id": 911,
+        "token_str": " about",
+        "label": 911
+      },
+      {
+        "pos": 219,
+        "token_id": 847,
+        "token_str": " my",
+        "label": 847
+      },
+      {
+        "pos": 220,
+        "token_id": 220,
+        "token_str": " ",
+        "label": 220
+      },
+      {
+        "pos": 221,
+        "token_id": 17,
+        "token_str": "2",
+        "label": 17
+      },
+      {
+        "pos": 222,
+        "token_id": 1008,
+        "token_str": " other",
+        "label": 1008
+      },
+      {
+        "pos": 223,
+        "token_id": 82955,
+        "token_str": " coworkers",
+        "label": 82955
+      },
+      {
+        "pos": 224,
+        "token_id": 10030,
+        "token_str": " prepared",
+        "label": 10030
+      },
+      {
+        "pos": 225,
+        "token_id": 20987,
+        "token_str": " drinks",
+        "label": 20987
+      },
+      {
+        "pos": 226,
+        "token_id": 1660,
+        "token_str": " being",
+        "label": 1660
+      },
+      {
+        "pos": 227,
+        "token_id": 19952,
+        "token_str": " gross",
+        "label": 19952
+      },
+      {
+        "pos": 228,
+        "token_id": 13,
+        "token_str": ".",
+        "label": 13
+      },
+      {
+        "pos": 229,
+        "token_id": 3555,
+        "token_str": " What",
+        "label": 3555
+      },
+      {
+        "pos": 230,
+        "token_id": 311,
+        "token_str": " to",
+        "label": 311
+      },
+      {
+        "pos": 231,
+        "token_id": 653,
+        "token_str": " do",
+        "label": 653
+      },
+      {
+        "pos": 232,
+        "token_id": 30,
+        "token_str": "?",
+        "label": 30
+      },
+      {
+        "pos": 233,
+        "token_id": 151645,
+        "token_str": "<|im_end|>",
+        "label": 151645
+      },
+      {
+        "pos": 234,
+        "token_id": 198,
+        "token_str": "\n",
+        "label": 198
+      }
+    ]
+  },
+  "dpo_example": {
+    "pid": "t3_f88tm",
+    "rendered_prompt": "<|im_start|>system\nYou are a helpful assistant who is an expert at summarizing content into TL;DR sentences. Summarize the following text<|im_end|>\n<|im_start|>user\nSubreddit: r/AskReddit\nTitle: Do I rat on my co-workers?\n\nI'm in a moral dilemma. I work as a barista in a small local coffee shop. Today was about the 9th or 10th time a customer approached me and praised me while complaining about the prepared drinks of my two other co-workers. One doesn't even drink any sort of coffee. (She got the job because her mom works nearby and got it through the manager/owner) Its a bit disturbing to hear a customer say they will only come in when I'm working; and those are the ones outspoken about it. The business is struggling and we barely make it by due to location and *cough* that other coffee place. I don't want be a brown nose but I don't feel right allowing this happening every day.<|im_end|>\n<|im_start|>assistant\n",
+    "rendered_chosen": "I work in coffee shop. Customers keep complaining about my 2 other coworkers prepared drinks being gross. What to do?<|im_end|>\n",
+    "rendered_rejected": "Coworker makes customers feel a bit special and praise me. I don't want to be a passive aggressive douche but do I need to turn in my coworkers?<|im_end|>\n",
+    "sft_vs_dpo_chosen_token_ids_identical": true
+  },
+  "eval_prompt_example": {
+    "pid": "t3_1e152p",
+    "rendered_generation_prompt": "<|im_start|>system\nYou are a helpful assistant who is an expert at summarizing content into TL;DR sentences. Summarize the following text<|im_end|>\n<|im_start|>user\nSubreddit: r/relationships\nTitle: I [20M] think my girlfriend [19F] might be planning to go back to her ex\n\nI'm [20] concerned. I've been in a relationship with this girl [19] closing in on two years now. We've been happy the entire time, but of late she's been bringing up a known ex of her's quite frequently and with more affection than necessary.\n\nNow, let's get the story of the ex straight. He damaged her, socially and mentally, she has told me he was the worst thing that ever happened and \"a fucking idiot\" many times. He still pops into conversation ever now and then since he's now dating a common acquaintance of ours.\n\nOf late, however, she's been mentioning him much more and with far greater detail - at least in terms of what he is up to. I'm fine with her chatting to him but not anything more (he's across country, and we are at varsity together) but she hadn't done so for close to 6 months.\n\nSo, she tells me the other day he had contacted her out of the blue again. He says he's breaking up with the acquaintance and needs advice on how to move forward, telling my gf his problems etc. She told me this, and I was again fine with it as I thought that was as far as it extended. It wasn't. They had had an hours long, intensive discussion as if he'd never left and never hurt her. She was responding to his obvious flirtation encouraging remarks - even going so far as calling him \"the light at the end of this tunnel [semester]\" and other remarks indicating they intend to meet up (which they haven't done since almost before we started dating). I should mention that I was goofing around on her phone when I found the thread, it wasn't intentional.\n\nHonestly, I've had thoughts about a break up recently. I'd like your thoughts as to whether it's simply those notions making this hurt all the more raw, or do I actually have something to worry about here?\n\nI'm confronting her tomorrow about it . What do I do? Am I overreacting?<|im_end|>\n<|im_start|>assistant\n"
+  }
+}

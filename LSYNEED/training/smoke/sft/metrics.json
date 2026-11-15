@@ -1,0 +1,8 @@
+{
+  "task": "sft",
+  "global_step": 1,
+  "training_loss": 3.9496734142303467,
+  "model_path": "C:\\Users\\liush\\Desktop\\DSAI4207_shared\\LSYNEED\\models\\Qwen2.5-0.5B",
+  "data_path": "C:\\Users\\liush\\Desktop\\DSAI4207_shared\\01_data\\v1.0\\arms\\G2_sft_500.jsonl",
+  "output_dir": "C:\\Users\\liush\\Desktop\\DSAI4207_shared\\LSYNEED\\training\\smoke\\sft"
+}

@@ -1,0 +1,14 @@
+2026-11-04 17:38:12,611 INFO cuda device=NVIDIA GeForce RTX 4060 Laptop GPU
+2026-11-04 17:47:13,111 INFO cuda device=NVIDIA GeForce RTX 4060 Laptop GPU
+2026-11-04 17:47:15,410 INFO sft label preview: 151644:'<|im_start|>':label=-100 | 8948:'system':label=-100 | 198:'\n':label=-100 | 2610:'You':label=-100 | 525:' are':label=-100 | 264:' a':label=-100 | 10950:' helpful':label=-100 | 17847:' assistant':label=-100 | 879:' who':label=-100 | 374:' is':label=-100 | 458:' an':label=-100 | 6203:' expert':label=-100 | 518:' at':label=-100 | 28285:' summar':label=-100 | 4849:'izing':label=-100 | 2213:' content':label=-100 | 1119:' into':label=-100 | 29615:' TL':label=-100 | 26:';':label=-100 | 7687:'DR':label=-100 | 22870:' sentences':label=-100 | 13:'.':label=-100 | 8116:' Sum':label=-100 | 5612:'mar':label=-100
+2026-11-04 17:47:15,410 INFO supervised_tokens=60 final_supervised=198
+2026-11-04 17:50:04,332 INFO cuda device=NVIDIA GeForce RTX 4060 Laptop GPU
+2026-11-04 17:50:06,669 INFO sft label preview: 151644:'<|im_start|>':label=-100 | 8948:'system':label=-100 | 198:'\n':label=-100 | 2610:'You':label=-100 | 525:' are':label=-100 | 264:' a':label=-100 | 10950:' helpful':label=-100 | 17847:' assistant':label=-100 | 879:' who':label=-100 | 374:' is':label=-100 | 458:' an':label=-100 | 6203:' expert':label=-100 | 518:' at':label=-100 | 28285:' summar':label=-100 | 4849:'izing':label=-100 | 2213:' content':label=-100 | 1119:' into':label=-100 | 29615:' TL':label=-100 | 26:';':label=-100 | 7687:'DR':label=-100 | 22870:' sentences':label=-100 | 13:'.':label=-100 | 8116:' Sum':label=-100 | 5612:'mar':label=-100
+2026-11-04 17:50:06,670 INFO supervised_tokens=60 final_supervised=198
+2026-11-04 17:50:21,704 INFO training_loss=3.949673 global_step=1
+2026-11-04 17:50:22,550 INFO saved adapter to C:\Users\liush\Desktop\DSAI4207_shared\LSYNEED\training\smoke\sft
+2026-11-04 17:53:38,411 INFO cuda device=NVIDIA GeForce RTX 4060 Laptop GPU
+2026-11-04 17:53:40,921 INFO sft label preview: 151644:'<|im_start|>':label=-100 | 8948:'system':label=-100 | 198:'\n':label=-100 | 2610:'You':label=-100 | 525:' are':label=-100 | 264:' a':label=-100 | 10950:' helpful':label=-100 | 17847:' assistant':label=-100 | 879:' who':label=-100 | 374:' is':label=-100 | 458:' an':label=-100 | 6203:' expert':label=-100 | 518:' at':label=-100 | 28285:' summar':label=-100 | 4849:'izing':label=-100 | 2213:' content':label=-100 | 1119:' into':label=-100 | 29615:' TL':label=-100 | 26:';':label=-100 | 7687:'DR':label=-100 | 22870:' sentences':label=-100 | 13:'.':label=-100 | 8116:' Sum':label=-100 | 5612:'mar':label=-100
+2026-11-04 17:53:40,921 INFO supervised_tokens=60 final_supervised=198
+2026-11-04 17:53:53,922 INFO training_loss=3.949673 global_step=1
+2026-11-04 17:53:54,769 INFO saved adapter to C:\Users\liush\Desktop\DSAI4207_shared\LSYNEED\training\smoke\sft

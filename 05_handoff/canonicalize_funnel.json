@@ -1,0 +1,373 @@
+{
+  "train": {
+    "split": "train",
+    "raw_rows": 92858,
+    "valid_candidate_rows": 92453,
+    "unique_pids_after_basic_filters": 14760,
+    "unique_pids_after_token_filters": 14760,
+    "condorcet_zero_loss_rate": 0.9633,
+    "confidence_available_rate": 0.4223,
+    "tldr_prefix_stripped_rows": 0,
+    "chosen_policy_family_distribution": {
+      "rl_aligned": 3115,
+      "human_ref": 7028,
+      "sft_strong": 1320,
+      "sft_early": 3297
+    },
+    "drop_reasons": {
+      "rejected_word_length_out_of_range": 278,
+      "chosen_word_length_out_of_range": 80,
+      "identical_chosen_and_rejected": 11,
+      "empty_or_deleted_summary": 4,
+      "post_word_length_out_of_range": 32
+    },
+    "drop_examples": {
+      "rejected_word_length_out_of_range": [
+        {
+          "pid": "t3_g31kp",
+          "subreddit": "AskReddit",
+          "detail": "words=3"
+        },
+        {
+          "pid": "t3_g31kp",
+          "subreddit": "AskReddit",
+          "detail": "words=3"
+        },
+        {
+          "pid": "t3_1amvjo",
+          "subreddit": "AskReddit",
+          "detail": "words=3"
+        },
+        {
+          "pid": "t3_fyg0s",
+          "subreddit": "AskReddit",
+          "detail": "words=4"
+        },
+        {
+          "pid": "t3_fyg0s",
+          "subreddit": "AskReddit",
+          "detail": "words=4"
+        }
+      ],
+      "chosen_word_length_out_of_range": [
+        {
+          "pid": "t3_1mezvj",
+          "subreddit": "relationships",
+          "detail": "words=4"
+        },
+        {
+          "pid": "t3_pynbl",
+          "subreddit": "AskReddit",
+          "detail": "words=4"
+        },
+        {
+          "pid": "t3_jxm9y",
+          "subreddit": "AskReddit",
+          "detail": "words=4"
+        },
+        {
+          "pid": "t3_1a1uz7",
+          "subreddit": "offmychest",
+          "detail": "words=2"
+        },
+        {
+          "pid": "t3_16l0s5",
+          "subreddit": "GetMotivated",
+          "detail": "words=2"
+        }
+      ],
+      "identical_chosen_and_rejected": [
+        {
+          "pid": "t3_24hfdy",
+          "subreddit": "relationships",
+          "detail": "I (25f) don't know if I should stay or leave my SO (25m)"
+        },
+        {
+          "pid": "t3_193tcf",
+          "subreddit": "books",
+          "detail": "What are some of your favourite books/movies that share themes to Frank Herbert'"
+        },
+        {
+          "pid": "t3_34nzxd",
+          "subreddit": "AskReddit",
+          "detail": "Why does America's public transit suck?"
+        },
+        {
+          "pid": "t3_34nzxd",
+          "subreddit": "AskReddit",
+          "detail": "Why does America's public transit suck?"
+        },
+        {
+          "pid": "t3_34nzxd",
+          "subreddit": "AskReddit",
+          "detail": "Why does America's public transit suck?"
+        }
+      ],
+      "empty_or_deleted_summary": [
+        {
+          "pid": "t3_28j1v1",
+          "subreddit": "personalfinance",
+          "detail": ""
+        },
+        {
+          "pid": "t3_28j1v1",
+          "subreddit": "personalfinance",
+          "detail": ""
+        },
+        {
+          "pid": "t3_1arb91",
+          "subreddit": "relationships",
+          "detail": ""
+        },
+        {
+          "pid": "t3_1arb91",
+          "subreddit": "relationships",
+          "detail": ""
+        }
+      ],
+      "post_word_length_out_of_range": [
+        {
+          "pid": "t3_2mnh8d",
+          "subreddit": "relationships",
+          "detail": "words=5"
+        },
+        {
+          "pid": "t3_2mnh8d",
+          "subreddit": "relationships",
+          "detail": "words=5"
+        },
+        {
+          "pid": "t3_2mnh8d",
+          "subreddit": "relationships",
+          "detail": "words=5"
+        },
+        {
+          "pid": "t3_2mnh8d",
+          "subreddit": "relationships",
+          "detail": "words=5"
+        },
+        {
+          "pid": "t3_2mnh8d",
+          "subreddit": "relationships",
+          "detail": "words=5"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "split": "validation",
+    "raw_rows": 86086,
+    "valid_candidate_rows": 83564,
+    "unique_pids_after_basic_filters": 6213,
+    "unique_pids_after_token_filters": 6213,
+    "condorcet_zero_loss_rate": 0.9736,
+    "confidence_available_rate": 1.0,
+    "tldr_prefix_stripped_rows": 2,
+    "chosen_policy_family_distribution": {
+      "rl_aligned": 3445,
+      "sft_early": 350,
+      "human_ref": 1418,
+      "sft_strong": 1000
+    },
+    "drop_reasons": {
+      "post_word_length_out_of_range": 49,
+      "rejected_word_length_out_of_range": 131,
+      "chosen_word_length_out_of_range": 22,
+      "empty_or_deleted_summary": 19,
+      "identical_chosen_and_rejected": 12,
+      "cnndm_or_external_site": 2284,
+      "invalid_or_missing_pid": 5
+    },
+    "drop_examples": {
+      "post_word_length_out_of_range": [
+        {
+          "pid": "t3_jpplv",
+          "subreddit": "AskReddit",
+          "detail": "words=1"
+        },
+        {
+          "pid": "t3_jpplv",
+          "subreddit": "AskReddit",
+          "detail": "words=1"
+        },
+        {
+          "pid": "t3_jpplv",
+          "subreddit": "AskReddit",
+          "detail": "words=1"
+        },
+        {
+          "pid": "t3_1c9pdv",
+          "subreddit": "AskReddit",
+          "detail": "words=1"
+        },
+        {
+          "pid": "t3_1c9pdv",
+          "subreddit": "AskReddit",
+          "detail": "words=1"
+        }
+      ],
+      "rejected_word_length_out_of_range": [
+        {
+          "pid": "t3_2nc4cm",
+          "subreddit": "needadvice",
+          "detail": "words=1"
+        },
+        {
+          "pid": "t3_2nc4cm",
+          "subreddit": "needadvice",
+          "detail": "words=1"
+        },
+        {
+          "pid": "t3_2lfvtq",
+          "subreddit": "tifu",
+          "detail": "words=4"
+        },
+        {
+          "pid": "t3_2lfvtq",
+          "subreddit": "tifu",
+          "detail": "words=4"
+        },
+        {
+          "pid": "t3_2lfvtq",
+          "subreddit": "tifu",
+          "detail": "words=4"
+        }
+      ],
+      "chosen_word_length_out_of_range": [
+        {
+          "pid": "t3_r5vnj",
+          "subreddit": "AskReddit",
+          "detail": "words=4"
+        },
+        {
+          "pid": "t3_4m9dqw",
+          "subreddit": "personalfinance",
+          "detail": "words=4"
+        },
+        {
+          "pid": "t3_4xnyxd",
+          "subreddit": "running",
+          "detail": "words=3"
+        },
+        {
+          "pid": "t3_4xnyxd",
+          "subreddit": "running",
+          "detail": "words=3"
+        },
+        {
+          "pid": "t3_4xnyxd",
+          "subreddit": "running",
+          "detail": "words=3"
+        }
+      ],
+      "empty_or_deleted_summary": [
+        {
+          "pid": "t3_4k1klg",
+          "subreddit": "relationships",
+          "detail": ""
+        },
+        {
+          "pid": "t3_4k1klg",
+          "subreddit": "relationships",
+          "detail": ""
+        },
+        {
+          "pid": "t3_4k1klg",
+          "subreddit": "relationships",
+          "detail": ""
+        },
+        {
+          "pid": "t3_2baut3",
+          "subreddit": "offmychest",
+          "detail": ""
+        },
+        {
+          "pid": "t3_2baut3",
+          "subreddit": "offmychest",
+          "detail": ""
+        }
+      ],
+      "identical_chosen_and_rejected": [
+        {
+          "pid": "t3_46xwec",
+          "subreddit": "relationships",
+          "detail": "I [22M] not in a relationship, but dating a [22F] found out she had a relationsh"
+        },
+        {
+          "pid": "t3_2utksg",
+          "subreddit": "relationships",
+          "detail": "I have a crush on my best friend who is in a LTR and I have a crush on her and s"
+        },
+        {
+          "pid": "t3_35eusg",
+          "subreddit": "dating_advice",
+          "detail": "First date ever, going to the beach. Would like some tips. Thanks!"
+        },
+        {
+          "pid": "t3_2olrac",
+          "subreddit": "relationships",
+          "detail": "I (19M) wanted to ask out friend of couple months (20M) only to find out his ex "
+        },
+        {
+          "pid": "t3_3j074e",
+          "subreddit": "tifu",
+          "detail": "TIFU by walking into a sex shop."
+        }
+      ],
+      "cnndm_or_external_site": [
+        {
+          "pid": "54527cb60a35e2695546132b1c9091c775c36c28",
+          "subreddit": null,
+          "detail": "batch=batch0_cnndm, site=dailymail"
+        },
+        {
+          "pid": "54527cb60a35e2695546132b1c9091c775c36c28",
+          "subreddit": null,
+          "detail": "batch=batch0_cnndm, site=dailymail"
+        },
+        {
+          "pid": "54527cb60a35e2695546132b1c9091c775c36c28",
+          "subreddit": null,
+          "detail": "batch=batch0_cnndm, site=dailymail"
+        },
+        {
+          "pid": "54527cb60a35e2695546132b1c9091c775c36c28",
+          "subreddit": null,
+          "detail": "batch=batch0_cnndm, site=dailymail"
+        },
+        {
+          "pid": "54527cb60a35e2695546132b1c9091c775c36c28",
+          "subreddit": null,
+          "detail": "batch=batch0_cnndm, site=dailymail"
+        }
+      ],
+      "invalid_or_missing_pid": [
+        {
+          "pid": null,
+          "subreddit": "r/relationships",
+          "detail": "pid=None, batch=edit_b2_eval_test"
+        },
+        {
+          "pid": null,
+          "subreddit": "r/Advice",
+          "detail": "pid=None, batch=edit_b2_eval_test"
+        },
+        {
+          "pid": null,
+          "subreddit": "r/relationship_advice",
+          "detail": "pid=None, batch=edit_b2_eval_test"
+        },
+        {
+          "pid": null,
+          "subreddit": "r/relationships",
+          "detail": "pid=None, batch=edit_b2_eval_test"
+        },
+        {
+          "pid": null,
+          "subreddit": "r/relationships",
+          "detail": "pid=None, batch=edit_b2_eval_test"
+        }
+      ]
+    }
+  }
+}

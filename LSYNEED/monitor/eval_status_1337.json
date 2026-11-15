@@ -1,0 +1,1223 @@
+{
+  "phase": "running",
+  "headline": "评测进行中：36 / 60 项已完成",
+  "waiting_headline": "种子 1337 评测还没开始",
+  "done_headline": "种子 1337 的 60 项评测都跑完了",
+  "gpu": "RTX 4060 Laptop",
+  "estimate_note": "12 个最终模型：G2、G3、G4、G5 各自的 500、2000、10000 档。每个模型 5 项评测，一共 60 项。M0 只在种子 42 评测里。时间表沿用种子 42 同一项的预计，合计约 8.0 小时。不叫 GPT 裁判。",
+  "updated_at": "2026-11-12T12:48:44+08:00",
+  "tasks": [
+    {
+      "id": "g2-500-档-lcwr",
+      "order": 1,
+      "group": "G2 500 档",
+      "title": "LCWR 主集摘要",
+      "kind": "LCWR",
+      "budget": "500",
+      "models": [
+        "G2"
+      ],
+      "item_count": 200,
+      "steps_total": 200,
+      "steps_done": 200,
+      "status": "done",
+      "estimate_seconds": 180,
+      "data_file": "SUMMARY_DATA/test_200_main.jsonl",
+      "output_dir": "03_runs/G2_sft_500_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:06:08+08:00",
+      "finished_at": "2026-11-12T12:07:14+08:00"
+    },
+    {
+      "id": "g2-500-档-sens",
+      "order": 2,
+      "group": "G2 500 档",
+      "title": "扩展敏感性摘要",
+      "kind": "SENS",
+      "budget": "500",
+      "models": [
+        "G2"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 420,
+      "data_file": "SUMMARY_DATA/test_500_full.jsonl",
+      "output_dir": "03_runs/G2_sft_500_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g2-500-档-mmlu",
+      "order": 3,
+      "group": "G2 500 档",
+      "title": "MMLU 能力",
+      "kind": "MMLU",
+      "budget": "500",
+      "models": [
+        "G2"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 500,
+      "status": "done",
+      "estimate_seconds": 360,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/mmlu_500.jsonl",
+      "output_dir": "03_runs/G2_sft_500_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:07:14+08:00",
+      "finished_at": "2026-11-12T12:08:47+08:00"
+    },
+    {
+      "id": "g2-500-档-arc",
+      "order": 4,
+      "group": "G2 500 档",
+      "title": "ARC-Challenge 能力",
+      "kind": "ARC",
+      "budget": "500",
+      "models": [
+        "G2"
+      ],
+      "item_count": 300,
+      "steps_total": 300,
+      "steps_done": 300,
+      "status": "done",
+      "estimate_seconds": 240,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/arc_challenge_300.jsonl",
+      "output_dir": "03_runs/G2_sft_500_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:08:47+08:00",
+      "finished_at": "2026-11-12T12:09:43+08:00"
+    },
+    {
+      "id": "g2-500-档-ifeval",
+      "order": 5,
+      "group": "G2 500 档",
+      "title": "IFEval 指令遵循",
+      "kind": "IFEval",
+      "budget": "500",
+      "models": [
+        "G2"
+      ],
+      "item_count": 541,
+      "steps_total": 541,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 1200,
+      "data_file": "IF_DATA/eval_benchmarks/ifeval_541.jsonl",
+      "output_dir": "03_runs/G2_sft_500_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g2-2000-档-lcwr",
+      "order": 6,
+      "group": "G2 2000 档",
+      "title": "LCWR 主集摘要",
+      "kind": "LCWR",
+      "budget": "2000",
+      "models": [
+        "G2"
+      ],
+      "item_count": 200,
+      "steps_total": 200,
+      "steps_done": 200,
+      "status": "done",
+      "estimate_seconds": 180,
+      "data_file": "SUMMARY_DATA/test_200_main.jsonl",
+      "output_dir": "03_runs/G2_sft_2000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:09:43+08:00",
+      "finished_at": "2026-11-12T12:10:48+08:00"
+    },
+    {
+      "id": "g2-2000-档-sens",
+      "order": 7,
+      "group": "G2 2000 档",
+      "title": "扩展敏感性摘要",
+      "kind": "SENS",
+      "budget": "2000",
+      "models": [
+        "G2"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 420,
+      "data_file": "SUMMARY_DATA/test_500_full.jsonl",
+      "output_dir": "03_runs/G2_sft_2000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g2-2000-档-mmlu",
+      "order": 8,
+      "group": "G2 2000 档",
+      "title": "MMLU 能力",
+      "kind": "MMLU",
+      "budget": "2000",
+      "models": [
+        "G2"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 500,
+      "status": "done",
+      "estimate_seconds": 360,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/mmlu_500.jsonl",
+      "output_dir": "03_runs/G2_sft_2000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:10:48+08:00",
+      "finished_at": "2026-11-12T12:12:22+08:00"
+    },
+    {
+      "id": "g2-2000-档-arc",
+      "order": 9,
+      "group": "G2 2000 档",
+      "title": "ARC-Challenge 能力",
+      "kind": "ARC",
+      "budget": "2000",
+      "models": [
+        "G2"
+      ],
+      "item_count": 300,
+      "steps_total": 300,
+      "steps_done": 300,
+      "status": "done",
+      "estimate_seconds": 240,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/arc_challenge_300.jsonl",
+      "output_dir": "03_runs/G2_sft_2000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:12:22+08:00",
+      "finished_at": "2026-11-12T12:13:19+08:00"
+    },
+    {
+      "id": "g2-2000-档-ifeval",
+      "order": 10,
+      "group": "G2 2000 档",
+      "title": "IFEval 指令遵循",
+      "kind": "IFEval",
+      "budget": "2000",
+      "models": [
+        "G2"
+      ],
+      "item_count": 541,
+      "steps_total": 541,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 1200,
+      "data_file": "IF_DATA/eval_benchmarks/ifeval_541.jsonl",
+      "output_dir": "03_runs/G2_sft_2000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g2-10000-档-lcwr",
+      "order": 11,
+      "group": "G2 10000 档",
+      "title": "LCWR 主集摘要",
+      "kind": "LCWR",
+      "budget": "10000",
+      "models": [
+        "G2"
+      ],
+      "item_count": 200,
+      "steps_total": 200,
+      "steps_done": 200,
+      "status": "done",
+      "estimate_seconds": 180,
+      "data_file": "SUMMARY_DATA/test_200_main.jsonl",
+      "output_dir": "03_runs/G2_sft_10000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:13:19+08:00",
+      "finished_at": "2026-11-12T12:14:23+08:00"
+    },
+    {
+      "id": "g2-10000-档-sens",
+      "order": 12,
+      "group": "G2 10000 档",
+      "title": "扩展敏感性摘要",
+      "kind": "SENS",
+      "budget": "10000",
+      "models": [
+        "G2"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 420,
+      "data_file": "SUMMARY_DATA/test_500_full.jsonl",
+      "output_dir": "03_runs/G2_sft_10000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g2-10000-档-mmlu",
+      "order": 13,
+      "group": "G2 10000 档",
+      "title": "MMLU 能力",
+      "kind": "MMLU",
+      "budget": "10000",
+      "models": [
+        "G2"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 500,
+      "status": "done",
+      "estimate_seconds": 360,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/mmlu_500.jsonl",
+      "output_dir": "03_runs/G2_sft_10000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:14:23+08:00",
+      "finished_at": "2026-11-12T12:15:53+08:00"
+    },
+    {
+      "id": "g2-10000-档-arc",
+      "order": 14,
+      "group": "G2 10000 档",
+      "title": "ARC-Challenge 能力",
+      "kind": "ARC",
+      "budget": "10000",
+      "models": [
+        "G2"
+      ],
+      "item_count": 300,
+      "steps_total": 300,
+      "steps_done": 300,
+      "status": "done",
+      "estimate_seconds": 240,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/arc_challenge_300.jsonl",
+      "output_dir": "03_runs/G2_sft_10000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:15:53+08:00",
+      "finished_at": "2026-11-12T12:16:48+08:00"
+    },
+    {
+      "id": "g2-10000-档-ifeval",
+      "order": 15,
+      "group": "G2 10000 档",
+      "title": "IFEval 指令遵循",
+      "kind": "IFEval",
+      "budget": "10000",
+      "models": [
+        "G2"
+      ],
+      "item_count": 541,
+      "steps_total": 541,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 1200,
+      "data_file": "IF_DATA/eval_benchmarks/ifeval_541.jsonl",
+      "output_dir": "03_runs/G2_sft_10000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g3-500-档-lcwr",
+      "order": 16,
+      "group": "G3 500 档",
+      "title": "LCWR 主集摘要",
+      "kind": "LCWR",
+      "budget": "500",
+      "models": [
+        "G3"
+      ],
+      "item_count": 200,
+      "steps_total": 200,
+      "steps_done": 200,
+      "status": "done",
+      "estimate_seconds": 180,
+      "data_file": "SUMMARY_DATA/test_200_main.jsonl",
+      "output_dir": "03_runs/G3_dpo_500_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:16:48+08:00",
+      "finished_at": "2026-11-12T12:17:52+08:00"
+    },
+    {
+      "id": "g3-500-档-sens",
+      "order": 17,
+      "group": "G3 500 档",
+      "title": "扩展敏感性摘要",
+      "kind": "SENS",
+      "budget": "500",
+      "models": [
+        "G3"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 420,
+      "data_file": "SUMMARY_DATA/test_500_full.jsonl",
+      "output_dir": "03_runs/G3_dpo_500_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g3-500-档-mmlu",
+      "order": 18,
+      "group": "G3 500 档",
+      "title": "MMLU 能力",
+      "kind": "MMLU",
+      "budget": "500",
+      "models": [
+        "G3"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 500,
+      "status": "done",
+      "estimate_seconds": 360,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/mmlu_500.jsonl",
+      "output_dir": "03_runs/G3_dpo_500_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:17:52+08:00",
+      "finished_at": "2026-11-12T12:19:29+08:00"
+    },
+    {
+      "id": "g3-500-档-arc",
+      "order": 19,
+      "group": "G3 500 档",
+      "title": "ARC-Challenge 能力",
+      "kind": "ARC",
+      "budget": "500",
+      "models": [
+        "G3"
+      ],
+      "item_count": 300,
+      "steps_total": 300,
+      "steps_done": 300,
+      "status": "done",
+      "estimate_seconds": 240,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/arc_challenge_300.jsonl",
+      "output_dir": "03_runs/G3_dpo_500_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:19:29+08:00",
+      "finished_at": "2026-11-12T12:20:24+08:00"
+    },
+    {
+      "id": "g3-500-档-ifeval",
+      "order": 20,
+      "group": "G3 500 档",
+      "title": "IFEval 指令遵循",
+      "kind": "IFEval",
+      "budget": "500",
+      "models": [
+        "G3"
+      ],
+      "item_count": 541,
+      "steps_total": 541,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 1200,
+      "data_file": "IF_DATA/eval_benchmarks/ifeval_541.jsonl",
+      "output_dir": "03_runs/G3_dpo_500_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g3-2000-档-lcwr",
+      "order": 21,
+      "group": "G3 2000 档",
+      "title": "LCWR 主集摘要",
+      "kind": "LCWR",
+      "budget": "2000",
+      "models": [
+        "G3"
+      ],
+      "item_count": 200,
+      "steps_total": 200,
+      "steps_done": 200,
+      "status": "done",
+      "estimate_seconds": 180,
+      "data_file": "SUMMARY_DATA/test_200_main.jsonl",
+      "output_dir": "03_runs/G3_dpo_2000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:20:24+08:00",
+      "finished_at": "2026-11-12T12:21:26+08:00"
+    },
+    {
+      "id": "g3-2000-档-sens",
+      "order": 22,
+      "group": "G3 2000 档",
+      "title": "扩展敏感性摘要",
+      "kind": "SENS",
+      "budget": "2000",
+      "models": [
+        "G3"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 420,
+      "data_file": "SUMMARY_DATA/test_500_full.jsonl",
+      "output_dir": "03_runs/G3_dpo_2000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g3-2000-档-mmlu",
+      "order": 23,
+      "group": "G3 2000 档",
+      "title": "MMLU 能力",
+      "kind": "MMLU",
+      "budget": "2000",
+      "models": [
+        "G3"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 500,
+      "status": "done",
+      "estimate_seconds": 360,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/mmlu_500.jsonl",
+      "output_dir": "03_runs/G3_dpo_2000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:21:26+08:00",
+      "finished_at": "2026-11-12T12:22:57+08:00"
+    },
+    {
+      "id": "g3-2000-档-arc",
+      "order": 24,
+      "group": "G3 2000 档",
+      "title": "ARC-Challenge 能力",
+      "kind": "ARC",
+      "budget": "2000",
+      "models": [
+        "G3"
+      ],
+      "item_count": 300,
+      "steps_total": 300,
+      "steps_done": 300,
+      "status": "done",
+      "estimate_seconds": 240,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/arc_challenge_300.jsonl",
+      "output_dir": "03_runs/G3_dpo_2000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:22:57+08:00",
+      "finished_at": "2026-11-12T12:23:53+08:00"
+    },
+    {
+      "id": "g3-2000-档-ifeval",
+      "order": 25,
+      "group": "G3 2000 档",
+      "title": "IFEval 指令遵循",
+      "kind": "IFEval",
+      "budget": "2000",
+      "models": [
+        "G3"
+      ],
+      "item_count": 541,
+      "steps_total": 541,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 1200,
+      "data_file": "IF_DATA/eval_benchmarks/ifeval_541.jsonl",
+      "output_dir": "03_runs/G3_dpo_2000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g3-10000-档-lcwr",
+      "order": 26,
+      "group": "G3 10000 档",
+      "title": "LCWR 主集摘要",
+      "kind": "LCWR",
+      "budget": "10000",
+      "models": [
+        "G3"
+      ],
+      "item_count": 200,
+      "steps_total": 200,
+      "steps_done": 200,
+      "status": "done",
+      "estimate_seconds": 180,
+      "data_file": "SUMMARY_DATA/test_200_main.jsonl",
+      "output_dir": "03_runs/G3_dpo_10000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:23:53+08:00",
+      "finished_at": "2026-11-12T12:25:01+08:00"
+    },
+    {
+      "id": "g3-10000-档-sens",
+      "order": 27,
+      "group": "G3 10000 档",
+      "title": "扩展敏感性摘要",
+      "kind": "SENS",
+      "budget": "10000",
+      "models": [
+        "G3"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 420,
+      "data_file": "SUMMARY_DATA/test_500_full.jsonl",
+      "output_dir": "03_runs/G3_dpo_10000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g3-10000-档-mmlu",
+      "order": 28,
+      "group": "G3 10000 档",
+      "title": "MMLU 能力",
+      "kind": "MMLU",
+      "budget": "10000",
+      "models": [
+        "G3"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 500,
+      "status": "done",
+      "estimate_seconds": 360,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/mmlu_500.jsonl",
+      "output_dir": "03_runs/G3_dpo_10000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:25:01+08:00",
+      "finished_at": "2026-11-12T12:26:32+08:00"
+    },
+    {
+      "id": "g3-10000-档-arc",
+      "order": 29,
+      "group": "G3 10000 档",
+      "title": "ARC-Challenge 能力",
+      "kind": "ARC",
+      "budget": "10000",
+      "models": [
+        "G3"
+      ],
+      "item_count": 300,
+      "steps_total": 300,
+      "steps_done": 300,
+      "status": "done",
+      "estimate_seconds": 240,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/arc_challenge_300.jsonl",
+      "output_dir": "03_runs/G3_dpo_10000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:26:32+08:00",
+      "finished_at": "2026-11-12T12:27:26+08:00"
+    },
+    {
+      "id": "g3-10000-档-ifeval",
+      "order": 30,
+      "group": "G3 10000 档",
+      "title": "IFEval 指令遵循",
+      "kind": "IFEval",
+      "budget": "10000",
+      "models": [
+        "G3"
+      ],
+      "item_count": 541,
+      "steps_total": 541,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 1200,
+      "data_file": "IF_DATA/eval_benchmarks/ifeval_541.jsonl",
+      "output_dir": "03_runs/G3_dpo_10000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g4-500-档-lcwr",
+      "order": 31,
+      "group": "G4 500 档",
+      "title": "LCWR 主集摘要",
+      "kind": "LCWR",
+      "budget": "500",
+      "models": [
+        "G4"
+      ],
+      "item_count": 200,
+      "steps_total": 200,
+      "steps_done": 200,
+      "status": "done",
+      "estimate_seconds": 180,
+      "data_file": "SUMMARY_DATA/test_200_main.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_500_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:27:26+08:00",
+      "finished_at": "2026-11-12T12:28:29+08:00"
+    },
+    {
+      "id": "g4-500-档-sens",
+      "order": 32,
+      "group": "G4 500 档",
+      "title": "扩展敏感性摘要",
+      "kind": "SENS",
+      "budget": "500",
+      "models": [
+        "G4"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 420,
+      "data_file": "SUMMARY_DATA/test_500_full.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_500_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g4-500-档-mmlu",
+      "order": 33,
+      "group": "G4 500 档",
+      "title": "MMLU 能力",
+      "kind": "MMLU",
+      "budget": "500",
+      "models": [
+        "G4"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 500,
+      "status": "done",
+      "estimate_seconds": 360,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/mmlu_500.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_500_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:28:29+08:00",
+      "finished_at": "2026-11-12T12:30:03+08:00"
+    },
+    {
+      "id": "g4-500-档-arc",
+      "order": 34,
+      "group": "G4 500 档",
+      "title": "ARC-Challenge 能力",
+      "kind": "ARC",
+      "budget": "500",
+      "models": [
+        "G4"
+      ],
+      "item_count": 300,
+      "steps_total": 300,
+      "steps_done": 300,
+      "status": "done",
+      "estimate_seconds": 240,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/arc_challenge_300.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_500_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:30:03+08:00",
+      "finished_at": "2026-11-12T12:31:00+08:00"
+    },
+    {
+      "id": "g4-500-档-ifeval",
+      "order": 35,
+      "group": "G4 500 档",
+      "title": "IFEval 指令遵循",
+      "kind": "IFEval",
+      "budget": "500",
+      "models": [
+        "G4"
+      ],
+      "item_count": 541,
+      "steps_total": 541,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 1200,
+      "data_file": "IF_DATA/eval_benchmarks/ifeval_541.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_500_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g4-2000-档-lcwr",
+      "order": 36,
+      "group": "G4 2000 档",
+      "title": "LCWR 主集摘要",
+      "kind": "LCWR",
+      "budget": "2000",
+      "models": [
+        "G4"
+      ],
+      "item_count": 200,
+      "steps_total": 200,
+      "steps_done": 200,
+      "status": "done",
+      "estimate_seconds": 180,
+      "data_file": "SUMMARY_DATA/test_200_main.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_2000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:31:00+08:00",
+      "finished_at": "2026-11-12T12:32:04+08:00"
+    },
+    {
+      "id": "g4-2000-档-sens",
+      "order": 37,
+      "group": "G4 2000 档",
+      "title": "扩展敏感性摘要",
+      "kind": "SENS",
+      "budget": "2000",
+      "models": [
+        "G4"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 420,
+      "data_file": "SUMMARY_DATA/test_500_full.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_2000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g4-2000-档-mmlu",
+      "order": 38,
+      "group": "G4 2000 档",
+      "title": "MMLU 能力",
+      "kind": "MMLU",
+      "budget": "2000",
+      "models": [
+        "G4"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 500,
+      "status": "done",
+      "estimate_seconds": 360,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/mmlu_500.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_2000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:32:04+08:00",
+      "finished_at": "2026-11-12T12:33:34+08:00"
+    },
+    {
+      "id": "g4-2000-档-arc",
+      "order": 39,
+      "group": "G4 2000 档",
+      "title": "ARC-Challenge 能力",
+      "kind": "ARC",
+      "budget": "2000",
+      "models": [
+        "G4"
+      ],
+      "item_count": 300,
+      "steps_total": 300,
+      "steps_done": 300,
+      "status": "done",
+      "estimate_seconds": 240,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/arc_challenge_300.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_2000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:33:34+08:00",
+      "finished_at": "2026-11-12T12:34:29+08:00"
+    },
+    {
+      "id": "g4-2000-档-ifeval",
+      "order": 40,
+      "group": "G4 2000 档",
+      "title": "IFEval 指令遵循",
+      "kind": "IFEval",
+      "budget": "2000",
+      "models": [
+        "G4"
+      ],
+      "item_count": 541,
+      "steps_total": 541,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 1200,
+      "data_file": "IF_DATA/eval_benchmarks/ifeval_541.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_2000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g4-10000-档-lcwr",
+      "order": 41,
+      "group": "G4 10000 档",
+      "title": "LCWR 主集摘要",
+      "kind": "LCWR",
+      "budget": "10000",
+      "models": [
+        "G4"
+      ],
+      "item_count": 200,
+      "steps_total": 200,
+      "steps_done": 200,
+      "status": "done",
+      "estimate_seconds": 180,
+      "data_file": "SUMMARY_DATA/test_200_main.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_10000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:34:29+08:00",
+      "finished_at": "2026-11-12T12:35:32+08:00"
+    },
+    {
+      "id": "g4-10000-档-sens",
+      "order": 42,
+      "group": "G4 10000 档",
+      "title": "扩展敏感性摘要",
+      "kind": "SENS",
+      "budget": "10000",
+      "models": [
+        "G4"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 420,
+      "data_file": "SUMMARY_DATA/test_500_full.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_10000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g4-10000-档-mmlu",
+      "order": 43,
+      "group": "G4 10000 档",
+      "title": "MMLU 能力",
+      "kind": "MMLU",
+      "budget": "10000",
+      "models": [
+        "G4"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 500,
+      "status": "done",
+      "estimate_seconds": 360,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/mmlu_500.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_10000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:35:32+08:00",
+      "finished_at": "2026-11-12T12:37:10+08:00"
+    },
+    {
+      "id": "g4-10000-档-arc",
+      "order": 44,
+      "group": "G4 10000 档",
+      "title": "ARC-Challenge 能力",
+      "kind": "ARC",
+      "budget": "10000",
+      "models": [
+        "G4"
+      ],
+      "item_count": 300,
+      "steps_total": 300,
+      "steps_done": 300,
+      "status": "done",
+      "estimate_seconds": 240,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/arc_challenge_300.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_10000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:37:10+08:00",
+      "finished_at": "2026-11-12T12:38:05+08:00"
+    },
+    {
+      "id": "g4-10000-档-ifeval",
+      "order": 45,
+      "group": "G4 10000 档",
+      "title": "IFEval 指令遵循",
+      "kind": "IFEval",
+      "budget": "10000",
+      "models": [
+        "G4"
+      ],
+      "item_count": 541,
+      "steps_total": 541,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 1200,
+      "data_file": "IF_DATA/eval_benchmarks/ifeval_541.jsonl",
+      "output_dir": "03_runs/G4_stage2_dpo_10000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g5-500-档-lcwr",
+      "order": 46,
+      "group": "G5 500 档",
+      "title": "LCWR 主集摘要",
+      "kind": "LCWR",
+      "budget": "500",
+      "models": [
+        "G5"
+      ],
+      "item_count": 200,
+      "steps_total": 200,
+      "steps_done": 200,
+      "status": "done",
+      "estimate_seconds": 180,
+      "data_file": "SUMMARY_DATA/test_200_main.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_500_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:38:05+08:00",
+      "finished_at": "2026-11-12T12:39:07+08:00"
+    },
+    {
+      "id": "g5-500-档-sens",
+      "order": 47,
+      "group": "G5 500 档",
+      "title": "扩展敏感性摘要",
+      "kind": "SENS",
+      "budget": "500",
+      "models": [
+        "G5"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 420,
+      "data_file": "SUMMARY_DATA/test_500_full.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_500_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g5-500-档-mmlu",
+      "order": 48,
+      "group": "G5 500 档",
+      "title": "MMLU 能力",
+      "kind": "MMLU",
+      "budget": "500",
+      "models": [
+        "G5"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 500,
+      "status": "done",
+      "estimate_seconds": 360,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/mmlu_500.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_500_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:39:07+08:00",
+      "finished_at": "2026-11-12T12:40:38+08:00"
+    },
+    {
+      "id": "g5-500-档-arc",
+      "order": 49,
+      "group": "G5 500 档",
+      "title": "ARC-Challenge 能力",
+      "kind": "ARC",
+      "budget": "500",
+      "models": [
+        "G5"
+      ],
+      "item_count": 300,
+      "steps_total": 300,
+      "steps_done": 300,
+      "status": "done",
+      "estimate_seconds": 240,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/arc_challenge_300.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_500_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:40:38+08:00",
+      "finished_at": "2026-11-12T12:41:32+08:00"
+    },
+    {
+      "id": "g5-500-档-ifeval",
+      "order": 50,
+      "group": "G5 500 档",
+      "title": "IFEval 指令遵循",
+      "kind": "IFEval",
+      "budget": "500",
+      "models": [
+        "G5"
+      ],
+      "item_count": 541,
+      "steps_total": 541,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 1200,
+      "data_file": "IF_DATA/eval_benchmarks/ifeval_541.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_500_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g5-2000-档-lcwr",
+      "order": 51,
+      "group": "G5 2000 档",
+      "title": "LCWR 主集摘要",
+      "kind": "LCWR",
+      "budget": "2000",
+      "models": [
+        "G5"
+      ],
+      "item_count": 200,
+      "steps_total": 200,
+      "steps_done": 200,
+      "status": "done",
+      "estimate_seconds": 180,
+      "data_file": "SUMMARY_DATA/test_200_main.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_2000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:41:32+08:00",
+      "finished_at": "2026-11-12T12:42:41+08:00"
+    },
+    {
+      "id": "g5-2000-档-sens",
+      "order": 52,
+      "group": "G5 2000 档",
+      "title": "扩展敏感性摘要",
+      "kind": "SENS",
+      "budget": "2000",
+      "models": [
+        "G5"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 420,
+      "data_file": "SUMMARY_DATA/test_500_full.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_2000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g5-2000-档-mmlu",
+      "order": 53,
+      "group": "G5 2000 档",
+      "title": "MMLU 能力",
+      "kind": "MMLU",
+      "budget": "2000",
+      "models": [
+        "G5"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 500,
+      "status": "done",
+      "estimate_seconds": 360,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/mmlu_500.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_2000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:42:41+08:00",
+      "finished_at": "2026-11-12T12:44:15+08:00"
+    },
+    {
+      "id": "g5-2000-档-arc",
+      "order": 54,
+      "group": "G5 2000 档",
+      "title": "ARC-Challenge 能力",
+      "kind": "ARC",
+      "budget": "2000",
+      "models": [
+        "G5"
+      ],
+      "item_count": 300,
+      "steps_total": 300,
+      "steps_done": 300,
+      "status": "done",
+      "estimate_seconds": 240,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/arc_challenge_300.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_2000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:44:15+08:00",
+      "finished_at": "2026-11-12T12:45:09+08:00"
+    },
+    {
+      "id": "g5-2000-档-ifeval",
+      "order": 55,
+      "group": "G5 2000 档",
+      "title": "IFEval 指令遵循",
+      "kind": "IFEval",
+      "budget": "2000",
+      "models": [
+        "G5"
+      ],
+      "item_count": 541,
+      "steps_total": 541,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 1200,
+      "data_file": "IF_DATA/eval_benchmarks/ifeval_541.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_2000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g5-10000-档-lcwr",
+      "order": 56,
+      "group": "G5 10000 档",
+      "title": "LCWR 主集摘要",
+      "kind": "LCWR",
+      "budget": "10000",
+      "models": [
+        "G5"
+      ],
+      "item_count": 200,
+      "steps_total": 200,
+      "steps_done": 200,
+      "status": "done",
+      "estimate_seconds": 180,
+      "data_file": "SUMMARY_DATA/test_200_main.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_10000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:45:09+08:00",
+      "finished_at": "2026-11-12T12:46:12+08:00"
+    },
+    {
+      "id": "g5-10000-档-sens",
+      "order": 57,
+      "group": "G5 10000 档",
+      "title": "扩展敏感性摘要",
+      "kind": "SENS",
+      "budget": "10000",
+      "models": [
+        "G5"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 420,
+      "data_file": "SUMMARY_DATA/test_500_full.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_10000_seed1337/eval/",
+      "message": "还没开始。"
+    },
+    {
+      "id": "g5-10000-档-mmlu",
+      "order": 58,
+      "group": "G5 10000 档",
+      "title": "MMLU 能力",
+      "kind": "MMLU",
+      "budget": "10000",
+      "models": [
+        "G5"
+      ],
+      "item_count": 500,
+      "steps_total": 500,
+      "steps_done": 500,
+      "status": "done",
+      "estimate_seconds": 360,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/mmlu_500.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_10000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:46:12+08:00",
+      "finished_at": "2026-11-12T12:47:43+08:00"
+    },
+    {
+      "id": "g5-10000-档-arc",
+      "order": 59,
+      "group": "G5 10000 档",
+      "title": "ARC-Challenge 能力",
+      "kind": "ARC",
+      "budget": "10000",
+      "models": [
+        "G5"
+      ],
+      "item_count": 300,
+      "steps_total": 300,
+      "steps_done": 300,
+      "status": "done",
+      "estimate_seconds": 240,
+      "data_file": "SUMMARY_DATA/eval_benchmarks/arc_challenge_300.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_10000_seed1337/eval/",
+      "message": "完成",
+      "started_at": "2026-11-12T12:47:43+08:00",
+      "finished_at": "2026-11-12T12:48:44+08:00"
+    },
+    {
+      "id": "g5-10000-档-ifeval",
+      "order": 60,
+      "group": "G5 10000 档",
+      "title": "IFEval 指令遵循",
+      "kind": "IFEval",
+      "budget": "10000",
+      "models": [
+        "G5"
+      ],
+      "item_count": 541,
+      "steps_total": 541,
+      "steps_done": 0,
+      "status": "waiting",
+      "estimate_seconds": 1200,
+      "data_file": "IF_DATA/eval_benchmarks/ifeval_541.jsonl",
+      "output_dir": "03_runs/G5_stage2_sft_10000_seed1337/eval/",
+      "message": "还没开始。"
+    }
+  ]
+}

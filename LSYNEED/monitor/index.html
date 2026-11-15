@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>摘要数据监控</title>
+  <style>
+    :root {
+      --bg: #efe6d6;
+      --ink: #241c16;
+      --muted: #6f6256;
+      --card: #fffaf3;
+      --line: #e2d3c0;
+      --track: #eadfce;
+      --ok: #0f6b56;
+      --run: #b4532a;
+      --wait: #8d7b68;
+      --bad: #9d2c2c;
+      --merge: #8a5a12;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, #f7f1e6 0%, transparent 55%),
+        var(--bg);
+      font: 16px/1.5 "Segoe UI", "Microsoft YaHei", sans-serif;
+    }
+    main { width: min(1080px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 64px; }
+    header { display: flex; justify-content: space-between; gap: 24px; align-items: flex-end; }
+    h1 { margin: 0; font-size: 34px; font-weight: 650; letter-spacing: -0.03em; }
+    .sub { margin: 6px 0 0; color: var(--muted); }
+    .pill {
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 999px;
+      padding: 8px 14px;
+      white-space: nowrap;
+    }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 22px 0 14px; }
+    .stat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; }
+    .stat span { display: block; color: var(--muted); font-size: 13px; }
+    .stat strong { display: block; margin-top: 4px; font-size: 28px; letter-spacing: -0.03em; }
+    .overall { height: 10px; background: var(--track); border-radius: 999px; overflow: hidden; margin: 8px 0 22px; }
+    .overall i { display: block; height: 100%; width: 0; background: var(--ok); }
+    .note { color: var(--muted); font-size: 14px; margin: 0 0 22px; }
+    section { margin-top: 18px; }
+    h2 { margin: 0 0 8px; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .task {
+      width: 100%;
+      text-align: left;
+      font: inherit;
+      color: inherit;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin: 0 0 8px;
+      cursor: pointer;
+    }
+    .task:hover { border-color: #c9b59d; }
+    .row { display: grid; grid-template-columns: 250px 1fr 88px 108px; gap: 14px; align-items: center; }
+    .name { font-weight: 650; }
+    .meta { color: var(--muted); font-size: 13px; }
+    .bar { height: 8px; background: var(--track); border-radius: 999px; overflow: hidden; margin-top: 6px; }
+    .bar i { display: block; height: 100%; width: 0; background: var(--wait); }
+    .task[data-status="running"] .bar i { background: var(--run); }
+    .task[data-status="merging"] .bar i { background: var(--merge); }
+    .task[data-status="done"] .bar i { background: var(--ok); }
+    .task[data-status="failed"] .bar i { background: var(--bad); }
+    .pct, .eta { text-align: right; font-variant-numeric: tabular-nums; }
+    .eta { color: var(--muted); font-size: 14px; }
+    .badge { display: inline-block; min-width: 42px; text-align: center; border-radius: 999px; padding: 0 7px; font-size: 12px; margin-right: 6px; }
+    .SFT, .MMLU { background: #e5f2ee; color: var(--ok); }
+    .DPO, .ARC { background: #f8eadf; color: var(--run); }
+    .LCWR { background: #efe6f6; color: #5c3d78; }
+    .SENS { background: #e7eef8; color: #234e78; }
+    .IFEval { background: #f3eee4; color: #6a5428; }
+    h2.chapter {
+      margin: 42px 0 6px;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      text-transform: none;
+      color: var(--ink);
+      font-weight: 650;
+    }
+    h2.chapter.top { margin-top: 0; }
+    table.grid {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 0 0 18px;
+    }
+    table.grid th, table.grid td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    table.grid th:first-child, table.grid td:first-child { text-align: left; }
+    table.grid tr:last-child td { border-bottom: 0; }
+    .charts { margin: 8px 0 10px; }
+    .chart-legend { display: flex; flex-wrap: wrap; gap: 14px; margin: 4px 0 8px; }
+    .chart-legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .swatch { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+    .chart-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px 16px 8px;
+      margin-top: 12px;
+    }
+    .chart-card h3 { margin: 0 0 4px; font-size: 22px; font-weight: 650; }
+    .charts svg { width: 100%; height: auto; display: block; }
+    .dataset-break { margin-top: 56px; }
+    .chart-table { width: 100%; border-collapse: collapse; margin: 4px 0 8px; font-variant-numeric: tabular-nums; font-size: 14px; }
+    .chart-table th, .chart-table td { text-align: right; padding: 4px 8px; border-top: 1px solid var(--line); }
+    .chart-table th:first-child, .chart-table td:first-child { text-align: left; }
+    .chart-table th { color: var(--muted); font-weight: 500; }
+    .detail { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+    .task[aria-expanded="true"] .detail { display: block; }
+    .err { color: var(--bad); }
+    @media (max-width: 800px) {
+      .stats { grid-template-columns: 1fr 1fr; }
+      .row { grid-template-columns: 1fr 72px; }
+      .eta { display: none; }
+      header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h2 class="chapter top">摘要数据-种子42训练</h2>
+        <p class="sub" id="headline">正在读取状态</p>
+      </div>
+      <div class="pill" id="phase">未连接</div>
+    </header>
+    <div class="stats">
+      <div class="stat"><span>任务</span><strong id="done">–</strong></div>
+      <div class="stat"><span>总进度</span><strong id="percent">–</strong></div>
+      <div class="stat"><span>预计还要</span><strong id="remain">–</strong></div>
+      <div class="stat"><span>已经跑了</span><strong id="elapsed">–</strong></div>
+    </div>
+    <div class="overall" aria-hidden="true"><i id="overall-bar"></i></div>
+    <p class="note" id="note"></p>
+    <div id="groups"></div>
+
+    <h2 class="chapter">摘要数据-种子42评测</h2>
+    <p class="sub" id="eval-headline">正在读取评测表</p>
+    <div class="stats">
+      <div class="stat"><span>评测项</span><strong id="eval-done">–</strong></div>
+      <div class="stat"><span>总进度</span><strong id="eval-percent">–</strong></div>
+      <div class="stat"><span>预计还要</span><strong id="eval-remain">–</strong></div>
+      <div class="stat"><span>已经跑了</span><strong id="eval-elapsed">–</strong></div>
+    </div>
+    <div class="overall" aria-hidden="true"><i id="eval-overall-bar"></i></div>
+    <p class="note" id="eval-note"></p>
+    <div id="eval-grid"></div>
+    <div id="eval-groups"></div>
+    <div class="charts" id="eval-charts"></div>
+
+    <h2 class="chapter">摘要数据-种子1337训练</h2>
+    <p class="sub" id="seed-1337-headline">正在读取种子表</p>
+    <div class="stats">
+      <div class="stat"><span>任务</span><strong id="seed-1337-done">–</strong></div>
+      <div class="stat"><span>总进度</span><strong id="seed-1337-percent">–</strong></div>
+      <div class="stat"><span>预计还要</span><strong id="seed-1337-remain">–</strong></div>
+      <div class="stat"><span>已经跑了</span><strong id="seed-1337-elapsed">–</strong></div>
+    </div>
+    <div class="overall" aria-hidden="true"><i id="seed-1337-overall-bar"></i></div>
+    <p class="note" id="seed-1337-note"></p>
+    <div id="seed-1337-groups"></div>
+
+    <h2 class="chapter">摘要数据-种子1337评测</h2>
+    <p class="sub" id="eval-1337-headline">正在读取评测表</p>
+    <div class="stats">
+      <div class="stat"><span>评测项</span><strong id="eval-1337-done">–</strong></div>
+      <div class="stat"><span>总进度</span><strong id="eval-1337-percent">–</strong></div>
+      <div class="stat"><span>预计还要</span><strong id="eval-1337-remain">–</strong></div>
+      <div class="stat"><span>已经跑了</span><strong id="eval-1337-elapsed">–</strong></div>
+    </div>
+    <div class="overall" aria-hidden="true"><i id="eval-1337-overall-bar"></i></div>
+    <p class="note" id="eval-1337-note"></p>
+    <div id="eval-1337-grid"></div>
+    <div id="eval-1337-groups"></div>
+    <div class="charts" id="eval-1337-charts"></div>
+
+    <h2 class="chapter">摘要数据-种子2024训练</h2>
+    <p class="sub" id="seed-2024-headline">正在读取种子表</p>
+    <div class="stats">
+      <div class="stat"><span>任务</span><strong id="seed-2024-done">–</strong></div>
+      <div class="stat"><span>总进度</span><strong id="seed-2024-percent">–</strong></div>
+      <div class="stat"><span>预计还要</span><strong id="seed-2024-remain">–</strong></div>
+      <div class="stat"><span>已经跑了</span><strong id="seed-2024-elapsed">–</strong></div>
+    </div>
+    <div class="overall" aria-hidden="true"><i id="seed-2024-overall-bar"></i></div>
+    <p class="note" id="seed-2024-note"></p>
+    <div id="seed-2024-groups"></div>
+
+    <h2 class="chapter">摘要数据-种子2024评测</h2>
+    <p class="sub" id="eval-2024-headline">正在读取评测表</p>
+    <div class="stats">
+      <div class="stat"><span>评测项</span><strong id="eval-2024-done">–</strong></div>
+      <div class="stat"><span>总进度</span><strong id="eval-2024-percent">–</strong></div>
+      <div class="stat"><span>预计还要</span><strong id="eval-2024-remain">–</strong></div>
+      <div class="stat"><span>已经跑了</span><strong id="eval-2024-elapsed">–</strong></div>
+    </div>
+    <div class="overall" aria-hidden="true"><i id="eval-2024-overall-bar"></i></div>
+    <p class="note" id="eval-2024-note"></p>
+    <div id="eval-2024-grid"></div>
+    <div id="eval-2024-groups"></div>
+    <div class="charts" id="eval-2024-charts"></div>
+
+    <header class="dataset-break">
+      <div>
+        <h2 class="chapter top">IF数据-种子42训练</h2>
+        <p class="sub" id="if-headline">还没开始</p>
+      </div>
+      <div class="pill" id="if-phase">未开始</div>
+    </header>
+    <div class="stats">
+      <div class="stat"><span>任务</span><strong id="if-done">–</strong></div>
+      <div class="stat"><span>总进度</span><strong id="if-percent">–</strong></div>
+      <div class="stat"><span>预计还要</span><strong id="if-remain">–</strong></div>
+      <div class="stat"><span>已经跑了</span><strong id="if-elapsed">–</strong></div>
+    </div>
+    <div class="overall" aria-hidden="true"><i id="if-overall-bar"></i></div>
+    <p class="note" id="if-note"></p>
+    <div id="if-groups"></div>
+
+    <h2 class="chapter">IF数据-种子42评测</h2>
+    <p class="sub" id="if-eval-headline">还没开始</p>
+    <div class="stats">
+      <div class="stat"><span>评测项</span><strong id="if-eval-done">–</strong></div>
+      <div class="stat"><span>总进度</span><strong id="if-eval-percent">–</strong></div>
+      <div class="stat"><span>预计还要</span><strong id="if-eval-remain">–</strong></div>
+      <div class="stat"><span>已经跑了</span><strong id="if-eval-elapsed">–</strong></div>
+    </div>
+    <div class="overall" aria-hidden="true"><i id="if-eval-overall-bar"></i></div>
+    <p class="note" id="if-eval-note"></p>
+    <div id="if-eval-grid"></div>
+    <div id="if-eval-groups"></div>
+    <div class="charts" id="if-eval-charts"></div>
+
+    <h2 class="chapter">IF数据-种子1337训练</h2>
+    <p class="sub" id="if-seed-1337-headline">还没开始</p>
+    <div class="stats">
+      <div class="stat"><span>任务</span><strong id="if-seed-1337-done">–</strong></div>
+      <div class="stat"><span>总进度</span><strong id="if-seed-1337-percent">–</strong></div>
+      <div class="stat"><span>预计还要</span><strong id="if-seed-1337-remain">–</strong></div>
+      <div class="stat"><span>已经跑了</span><strong id="if-seed-1337-elapsed">–</strong></div>
+    </div>
+    <div class="overall" aria-hidden="true"><i id="if-seed-1337-overall-bar"></i></div>
+    <p class="note" id="if-seed-1337-note"></p>
+    <div id="if-seed-1337-groups"></div>
+
+    <h2 class="chapter">IF数据-种子1337评测</h2>
+    <p class="sub" id="if-eval-1337-headline">还没开始</p>
+    <div class="stats">
+      <div class="stat"><span>评测项</span><strong id="if-eval-1337-done">–</strong></div>
+      <div class="stat"><span>总进度</span><strong id="if-eval-1337-percent">–</strong></div>
+      <div class="stat"><span>预计还要</span><strong id="if-eval-1337-remain">–</strong></div>
+      <div class="stat"><span>已经跑了</span><strong id="if-eval-1337-elapsed">–</strong></div>
+    </div>
+    <div class="overall" aria-hidden="true"><i id="if-eval-1337-overall-bar"></i></div>
+    <p class="note" id="if-eval-1337-note"></p>
+    <div id="if-eval-1337-grid"></div>
+    <div id="if-eval-1337-groups"></div>
+    <div class="charts" id="if-eval-1337-charts"></div>
+
+    <h2 class="chapter">IF数据-种子2024训练</h2>
+    <p class="sub" id="if-seed-2024-headline">还没开始</p>
+    <div class="stats">
+      <div class="stat"><span>任务</span><strong id="if-seed-2024-done">–</strong></div>
+      <div class="stat"><span>总进度</span><strong id="if-seed-2024-percent">–</strong></div>
+      <div class="stat"><span>预计还要</span><strong id="if-seed-2024-remain">–</strong></div>
+      <div class="stat"><span>已经跑了</span><strong id="if-seed-2024-elapsed">–</strong></div>
+    </div>
+    <div class="overall" aria-hidden="true"><i id="if-seed-2024-overall-bar"></i></div>
+    <p class="note" id="if-seed-2024-note"></p>
+    <div id="if-seed-2024-groups"></div>
+
+    <h2 class="chapter">IF数据-种子2024评测</h2>
+    <p class="sub" id="if-eval-2024-headline">还没开始</p>
+    <div class="stats">
+      <div class="stat"><span>评测项</span><strong id="if-eval-2024-done">–</strong></div>
+      <div class="stat"><span>总进度</span><strong id="if-eval-2024-percent">–</strong></div>
+      <div class="stat"><span>预计还要</span><strong id="if-eval-2024-remain">–</strong></div>
+      <div class="stat"><span>已经跑了</span><strong id="if-eval-2024-elapsed">–</strong></div>
+    </div>
+    <div class="overall" aria-hidden="true"><i id="if-eval-2024-overall-bar"></i></div>
+    <p class="note" id="if-eval-2024-note"></p>
+    <div id="if-eval-2024-grid"></div>
+    <div id="if-eval-2024-groups"></div>
+    <div class="charts" id="if-eval-2024-charts"></div>
+  </main>
+  <script>
+    const labels = { waiting: "等待", running: "训练中", merging: "合并中", done: "完成", failed: "失败", not_started: "未开始" };
+
+    function duration(seconds) {
+      seconds = Math.max(0, Math.round(seconds));
+      const days = Math.floor(seconds / 86400);
+      const hours = Math.floor((seconds % 86400) / 3600);
+      const mins = Math.floor((seconds % 3600) / 60);
+      if (days > 0) return hours > 0 ? `${days} 天 ${hours} 小时` : `${days} 天`;
+      if (hours > 0) return mins > 0 ? `${hours} 小时 ${mins} 分` : `${hours} 小时`;
+      return `${mins} 分钟`;
+    }
+
+    function percentOf(task) {
+      if (task.status === "done" || task.status === "merging") return 100;
+      if (!task.steps_total) return 0;
+      return Math.max(0, Math.min(100, (task.steps_done / task.steps_total) * 100));
+    }
+
+    function remaining(task) {
+      if (task.status === "done" || task.status === "failed") return 0;
+      if (task.status === "merging") return 45;
+      if (task.status === "running" && task.step_seconds && task.steps_done > 0) {
+        return (task.steps_total - task.steps_done) * task.step_seconds + 45;
+      }
+      return task.estimate_seconds * (1 - percentOf(task) / 100);
+    }
+
+    function elementId(prefix, name) {
+      return prefix ? `${prefix}-${name}` : name;
+    }
+
+    function notStartedCopy(tasks) {
+      return tasks.map((task) => ({
+        ...task,
+        id: `if-${task.id}`,
+        status: "waiting",
+        steps_done: 0,
+        loss: null,
+        message: "还没开始。",
+        started_at: null,
+        finished_at: null,
+      }));
+    }
+
+    function render(data, prefix = "", placeholder = false) {
+      const el = (name) => document.getElementById(elementId(prefix, name));
+      el("headline").textContent = placeholder ? "还没开始" : data.headline;
+      el("phase").textContent = placeholder ? labels.not_started : (labels[data.phase] || data.phase);
+      el("note").textContent = placeholder
+        ? "IF 数据还没开始训练。任务排列和上面的摘要数据一样。"
+        : `${data.gpu}。${data.estimate_note}`;
+      const tasks = data.tasks;
+      const done = tasks.filter((task) => task.status === "done").length;
+      const weight = tasks.reduce((sum, task) => sum + task.estimate_seconds, 0);
+      const finishedWeight = tasks.reduce((sum, task) => sum + task.estimate_seconds * (percentOf(task) / 100), 0);
+      const overall = weight ? (finishedWeight / weight) * 100 : 0;
+      el("done").textContent = `${done} / ${tasks.length}`;
+      el("percent").textContent = `${overall.toFixed(1)}%`;
+      el("remain").textContent = duration(tasks.reduce((sum, task) => sum + remaining(task), 0));
+      const starts = tasks.map((task) => task.started_at).filter(Boolean).map((value) => Date.parse(value));
+      const finishes = tasks.map((task) => task.finished_at).filter(Boolean).map((value) => Date.parse(value));
+      const allDone = tasks.length > 0 && tasks.every((task) => task.status === "done");
+      const elapsedEnd = allDone && finishes.length ? Math.max(...finishes) : Date.now();
+      el("elapsed").textContent = starts.length ? duration((elapsedEnd - Math.min(...starts)) / 1000) : "0 分钟";
+      el("overall-bar").style.width = `${overall}%`;
+
+      const host = el("groups");
+      const openId = host.querySelector(".task[aria-expanded='true']")?.dataset.id;
+      host.innerHTML = "";
+      const groups = [...new Set(tasks.map((task) => task.group))];
+      for (const group of groups) {
+        const section = document.createElement("section");
+        const heading = document.createElement("h2");
+        heading.textContent = group;
+        section.appendChild(heading);
+        for (const task of tasks.filter((item) => item.group === group)) {
+          const pct = percentOf(task);
+          const button = document.createElement("button");
+          button.className = "task";
+          button.dataset.id = task.id;
+          button.dataset.status = task.status;
+          button.setAttribute("aria-expanded", task.id === openId ? "true" : "false");
+          button.innerHTML = `
+            <div class="row">
+              <div>
+                <div class="name">${task.order}. ${task.title}</div>
+                <div class="meta"><span class="badge ${task.kind}">${task.kind}</span>${task.group === "M0" ? "预热" : task.budget + " 档"} · ${task.rows} 条 · ${task.steps_total} 步</div>
+              </div>
+              <div>
+                <div class="meta">${labels[task.status] || task.status} · ${task.steps_done} / ${task.steps_total} 步${task.loss == null ? "" : ` · loss ${Number(task.loss).toFixed(3)}`}</div>
+                <div class="bar"><i style="width:${pct}%"></i></div>
+              </div>
+              <div class="pct">${pct.toFixed(1)}%</div>
+              <div class="eta">${duration(remaining(task))}</div>
+            </div>
+            <div class="detail">
+              <div>数据：${task.dataset || "SUMMARY_DATA"}/${task.data_file}</div>
+              <div>平均长度：${task.avg_tokens} token · 这一项预计 ${duration(task.estimate_seconds)}</div>
+              <div>结果目录：${task.output_dir}</div>
+              <div class="${task.status === "failed" ? "err" : ""}">${task.message || ""}</div>
+            </div>`;
+          button.addEventListener("click", () => {
+            button.setAttribute("aria-expanded", button.getAttribute("aria-expanded") === "true" ? "false" : "true");
+          });
+          section.appendChild(button);
+        }
+        host.appendChild(section);
+      }
+    }
+
+    function seedHeadline(name, tasks) {
+      const running = tasks.find((task) => task.status === "running" || task.status === "merging");
+      const failed = tasks.find((task) => task.status === "failed");
+      const done = tasks.filter((task) => task.status === "done").length;
+      if (running) return `正在训练：${running.title}`;
+      if (failed) return `停在：${failed.title}`;
+      if (tasks.length > 0 && done === tasks.length) return `${name} 的 ${tasks.length} 个任务都跑完了`;
+      if (done > 0) return `${name} 进行中：${done} / ${tasks.length} 项已完成`;
+      return `${name} 还没开始`;
+    }
+
+    function renderSeedBlock(prefix, name, tasks, placeholder = false) {
+      document.getElementById(`${prefix}-headline`).textContent = seedHeadline(name, tasks);
+      const weight = tasks.reduce((sum, task) => sum + task.estimate_seconds, 0);
+      const done = tasks.filter((task) => task.status === "done").length;
+      const finishedWeight = tasks.reduce((sum, task) => sum + task.estimate_seconds * (percentOf(task) / 100), 0);
+      const overall = weight ? (finishedWeight / weight) * 100 : 0;
+      document.getElementById(`${prefix}-done`).textContent = `${done} / ${tasks.length}`;
+      document.getElementById(`${prefix}-percent`).textContent = `${overall.toFixed(1)}%`;
+      document.getElementById(`${prefix}-remain`).textContent = duration(tasks.reduce((sum, task) => sum + remaining(task), 0));
+      const starts = tasks.map((task) => task.started_at).filter(Boolean).map((value) => Date.parse(value));
+      const finishes = tasks.map((task) => task.finished_at).filter(Boolean).map((value) => Date.parse(value));
+      const allDone = tasks.length > 0 && tasks.every((task) => task.status === "done");
+      const elapsedEnd = allDone && finishes.length ? Math.max(...finishes) : (starts.length ? Date.now() : null);
+      document.getElementById(`${prefix}-elapsed`).textContent = elapsedEnd == null ? "0 分钟" : duration((elapsedEnd - Math.min(...starts)) / 1000);
+      document.getElementById(`${prefix}-overall-bar`).style.width = `${overall}%`;
+      document.getElementById(`${prefix}-note`).textContent = placeholder
+        ? `${tasks.length} 项还没开始。排列和摘要数据一样：G2、G3、G4、G5 的 500、2000、10000 档。G4 和 G5 各有两个阶段。`
+        : `${tasks.length} 项：G2、G3、G4、G5 的 500、2000、10000 档。G4 和 G5 各有两个阶段。M0 只在种子 42。`;
+
+      const host = document.getElementById(`${prefix}-groups`);
+      const openId = host.querySelector(".task[aria-expanded='true']")?.dataset.id;
+      host.innerHTML = "";
+      tasks.forEach((task, index) => {
+        const pct = percentOf(task);
+        const button = document.createElement("button");
+        button.className = "task";
+        button.dataset.id = task.id;
+        button.dataset.status = task.status;
+        button.setAttribute("aria-expanded", task.id === openId ? "true" : "false");
+        button.innerHTML = `
+          <div class="row">
+            <div>
+              <div class="name">${index + 1}. ${task.title}</div>
+              <div class="meta"><span class="badge ${task.kind}">${task.kind}</span>${task.budget} 档 · ${task.rows} 条 · ${task.steps_total} 步</div>
+            </div>
+            <div>
+              <div class="meta">${labels[task.status] || task.status} · ${task.steps_done} / ${task.steps_total} 步${task.loss == null ? "" : ` · loss ${Number(task.loss).toFixed(3)}`}</div>
+              <div class="bar"><i style="width:${pct}%"></i></div>
+            </div>
+            <div class="pct">${pct.toFixed(1)}%</div>
+            <div class="eta">${duration(remaining(task))}</div>
+          </div>
+          <div class="detail">
+            <div>数据：${task.dataset || "SUMMARY_DATA"}/${task.data_file}</div>
+            <div>平均长度：${task.avg_tokens} token · 这一项预计 ${duration(task.estimate_seconds)}</div>
+            <div>结果目录：${task.output_dir}</div>
+            <div class="${task.status === "failed" ? "err" : ""}">${task.message || ""}</div>
+          </div>`;
+        button.addEventListener("click", () => {
+          button.setAttribute("aria-expanded", button.getAttribute("aria-expanded") === "true" ? "false" : "true");
+        });
+        host.appendChild(button);
+      });
+    }
+
+    function renderSeeds(data) {
+      renderSeedBlock("seed-1337", "摘要数据-种子1337", data.tasks.filter((task) => task.group === "种子 1337"));
+      renderSeedBlock("seed-2024", "摘要数据-种子2024", data.tasks.filter((task) => task.group === "种子 2024"));
+    }
+
+    function renderIfSeeds(data) {
+      renderSeedBlock("if-seed-1337", "IF数据-种子1337", data.tasks.filter((task) => task.group === "种子 1337"));
+      renderSeedBlock("if-seed-2024", "IF数据-种子2024", data.tasks.filter((task) => task.group === "种子 2024"));
+    }
+
+    const keptEvalKinds = ["LCWR", "MMLU", "ARC"];
+    const evalKindNames = { LCWR: "LCWR", MMLU: "MMLU", ARC: "ARC 字母 / 全文" };
+    const evalTitles = { LCWR: "LCWR", MMLU: "MMLU", ARC: "ARC 字母 / ARC 全文" };
+
+    const ifEvalOptions = {
+      kinds: ["IFEval", "MMLU", "ARC"],
+      kindNames: { IFEval: "IFEval", MMLU: "MMLU", ARC: "ARC 字母 / 全文" },
+      titles: { IFEval: "IFEval", MMLU: "MMLU", ARC: "ARC 字母 / ARC 全文" },
+      note: "每个模型做 IFEval、MMLU、ARC。ARC 字母和 ARC 全文是同一次评测。",
+    };
+
+    function ifEvalBoard(data) {
+      return {
+        tasks: data.tasks
+          .filter((task) => keptEvalKinds.includes(task.kind))
+          .map((task) => ({
+            ...task,
+            id: `if-${task.id}`,
+            kind: task.kind === "LCWR" ? "IFEval" : task.kind,
+            status: "waiting",
+            steps_done: 0,
+            message: "还没开始。",
+            started_at: null,
+            finished_at: null,
+          })),
+      };
+    }
+
+    function renderEval(prefix, data, options = {}) {
+      const kinds = options.kinds || keptEvalKinds;
+      const kindNames = options.kindNames || evalKindNames;
+      const titles = options.titles || evalTitles;
+      const tasks = data.tasks.filter((task) => kinds.includes(task.kind));
+      const done = tasks.filter((task) => task.status === "done").length;
+      const allKeptDone = tasks.length > 0 && done === tasks.length;
+      document.getElementById(`${prefix}-headline`).textContent = allKeptDone
+        ? `${tasks.length} 项评测都跑完了`
+        : done > 0
+          ? `评测进行中：${done} / ${tasks.length} 项已完成`
+          : "还没开始";
+      document.getElementById(`${prefix}-note`).textContent = options.note ||
+        "只保留 LCWR、MMLU、ARC 字母和 ARC 全文。LCWR 还没有胜率，图的最左边留着空位。";
+      const weight = tasks.reduce((sum, task) => sum + task.estimate_seconds, 0);
+      const finishedWeight = tasks.reduce((sum, task) => sum + task.estimate_seconds * (percentOf(task) / 100), 0);
+      const overall = weight ? (finishedWeight / weight) * 100 : 0;
+      document.getElementById(`${prefix}-done`).textContent = `${done} / ${tasks.length}`;
+      document.getElementById(`${prefix}-percent`).textContent = `${overall.toFixed(1)}%`;
+      document.getElementById(`${prefix}-remain`).textContent = duration(tasks.reduce((sum, task) => sum + remaining(task), 0));
+      const starts = tasks.map((task) => task.started_at).filter(Boolean).map((value) => Date.parse(value));
+      const finishes = tasks.map((task) => task.finished_at).filter(Boolean).map((value) => Date.parse(value));
+      const allDone = tasks.length > 0 && tasks.every((task) => task.status === "done");
+      const elapsedEnd = allDone && finishes.length ? Math.max(...finishes) : (starts.length ? Date.now() : null);
+      document.getElementById(`${prefix}-elapsed`).textContent = elapsedEnd == null ? "0 分钟" : duration((elapsedEnd - Math.min(...starts)) / 1000);
+      document.getElementById(`${prefix}-overall-bar`).style.width = `${overall}%`;
+
+      const groups = [...new Set(tasks.map((task) => task.group))];
+      const grid = document.createElement("table");
+      grid.className = "grid";
+      const head = document.createElement("tr");
+      head.innerHTML = `<th>模型</th>${kinds.map((kind) => `<th>${kindNames[kind]}</th>`).join("")}<th>小计</th>`;
+      grid.appendChild(head);
+      for (const group of groups) {
+        const row = document.createElement("tr");
+        const cells = kinds.map((kind) => {
+          const task = tasks.find((item) => item.group === group && item.kind === kind);
+          return `<td>${task ? duration(task.estimate_seconds) : "–"}</td>`;
+        });
+        const subtotal = tasks.filter((task) => task.group === group).reduce((sum, task) => sum + task.estimate_seconds, 0);
+        row.innerHTML = `<td>${group}</td>${cells.join("")}<td>${duration(subtotal)}</td>`;
+        grid.appendChild(row);
+      }
+      const totalRow = document.createElement("tr");
+      const totals = kinds.map((kind) => duration(tasks.filter((task) => task.kind === kind).reduce((sum, task) => sum + task.estimate_seconds, 0)));
+      totalRow.innerHTML = `<td>合计</td>${totals.map((value) => `<td>${value}</td>`).join("")}<td>${duration(weight)}</td>`;
+      grid.appendChild(totalRow);
+      const gridHost = document.getElementById(`${prefix}-grid`);
+      gridHost.innerHTML = "";
+      gridHost.appendChild(grid);
+
+      const evalLabels = { ...labels, running: "评测中" };
+      const host = document.getElementById(`${prefix}-groups`);
+      const openId = host.querySelector(".task[aria-expanded='true']")?.dataset.id;
+      host.innerHTML = "";
+      for (const group of groups) {
+        const section = document.createElement("section");
+        const heading = document.createElement("h2");
+        heading.textContent = group;
+        section.appendChild(heading);
+        for (const task of tasks.filter((item) => item.group === group)) {
+          const pct = percentOf(task);
+          const shownTitle = titles[task.kind] || task.title;
+          const button = document.createElement("button");
+          button.className = "task";
+          button.dataset.id = task.id;
+          button.dataset.status = task.status;
+          button.setAttribute("aria-expanded", task.id === openId ? "true" : "false");
+          button.innerHTML = `
+            <div class="row">
+              <div>
+                <div class="name">${tasks.indexOf(task) + 1}. ${shownTitle}</div>
+                <div class="meta"><span class="badge ${task.kind}">${task.kind}</span>${task.models.join("、")} · ${task.item_count} 题</div>
+              </div>
+              <div>
+                <div class="meta">${evalLabels[task.status] || task.status} · ${task.steps_done} / ${task.steps_total} 题</div>
+                <div class="bar"><i style="width:${pct}%"></i></div>
+              </div>
+              <div class="pct">${pct.toFixed(1)}%</div>
+              <div class="eta">${duration(remaining(task))}</div>
+            </div>
+            <div class="detail">
+              <div>数据：${task.data_file}</div>
+              <div>这一项预计 ${duration(task.estimate_seconds)}</div>
+              <div>结果目录：${task.output_dir}</div>
+              <div class="${task.status === "failed" ? "err" : ""}">${task.message || ""}</div>
+            </div>`;
+          button.addEventListener("click", () => {
+            button.setAttribute("aria-expanded", button.getAttribute("aria-expanded") === "true" ? "false" : "true");
+          });
+          section.appendChild(button);
+        }
+        host.appendChild(section);
+      }
+    }
+
+    const chartArms = [
+      { name: "G2", color: "#0f6b56" },
+      { name: "G3", color: "#b4532a" },
+      { name: "G4", color: "#5c3d78" },
+      { name: "G5", color: "#234e78" },
+      { name: "M0", color: "#8d7b68" }
+    ];
+    const chartMetrics = [
+      { name: "LCWR", empty: true },
+      { name: "MMLU 字母" },
+      { name: "ARC 字母" },
+      { name: "ARC 全文" }
+    ];
+
+    function svgEl(name) {
+      return document.createElementNS("http://www.w3.org/2000/svg", name);
+    }
+
+    function drawBudgetChart(budget, arms, metrics = chartMetrics) {
+      const card = document.createElement("div");
+      card.className = "chart-card";
+      const heading = document.createElement("h3");
+      heading.textContent = budget.title;
+      card.appendChild(heading);
+      const W = 860;
+      const H = 340;
+      const left = 46;
+      const right = 12;
+      const top = 16;
+      const bottom = 36;
+      const plotW = W - left - right;
+      const plotH = H - top - bottom;
+      const yMax = 50;
+      const groupW = plotW / metrics.length;
+      const barW = 18;
+      const gap = 6;
+      const cluster = arms.length * barW + (arms.length - 1) * gap;
+      const yOf = (value) => top + (1 - value / yMax) * plotH;
+      const svg = svgEl("svg");
+      svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+      svg.setAttribute("role", "img");
+      svg.setAttribute("aria-label", `${budget.title}，最左边是还没有分数的 LCWR，后面是 MMLU 字母、ARC 字母、ARC 全文`);
+      for (let tick = 0; tick <= 50; tick += 10) {
+        const y = yOf(tick);
+        const line = svgEl("line");
+        line.setAttribute("x1", String(left));
+        line.setAttribute("x2", String(W - right));
+        line.setAttribute("y1", String(y));
+        line.setAttribute("y2", String(y));
+        line.setAttribute("stroke", tick === 0 ? "#241c16" : "#e2d3c0");
+        line.setAttribute("stroke-width", "1");
+        svg.appendChild(line);
+        const label = svgEl("text");
+        label.setAttribute("x", String(left - 8));
+        label.setAttribute("y", String(y + 4));
+        label.setAttribute("text-anchor", "end");
+        label.setAttribute("fill", "#6f6256");
+        label.setAttribute("font-size", "12");
+        label.textContent = String(tick);
+        svg.appendChild(label);
+      }
+      metrics.forEach((metric, metricIndex) => {
+        const groupX = left + metricIndex * groupW;
+        if (metric.empty) {
+          const placeholder = svgEl("text");
+          placeholder.setAttribute("x", String(groupX + groupW / 2));
+          placeholder.setAttribute("y", String(top + plotH / 2));
+          placeholder.setAttribute("text-anchor", "middle");
+          placeholder.setAttribute("fill", "#8d7b68");
+          placeholder.setAttribute("font-size", "13");
+          placeholder.textContent = "暂无";
+          svg.appendChild(placeholder);
+        } else {
+          const start = groupX + (groupW - cluster) / 2;
+          const scoreIndex = metricIndex - metrics.filter((item) => item.empty).length;
+          arms.forEach((arm, armIndex) => {
+            const value = budget.rows[arm.name][scoreIndex];
+            const x = start + armIndex * (barW + gap);
+            const y = yOf(value);
+            const base = yOf(0);
+            const rect = svgEl("rect");
+            rect.setAttribute("x", String(x));
+            rect.setAttribute("y", String(y));
+            rect.setAttribute("width", String(barW));
+            rect.setAttribute("height", String(Math.max(0, base - y)));
+            rect.setAttribute("fill", arm.color);
+            rect.setAttribute("rx", "2");
+            const title = svgEl("title");
+            title.textContent = `${arm.name} ${metric.name} ${Number(value).toFixed(1)}%`;
+            rect.appendChild(title);
+            svg.appendChild(rect);
+          });
+        }
+        const name = svgEl("text");
+        name.setAttribute("x", String(groupX + groupW / 2));
+        name.setAttribute("y", String(H - 12));
+        name.setAttribute("text-anchor", "middle");
+        name.setAttribute("fill", "#241c16");
+        name.setAttribute("font-size", "13");
+        name.textContent = metric.name;
+        svg.appendChild(name);
+      });
+      card.appendChild(svg);
+      const table = document.createElement("table");
+      table.className = "chart-table";
+      const head = document.createElement("tr");
+      head.innerHTML = `<th>模型</th>${metrics.map((metric) => `<th>${metric.name}</th>`).join("")}`;
+      table.appendChild(head);
+      arms.forEach((arm) => {
+        const cells = metrics.map((metric, metricIndex) => {
+          if (metric.empty) return "<td>—</td>";
+          const scoreIndex = metricIndex - metrics.filter((item) => item.empty).length;
+          return `<td>${Number(budget.rows[arm.name][scoreIndex]).toFixed(1)}</td>`;
+        });
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${arm.name}</td>${cells.join("")}`;
+        table.appendChild(row);
+      });
+      card.appendChild(table);
+      return card;
+    }
+
+    function renderBudgetCharts(hostId, payload, metrics = chartMetrics) {
+      const host = document.getElementById(hostId);
+      host.innerHTML = "";
+      if (!payload || !payload.ready) {
+        const rows = { G2: [], G3: [], G4: [], G5: [], M0: [] };
+        payload = {
+          ready: true,
+          budgets: ["500", "2000", "10000"].map((budget) => ({ title: `${budget} 档`, rows })),
+        };
+        metrics = metrics.map((metric) => ({ name: metric.name, empty: true }));
+      }
+      const arms = chartArms.filter((arm) => payload.budgets[0].rows[arm.name]);
+      const legend = document.createElement("div");
+      legend.className = "chart-legend";
+      arms.forEach((arm) => {
+        const item = document.createElement("span");
+        item.innerHTML = `<i class="swatch" style="background:${arm.color}"></i>${arm.name}`;
+        legend.appendChild(item);
+      });
+      host.appendChild(legend);
+      payload.budgets.forEach((budget) => host.appendChild(drawBudgetChart(budget, arms, metrics)));
+    }
+
+    const ifChartMetrics = [
+      { name: "IFEval" },
+      { name: "MMLU 字母" },
+      { name: "ARC 字母" },
+      { name: "ARC 全文" },
+    ];
+
+    let lastRaw = "";
+    let lastSeedRaw = "";
+    let lastEvalRaw = "";
+    let lastEval1337Raw = "";
+    let lastEval2024Raw = "";
+    let lastChartRaw = "";
+    async function tick() {
+      try {
+        const response = await fetch("status.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(String(response.status));
+        const raw = await response.text();
+        if (raw === lastRaw) return;
+        lastRaw = raw;
+        const training = JSON.parse(raw);
+        render(training);
+      } catch (error) {
+        if (!lastRaw) {
+          document.getElementById("headline").textContent = "读不到 status.json";
+          document.getElementById("phase").textContent = "未连接";
+        }
+      }
+    }
+    async function evalTick() {
+      try {
+        const response = await fetch("eval_status.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(String(response.status));
+        const raw = await response.text();
+        if (raw === lastEvalRaw) return;
+        lastEvalRaw = raw;
+        const board = JSON.parse(raw);
+        renderEval("eval", board);
+      } catch (error) {
+        if (!lastEvalRaw) document.getElementById("eval-headline").textContent = "读不到 eval_status.json";
+      }
+    }
+    async function evalSeedTick(prefix, fileName, previous, options) {
+      try {
+        const response = await fetch(fileName, { cache: "no-store" });
+        if (!response.ok) throw new Error(String(response.status));
+        const raw = await response.text();
+        if (raw === previous.value) return;
+        previous.value = raw;
+        const board = JSON.parse(raw);
+        renderEval(prefix, board, options || {});
+      } catch (error) {
+        if (!previous.value) document.getElementById(`${prefix}-headline`).textContent = `读不到 ${fileName}`;
+      }
+    }
+    async function seedTick() {
+      try {
+        const response = await fetch("seeds_status.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(String(response.status));
+        const raw = await response.text();
+        if (raw === lastSeedRaw) return;
+        lastSeedRaw = raw;
+        renderSeeds(JSON.parse(raw));
+      } catch (error) {
+        if (!lastSeedRaw) {
+          document.getElementById("seed-1337-headline").textContent = "读不到 seeds_status.json";
+          document.getElementById("seed-2024-headline").textContent = "读不到 seeds_status.json";
+        }
+      }
+    }
+    async function chartTick() {
+      try {
+        const response = await fetch("charts.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(String(response.status));
+        const raw = await response.text();
+        if (raw === lastChartRaw) return;
+        lastChartRaw = raw;
+        const data = JSON.parse(raw);
+        renderBudgetCharts("eval-charts", data["42"]);
+        renderBudgetCharts("eval-1337-charts", data["1337"]);
+        renderBudgetCharts("eval-2024-charts", data["2024"]);
+        renderBudgetCharts("if-eval-charts", data.if42, ifChartMetrics);
+        renderBudgetCharts("if-eval-1337-charts", data.if1337, ifChartMetrics);
+        renderBudgetCharts("if-eval-2024-charts", data.if2024, ifChartMetrics);
+      } catch (error) {
+        if (!lastChartRaw) document.getElementById("eval-charts").textContent = "读不到对比图";
+      }
+    }
+    const eval1337Raw = { value: lastEval1337Raw };
+    const eval2024Raw = { value: lastEval2024Raw };
+    const ifRaw = { value: "" };
+    const ifSeedRaw = { value: "" };
+    const ifEvalRaw = { value: "" };
+    const ifEval1337Raw = { value: "" };
+    const ifEval2024Raw = { value: "" };
+    async function ifTick() {
+      try {
+        const response = await fetch("if_status.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(String(response.status));
+        const raw = await response.text();
+        if (raw === ifRaw.value) return;
+        ifRaw.value = raw;
+        render(JSON.parse(raw), "if");
+      } catch (error) {
+        if (!ifRaw.value) document.getElementById("if-headline").textContent = "读不到 if_status.json";
+      }
+    }
+    async function ifSeedTick() {
+      try {
+        const response = await fetch("if_seeds_status.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(String(response.status));
+        const raw = await response.text();
+        if (raw === ifSeedRaw.value) return;
+        ifSeedRaw.value = raw;
+        renderIfSeeds(JSON.parse(raw));
+      } catch (error) {
+        if (!ifSeedRaw.value) {
+          document.getElementById("if-seed-1337-headline").textContent = "读不到 if_seeds_status.json";
+          document.getElementById("if-seed-2024-headline").textContent = "读不到 if_seeds_status.json";
+        }
+      }
+    }
+    tick();
+    ifTick();
+    seedTick();
+    ifSeedTick();
+    evalTick();
+    evalSeedTick("eval-1337", "eval_status_1337.json", eval1337Raw);
+    evalSeedTick("eval-2024", "eval_status_2024.json", eval2024Raw);
+    evalSeedTick("if-eval", "if_eval_status.json", ifEvalRaw, ifEvalOptions);
+    evalSeedTick("if-eval-1337", "if_eval_status_1337.json", ifEval1337Raw, ifEvalOptions);
+    evalSeedTick("if-eval-2024", "if_eval_status_2024.json", ifEval2024Raw, ifEvalOptions);
+    chartTick();
+    setInterval(tick, 2000);
+    setInterval(ifTick, 2000);
+    setInterval(seedTick, 2000);
+    setInterval(ifSeedTick, 2000);
+    setInterval(evalTick, 2000);
+    setInterval(() => evalSeedTick("eval-1337", "eval_status_1337.json", eval1337Raw), 2000);
+    setInterval(() => evalSeedTick("eval-2024", "eval_status_2024.json", eval2024Raw), 2000);
+    setInterval(() => evalSeedTick("if-eval", "if_eval_status.json", ifEvalRaw, ifEvalOptions), 2000);
+    setInterval(() => evalSeedTick("if-eval-1337", "if_eval_status_1337.json", ifEval1337Raw, ifEvalOptions), 2000);
+    setInterval(() => evalSeedTick("if-eval-2024", "if_eval_status_2024.json", ifEval2024Raw, ifEvalOptions), 2000);
+    setInterval(chartTick, 2000);
+  </script>
+</body>
+</html>
