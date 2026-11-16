@@ -81,7 +81,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", type=Path, required=True, help="JSON list of model/run entries")
     parser.add_argument("--base-model", default=DEFAULT_BASE_MODEL)
-    parser.add_argument("--judge-model", default="gpt-4o-mini")
+    parser.add_argument("--judge-model", default="deepseek-chat")
+    parser.add_argument("--judge-base-url", default="https://api.deepseek.com")
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--dtype", choices=("auto", "float16", "bfloat16", "float32"), default="auto")
     parser.add_argument("--skip-judge", action="store_true")
@@ -192,7 +193,7 @@ def main() -> None:
                        "--baseline", str(baseline_paths["tldr"]),
                        "--output", str(judge_path), "--arm", str(entry["arm"]),
                        "--budget", str(entry.get("budget", "")), "--seed", str(entry.get("seed", "")),
-                       "--judge-model", args.judge_model]
+                       "--judge-model", args.judge_model, "--judge-base-url", args.judge_base_url]
             run(command, args.dry_run)
 
     print("\nEvaluation matrix commands completed.")

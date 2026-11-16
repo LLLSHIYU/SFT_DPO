@@ -7,6 +7,7 @@ that already exist on disk.
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -14,6 +15,7 @@ from pathlib import Path
 
 SHARED = Path(__file__).resolve().parents[2]
 RUNS = SHARED / "03_runs"
+RESULTS = SHARED / "04_results"
 BUDGETS = ("500", "2000", "10000")
 ARMS = (
     ("G2", "G2_sft_{budget}"),
@@ -54,7 +56,23 @@ def m0_scores() -> list[float] | None:
     return read_scores(RUNS / folder, folder)
 
 
-def seed_charts(seed: str, baseline: list[float] | None) -> dict:
+def load_lcwr() -> dict[tuple[str, str, str], float]:
+    """Length-adjusted win rate vs M0, keyed by arm, budget, and seed."""
+    tables = sorted(RESULTS.glob("lcwr_v1.0_*.csv"))
+    if not tables:
+        return {}
+    found: dict[tuple[str, str, str], float] = {}
+    with tables[-1].open(encoding="utf-8-sig", newline="") as handle:
+        for row in csv.DictReader(handle):
+            seed = row.get("seed", "")
+            arm = row.get("arm", "")
+            if not arm or seed in {"", "MEAN"} or not row.get("lcwr"):
+                continue
+            found[(arm, row["budget"], seed)] = float(row["lcwr"])
+    return found
+
+
+def seed_charts(seed: str, baseline: list[float] | None, lcwr: dict[tuple[str, str, str], float]) -> dict:
     budgets = []
     for budget in BUDGETS:
         rows = {}
@@ -64,9 +82,11 @@ def seed_charts(seed: str, baseline: list[float] | None) -> dict:
             scores = read_scores(directory, directory.name)
             if scores is None:
                 return {"ready": False}
-            rows[arm] = scores
+            win = lcwr.get((arm, budget, seed))
+            rows[arm] = [None if win is None else percent(win), *scores]
         if baseline is not None:
-            rows["M0"] = baseline
+            # LCWR is a win rate against M0, so M0 itself is the 50% tie line.
+            rows["M0"] = [50.0 if lcwr else None, *baseline]
         budgets.append({"title": f"{budget} 档", "rows": rows})
     return {"ready": True, "budgets": budgets}
 
@@ -118,7 +138,8 @@ def if_seed_charts(seed: str, baseline: list[float] | None) -> dict:
 
 def build_charts() -> dict:
     baseline = m0_scores()
-    charts = {seed: seed_charts(seed, baseline) for seed in ("42", "1337", "2024")}
+    lcwr = load_lcwr()
+    charts = {seed: seed_charts(seed, baseline, lcwr) for seed in ("42", "1337", "2024")}
     if_baseline = if_m0_scores()
     charts["if42"] = if_seed_charts("42", if_baseline)
     charts["if1337"] = if_seed_charts("1337", if_baseline)

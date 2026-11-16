@@ -74,7 +74,7 @@
     .badge { display: inline-block; min-width: 42px; text-align: center; border-radius: 999px; padding: 0 7px; font-size: 12px; margin-right: 6px; }
     .SFT, .MMLU { background: #e5f2ee; color: var(--ok); }
     .DPO, .ARC { background: #f8eadf; color: var(--run); }
-    .LCWR { background: #efe6f6; color: #5c3d78; }
+    .LCWR, .JUDGE { background: #efe6f6; color: #5c3d78; }
     .SENS { background: #e7eef8; color: #234e78; }
     .IFEval { background: #f3eee4; color: #6a5428; }
     h2.chapter {
@@ -299,6 +299,19 @@
     <div id="if-eval-2024-grid"></div>
     <div id="if-eval-2024-groups"></div>
     <div class="charts" id="if-eval-2024-charts"></div>
+
+    <h2 class="chapter">LCWR 胜率裁判</h2>
+    <p class="sub" id="lcwr-judge-headline">正在读取裁判表</p>
+    <div class="stats">
+      <div class="stat"><span>模型</span><strong id="lcwr-judge-done">–</strong></div>
+      <div class="stat"><span>总进度</span><strong id="lcwr-judge-percent">–</strong></div>
+      <div class="stat"><span>预计还要</span><strong id="lcwr-judge-remain">–</strong></div>
+      <div class="stat"><span>已经跑了</span><strong id="lcwr-judge-elapsed">–</strong></div>
+    </div>
+    <div class="overall" aria-hidden="true"><i id="lcwr-judge-overall-bar"></i></div>
+    <p class="note" id="lcwr-judge-note"></p>
+    <div id="lcwr-judge-grid"></div>
+    <div id="lcwr-judge-groups"></div>
   </main>
   <script>
     const labels = { waiting: "等待", running: "训练中", merging: "合并中", done: "完成", failed: "失败", not_started: "未开始" };
@@ -488,8 +501,14 @@
     }
 
     const keptEvalKinds = ["LCWR", "MMLU", "ARC"];
-    const evalKindNames = { LCWR: "LCWR", MMLU: "MMLU", ARC: "ARC 字母 / 全文" };
-    const evalTitles = { LCWR: "LCWR", MMLU: "MMLU", ARC: "ARC 字母 / ARC 全文" };
+    const evalKindNames = { LCWR: "TL;DR 摘要", MMLU: "MMLU", ARC: "ARC 字母 / 全文" };
+    const evalTitles = { LCWR: "TL;DR 摘要", MMLU: "MMLU", ARC: "ARC 字母 / ARC 全文" };
+    const judgeOptions = {
+      kinds: ["JUDGE"],
+      kindNames: { JUDGE: "胜率" },
+      titles: {},
+      note: "36 个摘要最终模型对种子 42 的 M0。每题对调两次，进度按已经判完的题数计算。",
+    };
 
     const ifEvalOptions = {
       kinds: ["IFEval", "MMLU", "ARC"],
@@ -528,7 +547,7 @@
           ? `评测进行中：${done} / ${tasks.length} 项已完成`
           : "还没开始";
       document.getElementById(`${prefix}-note`).textContent = options.note ||
-        "只保留 LCWR、MMLU、ARC 字母和 ARC 全文。LCWR 还没有胜率，图的最左边留着空位。";
+        "这里的 TL;DR 摘要、MMLU、ARC 是已经跑完的本地评测。图最左边是相对 M0 的长度调整胜率，M0 画在 50，表示持平。";
       const weight = tasks.reduce((sum, task) => sum + task.estimate_seconds, 0);
       const finishedWeight = tasks.reduce((sum, task) => sum + task.estimate_seconds * (percentOf(task) / 100), 0);
       const overall = weight ? (finishedWeight / weight) * 100 : 0;
@@ -619,7 +638,7 @@
       { name: "M0", color: "#8d7b68" }
     ];
     const chartMetrics = [
-      { name: "LCWR", empty: true },
+      { name: "LCWR" },
       { name: "MMLU 字母" },
       { name: "ARC 字母" },
       { name: "ARC 全文" }
@@ -637,13 +656,13 @@
       card.appendChild(heading);
       const W = 860;
       const H = 340;
-      const left = 46;
+      const left = 54;
       const right = 12;
       const top = 16;
       const bottom = 36;
       const plotW = W - left - right;
       const plotH = H - top - bottom;
-      const yMax = 50;
+      const yMax = 80;
       const groupW = plotW / metrics.length;
       const barW = 18;
       const gap = 6;
@@ -652,8 +671,8 @@
       const svg = svgEl("svg");
       svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
       svg.setAttribute("role", "img");
-      svg.setAttribute("aria-label", `${budget.title}，最左边是还没有分数的 LCWR，后面是 MMLU 字母、ARC 字母、ARC 全文`);
-      for (let tick = 0; tick <= 50; tick += 10) {
+      svg.setAttribute("aria-label", `${budget.title}，从左到右是 ${metrics.map((metric) => metric.name).join("、")}`);
+      for (let tick = 0; tick <= yMax; tick += 20) {
         const y = yOf(tick);
         const line = svgEl("line");
         line.setAttribute("x1", String(left));
@@ -674,7 +693,8 @@
       }
       metrics.forEach((metric, metricIndex) => {
         const groupX = left + metricIndex * groupW;
-        if (metric.empty) {
+        const values = metric.empty ? [] : arms.map((arm) => budget.rows[arm.name][metricIndex]);
+        if (metric.empty || values.every((value) => value == null)) {
           const placeholder = svgEl("text");
           placeholder.setAttribute("x", String(groupX + groupW / 2));
           placeholder.setAttribute("y", String(top + plotH / 2));
@@ -685,9 +705,9 @@
           svg.appendChild(placeholder);
         } else {
           const start = groupX + (groupW - cluster) / 2;
-          const scoreIndex = metricIndex - metrics.filter((item) => item.empty).length;
           arms.forEach((arm, armIndex) => {
-            const value = budget.rows[arm.name][scoreIndex];
+            const value = budget.rows[arm.name][metricIndex];
+            if (value == null) return;
             const x = start + armIndex * (barW + gap);
             const y = yOf(value);
             const base = yOf(0);
@@ -721,9 +741,9 @@
       table.appendChild(head);
       arms.forEach((arm) => {
         const cells = metrics.map((metric, metricIndex) => {
-          if (metric.empty) return "<td>—</td>";
-          const scoreIndex = metricIndex - metrics.filter((item) => item.empty).length;
-          return `<td>${Number(budget.rows[arm.name][scoreIndex]).toFixed(1)}</td>`;
+          const value = metric.empty ? null : budget.rows[arm.name][metricIndex];
+          if (value == null) return "<td>—</td>";
+          return `<td>${Number(value).toFixed(1)}</td>`;
         });
         const row = document.createElement("tr");
         row.innerHTML = `<td>${arm.name}</td>${cells.join("")}`;
@@ -753,6 +773,12 @@
         legend.appendChild(item);
       });
       host.appendChild(legend);
+      if (metrics.some((metric) => metric.name === "LCWR" && !metric.empty)) {
+        const caption = document.createElement("p");
+        caption.className = "note";
+        caption.textContent = "LCWR 是相对 M0 的长度调整胜率。M0 画在 50，表示和自己持平。";
+        host.appendChild(caption);
+      }
       payload.budgets.forEach((budget) => host.appendChild(drawBudgetChart(budget, arms, metrics)));
     }
 
@@ -851,6 +877,7 @@
     const ifEvalRaw = { value: "" };
     const ifEval1337Raw = { value: "" };
     const ifEval2024Raw = { value: "" };
+    const lcwrJudgeRaw = { value: "" };
     async function ifTick() {
       try {
         const response = await fetch("if_status.json", { cache: "no-store" });
@@ -888,6 +915,7 @@
     evalSeedTick("if-eval", "if_eval_status.json", ifEvalRaw, ifEvalOptions);
     evalSeedTick("if-eval-1337", "if_eval_status_1337.json", ifEval1337Raw, ifEvalOptions);
     evalSeedTick("if-eval-2024", "if_eval_status_2024.json", ifEval2024Raw, ifEvalOptions);
+    evalSeedTick("lcwr-judge", "lcwr_judge_status.json", lcwrJudgeRaw, judgeOptions);
     chartTick();
     setInterval(tick, 2000);
     setInterval(ifTick, 2000);
@@ -899,6 +927,7 @@
     setInterval(() => evalSeedTick("if-eval", "if_eval_status.json", ifEvalRaw, ifEvalOptions), 2000);
     setInterval(() => evalSeedTick("if-eval-1337", "if_eval_status_1337.json", ifEval1337Raw, ifEvalOptions), 2000);
     setInterval(() => evalSeedTick("if-eval-2024", "if_eval_status_2024.json", ifEval2024Raw, ifEvalOptions), 2000);
+    setInterval(() => evalSeedTick("lcwr-judge", "lcwr_judge_status.json", lcwrJudgeRaw, judgeOptions), 2000);
     setInterval(chartTick, 2000);
   </script>
 </body>

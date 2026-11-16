@@ -35,7 +35,7 @@ python 02_code/evaluation/run_matrix.py --manifest 02_code/evaluation/models.jso
 若需手动调试单个步骤，可直接运行相应脚本：
 
 - `generate.py --task tldr|ifeval`：贪心解码；TL;DR 上限 128，IFEval 上限 1280。
-- `judge_lcwr.py`：从 `OPENAI_API_KEY` 环境变量读取密钥，不要将密钥写入 manifest/脚本。每个 prompt 两次独立 A/B 位置互换调用；完整 29 个最终模型 × 200 题约 11,600 次 API 调用（不含重试）。先对一个模型用 `--limit 2` 验证。只在已确认符合项目数据处理/外部 API 政策后运行；请求会包含 Reddit 测试文本和模型摘要。
+- `judge_lcwr.py`：使用 DeepSeek 的 OpenAI 兼容 API，默认模型为 `deepseek-chat`，从 `DEEPSEEK_API_KEY` 环境变量读取密钥，默认 API 地址为 `https://api.deepseek.com`。不要将密钥写入 manifest/脚本。System prompt 和 user prompt 按 Balancing the Budget 附录 A.2.1：system 是 TL;DR 摘要指令，user 是带例子的名次比较，返回 `model_1`、`model_2` 的名次，名次 1 更好。同一题把两份摘要对调后再判一次。结果用 `json.loads` 读取，不执行模型返回的文本。完整 29 个最终模型 × 200 题约 11,600 次 API 调用（不含重试）。先对一个模型用 `--limit 2` 验证。只在已确认符合项目数据处理/外部 API 政策后运行；请求会包含 Reddit 测试文本和模型摘要。
 - `score_capability.py --benchmark mmlu|arc`：固定 500/300 题，不重新抽样；MMLU 使用单 token 选项标签条件 log-prob，ARC 同时记录长度归一化全文选项 log-prob 与单字母 log-prob。
 - `score_ifeval.py`：调用 ZIP 中的官方 `instruction_following_eval`，缺少官方 checker 时失败，不提供弱化 fallback。
 
