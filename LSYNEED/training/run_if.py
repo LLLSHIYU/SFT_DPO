@@ -27,6 +27,8 @@ TRAIN = SHARED / "LSYNEED" / "training"
 M0 = SHARED / "03_runs" / "M0_warmup_seed42_20261105" / "checkpoint" / "merged"
 DATA = SHARED / "IF_DATA"
 SUMMARY = SHARED / "SUMMARY_DATA"
+RATIO_SUMMARY = SHARED / "1331DATA" / "summary_v1.2"
+RATIO_IF = SHARED / "1331DATA" / "instruction_following_v1.0"
 MONITOR = SHARED / "LSYNEED" / "monitor"
 STATUS_42 = MONITOR / "if_status.json"
 STATUS_LATER = MONITOR / "if_seeds_status.json"
@@ -47,7 +49,29 @@ FINALS = [
     ("G5", "500", "G5_stage2_sft_500"),
     ("G5", "2000", "G5_stage2_sft_2000"),
     ("G5", "10000", "G5_stage2_sft_10000"),
+    ("G6", "500", "G6_stage2_dpo_500"),
+    ("G6", "2000", "G6_stage2_dpo_2000"),
+    ("G6", "10000", "G6_stage2_dpo_10000"),
+    ("G7", "500", "G7_stage2_dpo_500"),
+    ("G7", "2000", "G7_stage2_dpo_2000"),
+    ("G7", "10000", "G7_stage2_dpo_10000"),
+    ("G8", "500", "G8_stage2_sft_500"),
+    ("G8", "2000", "G8_stage2_sft_2000"),
+    ("G8", "10000", "G8_stage2_sft_10000"),
+    ("G9", "500", "G9_stage2_sft_500"),
+    ("G9", "2000", "G9_stage2_sft_2000"),
+    ("G9", "10000", "G9_stage2_sft_10000"),
 ]
+
+
+def resolve_data(data_rel: str, root: Path, packaged: Path) -> Path:
+    direct = root / data_rel
+    if direct.is_file():
+        return direct
+    nested = packaged / data_rel
+    if nested.is_file():
+        return nested
+    raise FileNotFoundError(data_rel)
 EVAL_KINDS = [
     ("ifeval", "IFEval", "IFEval", 541, "IF_DATA/eval_benchmarks/ifeval_541.jsonl"),
     ("mmlu", "MMLU", "MMLU", 500, "SUMMARY_DATA/eval_benchmarks/mmlu_500.jsonl"),
@@ -119,7 +143,7 @@ def write_config(task: dict, seed: int, kind: str, data_rel: str, max_length: in
     adapter.mkdir(parents=True, exist_ok=True)
     payload = {
         "model_path": model.as_posix(),
-        "data_path": (DATA / data_rel).as_posix(),
+        "data_path": resolve_data(data_rel, DATA, RATIO_IF).as_posix(),
         "output_dir": adapter.as_posix(),
         "seed": seed,
         "learning_rate": 0.0001 if kind == "sft" else 0.000005,
@@ -258,7 +282,7 @@ def write_training_boards() -> None:
     later_tasks = []
     for index, (short, _kind, data_rel, _max_length, _start, _ref, folder) in enumerate(JOBS, 1):
         base = summary[short]
-        data_path = DATA / data_rel
+        data_path = resolve_data(data_rel, DATA, RATIO_IF)
         rows = count_lines(data_path)
         steps = (rows + 15) // 16
         if steps != int(base["steps_total"]) or rows != int(base["rows"]):
@@ -441,8 +465,8 @@ def check_files() -> None:
         PYTHON,
     ]
     for _short, _kind, data_rel, *_rest in JOBS:
-        required.append(SUMMARY / data_rel)
-        required.append(DATA / data_rel)
+        required.append(resolve_data(data_rel, SUMMARY, RATIO_SUMMARY))
+        required.append(resolve_data(data_rel, DATA, RATIO_IF))
     missing = [str(path) for path in required if not path.exists()]
     if missing:
         raise SystemExit("Missing files:\n" + "\n".join(missing))

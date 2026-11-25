@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>摘要数据监控</title>
+  <title>新数据监控</title>
   <style>
     :root {
       --bg: #efe6d6;
@@ -299,19 +299,6 @@
     <div id="if-eval-2024-grid"></div>
     <div id="if-eval-2024-groups"></div>
     <div class="charts" id="if-eval-2024-charts"></div>
-
-    <h2 class="chapter">LCWR 胜率裁判</h2>
-    <p class="sub" id="lcwr-judge-headline">正在读取裁判表</p>
-    <div class="stats">
-      <div class="stat"><span>模型</span><strong id="lcwr-judge-done">–</strong></div>
-      <div class="stat"><span>总进度</span><strong id="lcwr-judge-percent">–</strong></div>
-      <div class="stat"><span>预计还要</span><strong id="lcwr-judge-remain">–</strong></div>
-      <div class="stat"><span>已经跑了</span><strong id="lcwr-judge-elapsed">–</strong></div>
-    </div>
-    <div class="overall" aria-hidden="true"><i id="lcwr-judge-overall-bar"></i></div>
-    <p class="note" id="lcwr-judge-note"></p>
-    <div id="lcwr-judge-grid"></div>
-    <div id="lcwr-judge-groups"></div>
   </main>
   <script>
     const labels = { waiting: "等待", running: "训练中", merging: "合并中", done: "完成", failed: "失败", not_started: "未开始" };
@@ -451,8 +438,8 @@
       document.getElementById(`${prefix}-elapsed`).textContent = elapsedEnd == null ? "0 分钟" : duration((elapsedEnd - Math.min(...starts)) / 1000);
       document.getElementById(`${prefix}-overall-bar`).style.width = `${overall}%`;
       document.getElementById(`${prefix}-note`).textContent = placeholder
-        ? `${tasks.length} 项还没开始。排列和摘要数据一样：G2、G3、G4、G5 的 500、2000、10000 档。G4 和 G5 各有两个阶段。`
-        : `${tasks.length} 项：G2、G3、G4、G5 的 500、2000、10000 档。G4 和 G5 各有两个阶段。M0 只在种子 42。`;
+        ? `${tasks.length} 项还没开始。G2 只做 SFT，G3 只做 DPO。G4、G5 是 1:1。G6、G7 是 SFT→DPO 的 1:3 和 3:1，G8 是 DPO→SFT 的 1:3，G9 是 DPO→SFT 的 3:1。G4 到 G9 各有两个阶段。`
+        : `${tasks.length} 项。G2 只做 SFT，G3 只做 DPO。G4、G5 是 1:1。G6、G7 是 SFT→DPO 的 1:3 和 3:1，G8 是 DPO→SFT 的 1:3，G9 是 DPO→SFT 的 3:1。G4 到 G9 各有两个阶段。`;
 
       const host = document.getElementById(`${prefix}-groups`);
       const openId = host.querySelector(".task[aria-expanded='true']")?.dataset.id;
@@ -503,11 +490,8 @@
     const keptEvalKinds = ["LCWR", "MMLU", "ARC"];
     const evalKindNames = { LCWR: "TL;DR 摘要", MMLU: "MMLU", ARC: "ARC 字母 / 全文" };
     const evalTitles = { LCWR: "TL;DR 摘要", MMLU: "MMLU", ARC: "ARC 字母 / ARC 全文" };
-    const judgeOptions = {
-      kinds: ["JUDGE"],
-      kindNames: { JUDGE: "胜率" },
-      titles: {},
-      note: "36 个摘要最终模型对种子 42 的 M0。每题对调两次，进度按已经判完的题数计算。",
+    const summaryEvalOptions = {
+      note: "TL;DR 摘要、MMLU、ARC 是本地评测。LCWR 胜率接在每一节下面，是摘要的主指标：该种子的最终模型对种子 42 的 M0，每题对调两次。",
     };
 
     const ifEvalOptions = {
@@ -538,7 +522,8 @@
       const kinds = options.kinds || keptEvalKinds;
       const kindNames = options.kindNames || evalKindNames;
       const titles = options.titles || evalTitles;
-      const tasks = data.tasks.filter((task) => kinds.includes(task.kind));
+      const listed = data.tasks.filter((task) => kinds.includes(task.kind));
+      const tasks = listed.concat(options.extraTasks || []);
       const done = tasks.filter((task) => task.status === "done").length;
       const allKeptDone = tasks.length > 0 && done === tasks.length;
       document.getElementById(`${prefix}-headline`).textContent = allKeptDone
@@ -561,7 +546,8 @@
       document.getElementById(`${prefix}-elapsed`).textContent = elapsedEnd == null ? "0 分钟" : duration((elapsedEnd - Math.min(...starts)) / 1000);
       document.getElementById(`${prefix}-overall-bar`).style.width = `${overall}%`;
 
-      const groups = [...new Set(tasks.map((task) => task.group))];
+      const groups = [...new Set(listed.map((task) => task.group))];
+      const gridWeight = listed.reduce((sum, task) => sum + task.estimate_seconds, 0);
       const grid = document.createElement("table");
       grid.className = "grid";
       const head = document.createElement("tr");
@@ -570,26 +556,27 @@
       for (const group of groups) {
         const row = document.createElement("tr");
         const cells = kinds.map((kind) => {
-          const task = tasks.find((item) => item.group === group && item.kind === kind);
+          const task = listed.find((item) => item.group === group && item.kind === kind);
           return `<td>${task ? duration(task.estimate_seconds) : "–"}</td>`;
         });
-        const subtotal = tasks.filter((task) => task.group === group).reduce((sum, task) => sum + task.estimate_seconds, 0);
+        const subtotal = listed.filter((task) => task.group === group).reduce((sum, task) => sum + task.estimate_seconds, 0);
         row.innerHTML = `<td>${group}</td>${cells.join("")}<td>${duration(subtotal)}</td>`;
         grid.appendChild(row);
       }
       const totalRow = document.createElement("tr");
-      const totals = kinds.map((kind) => duration(tasks.filter((task) => task.kind === kind).reduce((sum, task) => sum + task.estimate_seconds, 0)));
-      totalRow.innerHTML = `<td>合计</td>${totals.map((value) => `<td>${value}</td>`).join("")}<td>${duration(weight)}</td>`;
+      const totals = kinds.map((kind) => duration(listed.filter((task) => task.kind === kind).reduce((sum, task) => sum + task.estimate_seconds, 0)));
+      totalRow.innerHTML = `<td>合计</td>${totals.map((value) => `<td>${value}</td>`).join("")}<td>${duration(gridWeight)}</td>`;
       grid.appendChild(totalRow);
       const gridHost = document.getElementById(`${prefix}-grid`);
       gridHost.innerHTML = "";
       gridHost.appendChild(grid);
 
       const evalLabels = { ...labels, running: "评测中" };
+      const listGroups = [...new Set(tasks.map((task) => task.group))];
       const host = document.getElementById(`${prefix}-groups`);
       const openId = host.querySelector(".task[aria-expanded='true']")?.dataset.id;
       host.innerHTML = "";
-      for (const group of groups) {
+      for (const group of listGroups) {
         const section = document.createElement("section");
         const heading = document.createElement("h2");
         heading.textContent = group;
@@ -635,6 +622,10 @@
       { name: "G3", color: "#b4532a" },
       { name: "G4", color: "#5c3d78" },
       { name: "G5", color: "#234e78" },
+      { name: "G6", color: "#b9a4c9" },
+      { name: "G7", color: "#3b234f" },
+      { name: "G8", color: "#9bb6cc" },
+      { name: "G9", color: "#122c48" },
       { name: "M0", color: "#8d7b68" }
     ];
     const chartMetrics = [
@@ -664,8 +655,8 @@
       const plotH = H - top - bottom;
       const yMax = 80;
       const groupW = plotW / metrics.length;
-      const barW = 18;
-      const gap = 6;
+      const barW = arms.length > 8 ? 10 : arms.length > 5 ? 12 : 18;
+      const gap = arms.length > 8 ? 3 : arms.length > 5 ? 4 : 6;
       const cluster = arms.length * barW + (arms.length - 1) * gap;
       const yOf = (value) => top + (1 - value / yMax) * plotH;
       const svg = svgEl("svg");
@@ -757,7 +748,7 @@
       const host = document.getElementById(hostId);
       host.innerHTML = "";
       if (!payload || !payload.ready) {
-        const rows = { G2: [], G3: [], G4: [], G5: [], M0: [] };
+        const rows = { G2: [], G3: [], G4: [], G5: [], G6: [], G7: [], G8: [], G9: [], M0: [] };
         payload = {
           ready: true,
           budgets: ["500", "2000", "10000"].map((budget) => ({ title: `${budget} 档`, rows })),
@@ -773,12 +764,13 @@
         legend.appendChild(item);
       });
       host.appendChild(legend);
-      if (metrics.some((metric) => metric.name === "LCWR" && !metric.empty)) {
-        const caption = document.createElement("p");
-        caption.className = "note";
-        caption.textContent = "LCWR 是相对 M0 的长度调整胜率。M0 画在 50，表示和自己持平。";
-        host.appendChild(caption);
-      }
+      const caption = document.createElement("p");
+      caption.className = "note";
+      const ratioLine = "比例按阶段顺序。G6 是 SFT→DPO 的 1:3，G7 是 SFT→DPO 的 3:1。G8 是 DPO→SFT 的 1:3，G9 是 DPO→SFT 的 3:1。";
+      caption.textContent = metrics.some((metric) => metric.name === "LCWR" && !metric.empty)
+        ? `LCWR 是相对 M0 的长度调整胜率。M0 画在 50，表示和自己持平。${ratioLine}`
+        : ratioLine;
+      host.appendChild(caption);
       payload.budgets.forEach((budget) => host.appendChild(drawBudgetChart(budget, arms, metrics)));
     }
 
@@ -818,8 +810,8 @@
         const raw = await response.text();
         if (raw === lastEvalRaw) return;
         lastEvalRaw = raw;
-        const board = JSON.parse(raw);
-        renderEval("eval", board);
+        summaryBoards.eval = JSON.parse(raw);
+        paintSummaryEvals();
       } catch (error) {
         if (!lastEvalRaw) document.getElementById("eval-headline").textContent = "读不到 eval_status.json";
       }
@@ -832,6 +824,11 @@
         if (raw === previous.value) return;
         previous.value = raw;
         const board = JSON.parse(raw);
+        if (prefix === "eval-1337" || prefix === "eval-2024") {
+          summaryBoards[prefix] = board;
+          paintSummaryEvals();
+          return;
+        }
         renderEval(prefix, board, options || {});
       } catch (error) {
         if (!previous.value) document.getElementById(`${prefix}-headline`).textContent = `读不到 ${fileName}`;
@@ -878,6 +875,36 @@
     const ifEval1337Raw = { value: "" };
     const ifEval2024Raw = { value: "" };
     const lcwrJudgeRaw = { value: "" };
+    const summaryBoards = { eval: null, "eval-1337": null, "eval-2024": null };
+    let judgeTasks = [];
+    function paintSummaryEvals() {
+      const seeds = [
+        ["eval", "种子 42"],
+        ["eval-1337", "种子 1337"],
+        ["eval-2024", "种子 2024"],
+      ];
+      for (const [prefix, seed] of seeds) {
+        const board = summaryBoards[prefix];
+        if (!board) continue;
+        const extraTasks = judgeTasks
+          .filter((task) => task.group === seed)
+          .map((task) => ({ ...task, group: "LCWR 胜率" }));
+        renderEval(prefix, board, { ...summaryEvalOptions, extraTasks });
+      }
+    }
+    async function judgeTick() {
+      try {
+        const response = await fetch("lcwr_judge_status.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(String(response.status));
+        const raw = await response.text();
+        if (raw === lcwrJudgeRaw.value) return;
+        lcwrJudgeRaw.value = raw;
+        judgeTasks = JSON.parse(raw).tasks || [];
+        paintSummaryEvals();
+      } catch (error) {
+        if (!lcwrJudgeRaw.value) document.getElementById("eval-note").textContent = "读不到 lcwr_judge_status.json";
+      }
+    }
     async function ifTick() {
       try {
         const response = await fetch("if_status.json", { cache: "no-store" });
@@ -915,7 +942,7 @@
     evalSeedTick("if-eval", "if_eval_status.json", ifEvalRaw, ifEvalOptions);
     evalSeedTick("if-eval-1337", "if_eval_status_1337.json", ifEval1337Raw, ifEvalOptions);
     evalSeedTick("if-eval-2024", "if_eval_status_2024.json", ifEval2024Raw, ifEvalOptions);
-    evalSeedTick("lcwr-judge", "lcwr_judge_status.json", lcwrJudgeRaw, judgeOptions);
+    judgeTick();
     chartTick();
     setInterval(tick, 2000);
     setInterval(ifTick, 2000);
@@ -927,7 +954,7 @@
     setInterval(() => evalSeedTick("if-eval", "if_eval_status.json", ifEvalRaw, ifEvalOptions), 2000);
     setInterval(() => evalSeedTick("if-eval-1337", "if_eval_status_1337.json", ifEval1337Raw, ifEvalOptions), 2000);
     setInterval(() => evalSeedTick("if-eval-2024", "if_eval_status_2024.json", ifEval2024Raw, ifEvalOptions), 2000);
-    setInterval(() => evalSeedTick("lcwr-judge", "lcwr_judge_status.json", lcwrJudgeRaw, judgeOptions), 2000);
+    setInterval(judgeTick, 2000);
     setInterval(chartTick, 2000);
   </script>
 </body>

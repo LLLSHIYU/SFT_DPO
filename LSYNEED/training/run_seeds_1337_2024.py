@@ -27,6 +27,7 @@ TRAIN = SHARED / "LSYNEED" / "training"
 BASE = SHARED / "LSYNEED" / "models" / "Qwen2.5-0.5B"
 M0 = SHARED / "03_runs" / "M0_warmup_seed42_20261105" / "checkpoint" / "merged"
 DATA = SHARED / "SUMMARY_DATA"
+RATIO_DATA = SHARED / "1331DATA" / "summary_v1.2"
 STATUS = SHARED / "LSYNEED" / "monitor" / "seeds_status.json"
 PIPELINE_LOG = SHARED / "LSYNEED" / "monitor" / "seeds_pipeline.log"
 SEEDS = (1337, 2024)
@@ -51,6 +52,30 @@ JOBS = [
     ("g5-2000-s2", "sft", "arms/G5_stage2_sft_2000.jsonl", 1024, "g5-2000-s1", None, "G5_stage2_sft_2000"),
     ("g5-10000-s1", "dpo", "arms/G5_stage1_dpo_10000.jsonl", 1024, "m0", "m0", "G5_stage1_dpo_10000"),
     ("g5-10000-s2", "sft", "arms/G5_stage2_sft_10000.jsonl", 1024, "g5-10000-s1", None, "G5_stage2_sft_10000"),
+    ("g6-500-s1", "sft", "ratio_1_3/arms/G4_stage1_sft_500.jsonl", 1024, "m0", None, "G6_stage1_sft_500"),
+    ("g6-500-s2", "dpo", "ratio_1_3/arms/G4_stage2_dpo_500.jsonl", 1024, "g6-500-s1", "g6-500-s1", "G6_stage2_dpo_500"),
+    ("g6-2000-s1", "sft", "ratio_1_3/arms/G4_stage1_sft_2000.jsonl", 1024, "m0", None, "G6_stage1_sft_2000"),
+    ("g6-2000-s2", "dpo", "ratio_1_3/arms/G4_stage2_dpo_2000.jsonl", 1024, "g6-2000-s1", "g6-2000-s1", "G6_stage2_dpo_2000"),
+    ("g6-10000-s1", "sft", "ratio_1_3/arms/G4_stage1_sft_10000.jsonl", 1024, "m0", None, "G6_stage1_sft_10000"),
+    ("g6-10000-s2", "dpo", "ratio_1_3/arms/G4_stage2_dpo_10000.jsonl", 1024, "g6-10000-s1", "g6-10000-s1", "G6_stage2_dpo_10000"),
+    ("g7-500-s1", "sft", "ratio_3_1/arms/G4_stage1_sft_500.jsonl", 1024, "m0", None, "G7_stage1_sft_500"),
+    ("g7-500-s2", "dpo", "ratio_3_1/arms/G4_stage2_dpo_500.jsonl", 1024, "g7-500-s1", "g7-500-s1", "G7_stage2_dpo_500"),
+    ("g7-2000-s1", "sft", "ratio_3_1/arms/G4_stage1_sft_2000.jsonl", 1024, "m0", None, "G7_stage1_sft_2000"),
+    ("g7-2000-s2", "dpo", "ratio_3_1/arms/G4_stage2_dpo_2000.jsonl", 1024, "g7-2000-s1", "g7-2000-s1", "G7_stage2_dpo_2000"),
+    ("g7-10000-s1", "sft", "ratio_3_1/arms/G4_stage1_sft_10000.jsonl", 1024, "m0", None, "G7_stage1_sft_10000"),
+    ("g7-10000-s2", "dpo", "ratio_3_1/arms/G4_stage2_dpo_10000.jsonl", 1024, "g7-10000-s1", "g7-10000-s1", "G7_stage2_dpo_10000"),
+    ("g8-500-s1", "dpo", "ratio_3_1/arms/G5_stage1_dpo_500.jsonl", 1024, "m0", "m0", "G8_stage1_dpo_500"),
+    ("g8-500-s2", "sft", "ratio_3_1/arms/G5_stage2_sft_500.jsonl", 1024, "g8-500-s1", None, "G8_stage2_sft_500"),
+    ("g8-2000-s1", "dpo", "ratio_3_1/arms/G5_stage1_dpo_2000.jsonl", 1024, "m0", "m0", "G8_stage1_dpo_2000"),
+    ("g8-2000-s2", "sft", "ratio_3_1/arms/G5_stage2_sft_2000.jsonl", 1024, "g8-2000-s1", None, "G8_stage2_sft_2000"),
+    ("g8-10000-s1", "dpo", "ratio_3_1/arms/G5_stage1_dpo_10000.jsonl", 1024, "m0", "m0", "G8_stage1_dpo_10000"),
+    ("g8-10000-s2", "sft", "ratio_3_1/arms/G5_stage2_sft_10000.jsonl", 1024, "g8-10000-s1", None, "G8_stage2_sft_10000"),
+    ("g9-500-s1", "dpo", "ratio_1_3/arms/G5_stage1_dpo_500.jsonl", 1024, "m0", "m0", "G9_stage1_dpo_500"),
+    ("g9-500-s2", "sft", "ratio_1_3/arms/G5_stage2_sft_500.jsonl", 1024, "g9-500-s1", None, "G9_stage2_sft_500"),
+    ("g9-2000-s1", "dpo", "ratio_1_3/arms/G5_stage1_dpo_2000.jsonl", 1024, "m0", "m0", "G9_stage1_dpo_2000"),
+    ("g9-2000-s2", "sft", "ratio_1_3/arms/G5_stage2_sft_2000.jsonl", 1024, "g9-2000-s1", None, "G9_stage2_sft_2000"),
+    ("g9-10000-s1", "dpo", "ratio_1_3/arms/G5_stage1_dpo_10000.jsonl", 1024, "m0", "m0", "G9_stage1_dpo_10000"),
+    ("g9-10000-s2", "sft", "ratio_1_3/arms/G5_stage2_sft_10000.jsonl", 1024, "g9-10000-s1", None, "G9_stage2_sft_10000"),
 ]
 
 TITLES = {
@@ -60,7 +85,25 @@ TITLES = {
     "g4-s2": ("G4", "第二阶段 DPO", "DPO"),
     "g5-s1": ("G5", "第一阶段 DPO", "DPO"),
     "g5-s2": ("G5", "第二阶段 SFT", "SFT"),
+    "g6-s1": ("G6", "第一阶段 SFT", "SFT"),
+    "g6-s2": ("G6", "第二阶段 DPO", "DPO"),
+    "g7-s1": ("G7", "第一阶段 SFT", "SFT"),
+    "g7-s2": ("G7", "第二阶段 DPO", "DPO"),
+    "g8-s1": ("G8", "第一阶段 DPO", "DPO"),
+    "g8-s2": ("G8", "第二阶段 SFT", "SFT"),
+    "g9-s1": ("G9", "第一阶段 DPO", "DPO"),
+    "g9-s2": ("G9", "第二阶段 SFT", "SFT"),
 }
+
+
+def resolve_data(data_rel: str) -> Path:
+    direct = DATA / data_rel
+    if direct.is_file():
+        return direct
+    packaged = RATIO_DATA / data_rel
+    if packaged.is_file():
+        return packaged
+    raise FileNotFoundError(data_rel)
 
 
 def keep_awake() -> None:
@@ -125,7 +168,7 @@ def write_config(task: dict, seed: int, kind: str, data_rel: str, max_length: in
     adapter.mkdir(parents=True, exist_ok=True)
     payload = {
         "model_path": model.as_posix(),
-        "data_path": (DATA / data_rel).as_posix(),
+        "data_path": resolve_data(data_rel).as_posix(),
         "output_dir": adapter.as_posix(),
         "seed": seed,
         "learning_rate": 0.0001 if kind == "sft" else 0.000005,

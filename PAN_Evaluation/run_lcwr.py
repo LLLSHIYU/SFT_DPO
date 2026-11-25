@@ -144,19 +144,20 @@ def write_board(candidates: list[dict[str, Any]]) -> None:
         task["order"] = order
         tasks.append(task)
     done = sum(task["status"] == "done" for task in tasks)
-    if done == len(tasks):
-        phase, headline = "done", "36 个模型的 LCWR 胜率都算完了"
+    total = len(tasks)
+    if done == total:
+        phase, headline = "done", f"{total} 个模型的 LCWR 胜率都算完了"
     elif done:
-        phase, headline = "running", f"LCWR 胜率裁判进行中：{done} / {len(tasks)} 个模型已完成"
+        phase, headline = "running", f"LCWR 胜率裁判进行中：{done} / {total} 个模型已完成"
     else:
         phase, headline = "not_started", "LCWR 胜率裁判还没开始"
     board = {
         "phase": phase,
         "headline": headline,
         "waiting_headline": "LCWR 胜率裁判还没开始",
-        "done_headline": "36 个模型的 LCWR 胜率都算完了",
+        "done_headline": f"{total} 个模型的 LCWR 胜率都算完了",
         "gpu": "DeepSeek",
-        "estimate_note": "36 个摘要最终模型对种子 42 的 M0，每题对调两次。上面评测表里的 TL;DR 摘要已经写好，这里才是胜率。",
+        "estimate_note": f"{total} 个摘要最终模型对种子 42 的 M0，每题对调两次。上面评测表里的 TL;DR 摘要已经写好，这里才是胜率。",
         "updated_at": now(),
         "tasks": tasks,
     }

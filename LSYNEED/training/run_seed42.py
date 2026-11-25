@@ -24,6 +24,7 @@ PYTHON = SHARED / "02_code" / "DSAI4207_code" / ".venv" / "Scripts" / "python.ex
 TRAIN = SHARED / "LSYNEED" / "training"
 BASE = SHARED / "LSYNEED" / "models" / "Qwen2.5-0.5B"
 DATA = SHARED / "SUMMARY_DATA"
+RATIO_DATA = SHARED / "1331DATA" / "summary_v1.2"
 CONFIGS = TRAIN / "configs" / "seed42"
 PIPELINE_LOG = SHARED / "LSYNEED" / "monitor" / "pipeline.log"
 
@@ -48,7 +49,41 @@ JOBS = [
     ("g5-2000-s2", "sft", "arms/G5_stage2_sft_2000.jsonl", 1024, "g5-2000-s1", None),
     ("g5-10000-s1", "dpo", "arms/G5_stage1_dpo_10000.jsonl", 1024, "m0", "m0"),
     ("g5-10000-s2", "sft", "arms/G5_stage2_sft_10000.jsonl", 1024, "g5-10000-s1", None),
+    ("g6-500-s1", "sft", "ratio_1_3/arms/G4_stage1_sft_500.jsonl", 1024, "m0", None),
+    ("g6-500-s2", "dpo", "ratio_1_3/arms/G4_stage2_dpo_500.jsonl", 1024, "g6-500-s1", "g6-500-s1"),
+    ("g6-2000-s1", "sft", "ratio_1_3/arms/G4_stage1_sft_2000.jsonl", 1024, "m0", None),
+    ("g6-2000-s2", "dpo", "ratio_1_3/arms/G4_stage2_dpo_2000.jsonl", 1024, "g6-2000-s1", "g6-2000-s1"),
+    ("g6-10000-s1", "sft", "ratio_1_3/arms/G4_stage1_sft_10000.jsonl", 1024, "m0", None),
+    ("g6-10000-s2", "dpo", "ratio_1_3/arms/G4_stage2_dpo_10000.jsonl", 1024, "g6-10000-s1", "g6-10000-s1"),
+    ("g7-500-s1", "sft", "ratio_3_1/arms/G4_stage1_sft_500.jsonl", 1024, "m0", None),
+    ("g7-500-s2", "dpo", "ratio_3_1/arms/G4_stage2_dpo_500.jsonl", 1024, "g7-500-s1", "g7-500-s1"),
+    ("g7-2000-s1", "sft", "ratio_3_1/arms/G4_stage1_sft_2000.jsonl", 1024, "m0", None),
+    ("g7-2000-s2", "dpo", "ratio_3_1/arms/G4_stage2_dpo_2000.jsonl", 1024, "g7-2000-s1", "g7-2000-s1"),
+    ("g7-10000-s1", "sft", "ratio_3_1/arms/G4_stage1_sft_10000.jsonl", 1024, "m0", None),
+    ("g7-10000-s2", "dpo", "ratio_3_1/arms/G4_stage2_dpo_10000.jsonl", 1024, "g7-10000-s1", "g7-10000-s1"),
+    ("g8-500-s1", "dpo", "ratio_3_1/arms/G5_stage1_dpo_500.jsonl", 1024, "m0", "m0"),
+    ("g8-500-s2", "sft", "ratio_3_1/arms/G5_stage2_sft_500.jsonl", 1024, "g8-500-s1", None),
+    ("g8-2000-s1", "dpo", "ratio_3_1/arms/G5_stage1_dpo_2000.jsonl", 1024, "m0", "m0"),
+    ("g8-2000-s2", "sft", "ratio_3_1/arms/G5_stage2_sft_2000.jsonl", 1024, "g8-2000-s1", None),
+    ("g8-10000-s1", "dpo", "ratio_3_1/arms/G5_stage1_dpo_10000.jsonl", 1024, "m0", "m0"),
+    ("g8-10000-s2", "sft", "ratio_3_1/arms/G5_stage2_sft_10000.jsonl", 1024, "g8-10000-s1", None),
+    ("g9-500-s1", "dpo", "ratio_1_3/arms/G5_stage1_dpo_500.jsonl", 1024, "m0", "m0"),
+    ("g9-500-s2", "sft", "ratio_1_3/arms/G5_stage2_sft_500.jsonl", 1024, "g9-500-s1", None),
+    ("g9-2000-s1", "dpo", "ratio_1_3/arms/G5_stage1_dpo_2000.jsonl", 1024, "m0", "m0"),
+    ("g9-2000-s2", "sft", "ratio_1_3/arms/G5_stage2_sft_2000.jsonl", 1024, "g9-2000-s1", None),
+    ("g9-10000-s1", "dpo", "ratio_1_3/arms/G5_stage1_dpo_10000.jsonl", 1024, "m0", "m0"),
+    ("g9-10000-s2", "sft", "ratio_1_3/arms/G5_stage2_sft_10000.jsonl", 1024, "g9-10000-s1", None),
 ]
+
+
+def resolve_data(data_rel: str) -> Path:
+    direct = DATA / data_rel
+    if direct.is_file():
+        return direct
+    packaged = RATIO_DATA / data_rel
+    if packaged.is_file():
+        return packaged
+    raise FileNotFoundError(data_rel)
 
 
 def keep_awake() -> None:
@@ -98,7 +133,7 @@ def write_config(task: dict, kind: str, data_rel: str, max_length: int, model: P
     adapter.mkdir(parents=True, exist_ok=True)
     payload = {
         "model_path": model.as_posix(),
-        "data_path": (DATA / data_rel).as_posix(),
+        "data_path": resolve_data(data_rel).as_posix(),
         "output_dir": adapter.as_posix(),
         "seed": 42,
         "learning_rate": 0.0001 if kind == "sft" else 0.000005,

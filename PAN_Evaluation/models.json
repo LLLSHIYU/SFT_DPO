@@ -102,5 +102,101 @@
     "budget": "10000",
     "seed": "42",
     "model": "03_runs/G5_stage2_sft_10000_seed42_20261105/checkpoint/merged"
+  },
+  {
+    "run_id": "G6_stage2_dpo_500_seed42",
+    "run_dir": "03_runs/G6_stage2_dpo_500_seed42",
+    "arm": "G6",
+    "budget": "500",
+    "seed": "42",
+    "model": "03_runs/G6_stage2_dpo_500_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "G6_stage2_dpo_2000_seed42",
+    "run_dir": "03_runs/G6_stage2_dpo_2000_seed42",
+    "arm": "G6",
+    "budget": "2000",
+    "seed": "42",
+    "model": "03_runs/G6_stage2_dpo_2000_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "G6_stage2_dpo_10000_seed42",
+    "run_dir": "03_runs/G6_stage2_dpo_10000_seed42",
+    "arm": "G6",
+    "budget": "10000",
+    "seed": "42",
+    "model": "03_runs/G6_stage2_dpo_10000_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "G7_stage2_dpo_500_seed42",
+    "run_dir": "03_runs/G7_stage2_dpo_500_seed42",
+    "arm": "G7",
+    "budget": "500",
+    "seed": "42",
+    "model": "03_runs/G7_stage2_dpo_500_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "G7_stage2_dpo_2000_seed42",
+    "run_dir": "03_runs/G7_stage2_dpo_2000_seed42",
+    "arm": "G7",
+    "budget": "2000",
+    "seed": "42",
+    "model": "03_runs/G7_stage2_dpo_2000_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "G7_stage2_dpo_10000_seed42",
+    "run_dir": "03_runs/G7_stage2_dpo_10000_seed42",
+    "arm": "G7",
+    "budget": "10000",
+    "seed": "42",
+    "model": "03_runs/G7_stage2_dpo_10000_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "G8_stage2_sft_500_seed42",
+    "run_dir": "03_runs/G8_stage2_sft_500_seed42",
+    "arm": "G8",
+    "budget": "500",
+    "seed": "42",
+    "model": "03_runs/G8_stage2_sft_500_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "G8_stage2_sft_2000_seed42",
+    "run_dir": "03_runs/G8_stage2_sft_2000_seed42",
+    "arm": "G8",
+    "budget": "2000",
+    "seed": "42",
+    "model": "03_runs/G8_stage2_sft_2000_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "G8_stage2_sft_10000_seed42",
+    "run_dir": "03_runs/G8_stage2_sft_10000_seed42",
+    "arm": "G8",
+    "budget": "10000",
+    "seed": "42",
+    "model": "03_runs/G8_stage2_sft_10000_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "G9_stage2_sft_500_seed42",
+    "run_dir": "03_runs/G9_stage2_sft_500_seed42",
+    "arm": "G9",
+    "budget": "500",
+    "seed": "42",
+    "model": "03_runs/G9_stage2_sft_500_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "G9_stage2_sft_2000_seed42",
+    "run_dir": "03_runs/G9_stage2_sft_2000_seed42",
+    "arm": "G9",
+    "budget": "2000",
+    "seed": "42",
+    "model": "03_runs/G9_stage2_sft_2000_seed42/checkpoint/merged"
+  },
+  {
+    "run_id": "G9_stage2_sft_10000_seed42",
+    "run_dir": "03_runs/G9_stage2_sft_10000_seed42",
+    "arm": "G9",
+    "budget": "10000",
+    "seed": "42",
+    "model": "03_runs/G9_stage2_sft_10000_seed42/checkpoint/merged"
   }
 ]
