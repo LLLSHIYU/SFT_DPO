@@ -381,7 +381,7 @@ def build_manifest_and_datacard(counts_summary: Dict[str, Any]) -> None:
 |---|---|
 | **项目名称** | Order vs. Scale: A Controlled Study of SFT/DPO Sequencing Across Data Budgets in Small LM Alignment |
 | **数据版本** | `data/v1.0`（对应协议 `DATA_PROTOCOL.md` `{cfg['protocol_version']}`，`synthetic = false`） |
-| **数据工程负责人** | PAN Haoren (24104216d) |
+| **数据工程负责人** | PAN Haoren |
 | **主数据源** | `openai/summarize_from_feedback` (`comparisons`, commit `{sources_lock['tldr']['revision']}`, train parquet sha256 `{sources_lock['tldr']['train_sha256'][:16]}…`) |
 | **预热数据源** | `HuggingFaceH4/no_robots` (`train`, commit `{sources_lock['warmup']['revision']}`, parquet sha256 `{sources_lock['warmup']['train_sha256'][:16]}…`) |
 | **官方分词器与模板** | `Qwen/Qwen2.5-0.5B-Base` (`hub_repo = Qwen/Qwen2.5-0.5B`, `revision_for_repo = Qwen/Qwen2.5-0.5B`, commit `{sources_lock['tokenizer']['revision']}`, `vocab_size = {sources_lock['tokenizer']['vocab_size']:,}`, `len(tokenizer) = {sources_lock['tokenizer']['len_tokenizer']:,}`), 官方 ChatML `formatter_version = {cfg['formatter_version']}`, `eos_token = <|im_end|>` (151645), `pad_token = <|endoftext|>` (151643) |

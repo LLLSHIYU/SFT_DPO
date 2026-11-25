@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 ifeval_harness.py — IFEval (Zhou et al., 2023) Prompt Renderer & Official Rule Checker Harness
-Owner: PAN Haoren (24104216d) · DSAI 4207 Data Engineering & IFEval Harness (§12.4, P1-2)
+Owner: PAN Haoren · DSAI 4207 Data Engineering & IFEval Harness (§12.4, P1-2)
 
 Prioritizes the official Google Research `instruction_following_eval` package and records
 `"checker": "official"` (or `"fallback"` only when `--allow-fallback` is explicitly passed for debug).

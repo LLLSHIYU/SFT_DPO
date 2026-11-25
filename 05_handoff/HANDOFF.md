@@ -160,9 +160,9 @@ PY
 
 | 角色 | 姓名 | 负责 |
 |---|---|---|
-| 数据工程 | PAN Haoren (24104216d) | 数据、协议、去污染、IFEval harness |
-| 训练 | LIU Shiyu (24106028d) | M0、SFT/DPO、两阶段 merge、29 runs |
-| 评测 | PAN Yubing (24103431d) | LCWR、MMLU/ARC、统计、图 |
+| 数据工程 | PAN Haoren | 数据、协议、去污染、IFEval harness |
+| 训练 | LIU Shiyu | M0、SFT/DPO、两阶段 merge、29 runs |
+| 评测 | PAN Yubing | LCWR、MMLU/ARC、统计、图 |
 
 ---
 

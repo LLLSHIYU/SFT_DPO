@@ -4,7 +4,7 @@
 |---|---|
 | **项目名称** | Order vs. Scale: A Controlled Study of SFT/DPO Sequencing Across Data Budgets in Small LM Alignment |
 | **数据版本** | `data/v1.2`（对应协议 `DATA_PROTOCOL.md` `v1.2-final + source-balanced sampling`，`synthetic = false`） |
-| **数据工程负责人** | PAN Haoren (24104216d) |
+| **数据工程负责人** | PAN Haoren |
 | **主数据源** | `openai/summarize_from_feedback` (`comparisons`, commit `b8f7d168b6f4e95b2a92e84768bd6c955bed2f29`, train parquet sha256 `8520dcdbd838ec0d…`) |
 | **预热数据源** | `HuggingFaceH4/no_robots` (`train`, commit `e6f9a4ac5c37faeb744ba9ecf0473184d7f8105b`, parquet sha256 `76d64120a2ab20eb…`) |
 | **官方分词器与模板** | `Qwen/Qwen2.5-0.5B-Base` (`hub_repo = Qwen/Qwen2.5-0.5B`, `revision_for_repo = Qwen/Qwen2.5-0.5B`, commit `060db6499f32faf8b98477b0a26969ef7d8b9987`, `vocab_size = 151,643`, `len(tokenizer) = 151,665`), 官方 ChatML `formatter_version = v1.2`, `eos_token = <|im_end|>` (151645), `pad_token = <|endoftext|>` (151643) |

@@ -12,7 +12,7 @@
 | 日期 | 2026-10-18 |
 | 对应 proposal | `DSAI4207_Final_Proposal/main.pdf`（2026-10-13，4 页，最新版） |
 | 版本口径 | 以 `main.pdf` 为准；`main.tex` 与 `main.pdf` 内容一致 |
-| 团队 | PAN Haoren (24104216d)、LIU Shiyu (24106028d)、PAN Yubing (24103431d) |
+| 团队 | PAN Haoren、LIU Shiyu、PAN Yubing |
 | 数据负责人 | PAN Haoren |
 | 关联文档 | `DSAI4207_Final_Proposal/main.pdf`、`balancing the budget.pdf`、`DATA_ISSUES.md` |
 

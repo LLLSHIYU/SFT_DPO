@@ -2,9 +2,9 @@
 
 **Course:** DSAI 4207 Introduction to Large Language Models (The Hong Kong Polytechnic University)  
 **Team Members:**  
-- **PAN Haoren (`24104216d`)** — Data Engineering, Decontamination/Splitting Pipeline & IFEval Harness  
-- **LIU Shiyu (`24106028d`)** — Model Training (SFT / DPO / Two-Stage Sequencing Arms G2–G5 & G3′)  
-- **PAN Yubing (`24103431d`)** — Evaluation Pipeline (LCWR Judge Harness, Capability Tax MMLU/ARC & Statistical Analysis)  
+- **PAN Haoren** — Data Engineering, Decontamination/Splitting Pipeline & IFEval Harness  
+- **LIU Shiyu** — Model Training (SFT / DPO / Two-Stage Sequencing Arms G2–G5 & G3′)  
+- **PAN Yubing** — Evaluation Pipeline (LCWR Judge Harness, Capability Tax MMLU/ARC & Statistical Analysis)  
 
 ---
 

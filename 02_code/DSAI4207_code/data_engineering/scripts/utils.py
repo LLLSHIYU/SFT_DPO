@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 DSAI 4207 Data Engineering Utilities (Protocol v1.2)
-Owner: PAN Haoren (24104216d)
+Owner: PAN Haoren
 
 Provides:
 - Text normalization (normalize_for_training vs normalize_for_hash)
