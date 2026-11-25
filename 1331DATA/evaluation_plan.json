@@ -1,0 +1,51 @@
+{
+  "shared_baseline": "M0",
+  "general_capabilities": {
+    "mmlu": {
+      "path": "summary_v1.2/eval_benchmarks/mmlu_500.jsonl",
+      "sha256": "61be511e5d79ea253debb18cbfd6b3642ed318084139f4265709dafe9f5cf2c9",
+      "metric": "accuracy",
+      "scoring": "option_letter_log_likelihood"
+    },
+    "arc_challenge_letter": {
+      "path": "summary_v1.2/eval_benchmarks/arc_challenge_300.jsonl",
+      "sha256": "979223864d503d5fb94844bed43ce6c850272fa2708ba8009eb9bdfa1a5e93ec",
+      "metric": "accuracy",
+      "scoring": "option_letter_log_likelihood"
+    },
+    "arc_challenge_full_text": {
+      "path": "summary_v1.2/eval_benchmarks/arc_challenge_300.jsonl",
+      "sha256": "979223864d503d5fb94844bed43ce6c850272fa2708ba8009eb9bdfa1a5e93ec",
+      "metric": "accuracy",
+      "scoring": "mean_log_likelihood_per_choice_token"
+    }
+  },
+  "tasks": {
+    "summary": {
+      "dataset": "summary_v1.2",
+      "general_capabilities": [
+        "mmlu",
+        "arc_challenge_letter",
+        "arc_challenge_full_text"
+      ],
+      "primary_evaluation": {
+        "path": "summary_v1.2/test_200_main.jsonl",
+        "sha256": "e3d4f92e294b414d025b876824a2d8414497cf5fc990b0707411836a12566a8e",
+        "metric": "lcwr_vs_m0"
+      }
+    },
+    "instruction_following": {
+      "dataset": "instruction_following_v1.0",
+      "general_capabilities": [
+        "mmlu",
+        "arc_challenge_letter",
+        "arc_challenge_full_text"
+      ],
+      "primary_evaluation": {
+        "path": "instruction_following_v1.0/eval_benchmarks/ifeval_541.jsonl",
+        "sha256": "f48c445adcd062b4d8c8d97e79baa88b97289a27b7cba8bb62099591f7544d2b",
+        "metric": "prompt_level_strict_acc"
+      }
+    }
+  }
+}
